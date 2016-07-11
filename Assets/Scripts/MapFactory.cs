@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MapFactory : MonoBehaviour 
 {
+    //더 좋은 방법으로 변경하고싶다!
     //배열관리 더 좋은 방법은 없는지?
     public  GameObject[]    mapObjects; //크리스탈
     //public  GameObject[]    mapObjects; //사막
@@ -20,7 +21,7 @@ public class MapFactory : MonoBehaviour
         fire,
         desirt
     };
-
+    
 	// Use this for initialization
 	void Start () 
     {
