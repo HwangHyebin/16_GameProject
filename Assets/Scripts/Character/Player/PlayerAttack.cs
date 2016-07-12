@@ -54,6 +54,8 @@ public class PlayerAttack : PlayerState
                 startTime       = Time.time;
                 float delay     = 1.0f;
                 nextTime        = startTime + delay;
+                //각도 안에 들어가고 attack 했을때 몬스터 피 깎아주게만들기.
+                //사이각 구하기
                 RaycastHit hit;
                 Ray ray = new Ray(_player.transform.position + _player.transform.up * 0.25f, _player.transform.forward);
                 Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 100);
@@ -73,6 +75,11 @@ public class PlayerAttack : PlayerState
                         _player.Get_Enemy.enemy_anim = Enemy.ENEMY_ANIMATOR.DEAD;
                     }
                 }
+
+                Vector3 a = Vector3.forward;
+                Vector3 b = Vector3.left;
+                float deg = Mathf.Acos(Vector3.Dot(a, b)) * Mathf.Rad2Deg;
+                Debug.Log(deg);
             }
 
             if (Time.time > nextTime && startTime != 0) //1초 후

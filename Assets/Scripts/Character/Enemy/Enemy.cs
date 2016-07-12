@@ -27,8 +27,8 @@ public class Enemy : CharacterBase
     }
     public sealed override void update()
     {
-        Debug.Log("enemy = " + position);
-        Debug.Log("enemy transform position = " + this.transform.position);
+        //Debug.Log("enemy = " + position);
+        //Debug.Log("enemy transform position = " + this.transform.position);
         enemy_state.Update();
     }
     public sealed override void clean()

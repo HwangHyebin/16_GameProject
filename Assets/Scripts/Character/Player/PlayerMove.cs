@@ -26,19 +26,33 @@ public class PlayerMove : PlayerState
 
         if (_player.Srt_Input.drag == true)
         {
-            _player.position.x = _player.Srt_Input.Horizontal();
-            _player.position.z = _player.Srt_Input.Vertical();
-            _player.transform.position += (_player.position).normalized * Time.deltaTime * speed;
-            float ang = ContAngle(_player.transform.forward, _player.position);
+           
+            //_player.Srt_Input.stick.position = new Vector3(_player.transform.eulerAngles.x,
+            //    Mathf.Atan2(_player.Srt_Input.axis.x, _player.Srt_Input.axis.y) * Mathf.Rad2Deg,
+            //    _player.transform.eulerAngles.z);
+            //_player.transform.eulerAngles = _player.Srt_Input.stick.position;
+            _player.transform.position += (_player.transform.forward * speed * Time.deltaTime);
+            Vector3 Velocity = (_player.Srt_Input.stick.position - _player.Srt_Input.defaultCenter);
+            Velocity.z = Velocity.y;
+            Velocity.y = 0.0f;
+            Velocity.Normalize();
+            Debug.Log(Velocity);
+            _player.transform.forward += (Velocity * 100 * Time.deltaTime);
 
-            if (ang > 3.0f && ang < 183.0f)
-            {
-                _player.transform.Rotate(Vector3.up * Time.deltaTime * 200);
-            }
-            else if (ang > 184.0f && ang < 362.0f)
-            {
-                _player.transform.Rotate(-Vector3.up * Time.deltaTime * 200);
-            }
+
+            //_player.position.x = _player.Srt_Input.Horizontal();
+            //_player.position.z = _player.Srt_Input.Vertical();
+            //_player.transform.position += (_player.position).normalized * Time.deltaTime * speed;
+            //float ang = ContAngle(_player.transform.forward, _player.position);
+
+            //if (ang > 3.0f && ang < 183.0f)
+            //{
+            //    _player.transform.Rotate(Vector3.up * Time.deltaTime * 200);
+            //}
+            //else if (ang > 184.0f && ang < 362.0f)
+            //{
+            //    _player.transform.Rotate(-Vector3.up * Time.deltaTime * 200);
+            //}
         }
         else
         {
