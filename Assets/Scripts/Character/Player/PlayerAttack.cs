@@ -56,14 +56,50 @@ public class PlayerAttack : PlayerState
                 nextTime        = startTime + delay;
                 //각도 안에 들어가고 attack 했을때 몬스터 피 깎아주게만들기.
                 //사이각 구하기
-                RaycastHit hit;
-                Ray ray = new Ray(_player.transform.position + _player.transform.up * 0.25f, _player.transform.forward);
-                Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 100);
+                //RaycastHit hit;
+                //Ray ray = new Ray(_player.transform.position + _player.transform.up * 0.25f, _player.transform.forward);
+                //Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 100);
              
-                if (Physics.Raycast(ray, out hit, 4))
+                //if (Physics.Raycast(ray, out hit, 4))
+                //{
+                //    // hp 줄여주는 부분
+                //    Transform hp = hit.transform.parent.FindChild("HP");
+                //    if (hp != null)
+                //    {
+                //        Life life = hp.GetComponent<Life>();
+                //        life.m_HP -= 10;
+                //        //파티클 터지는 것 넣어줄 부분.
+                //    }
+                //    else
+                //    {
+                //        _player.Get_Enemy.enemy_anim = Enemy.ENEMY_ANIMATOR.DEAD;
+                //    }
+                //}
+                Vector3 _forward = _player.transform.forward;
+                Vector3 _right = _player.transform.right;
+                float deg = Mathf.Acos(Vector3.Dot(_forward, _right)) * Mathf.Rad2Deg;
+                Debug.Log("player deg = "+deg);
+                //리스트 for문을 돌려서 각각의 몬스터의 벡터를 구함.
+                Vector3 enemy_vec = _player.Get_Enemy.transform.position - _player.transform.position;
+                float enemy_deg = Mathf.Acos(Vector3.Dot(_forward, enemy_vec)) * Mathf.Rad2Deg;
+                Debug.Log("enemy deg = " + enemy_deg);
+                //리스트를 가지고 와서 
+
+                for(int i = 0; i < 100; ++i)
                 {
-                    // hp 줄여주는 부분
-                    Transform hp = hit.transform.parent.FindChild("HP");
+                    //Vector3 pos = a[i].pos; //리스트 내의 포지션을 가져옴
+
+                    //float angle; // 각도 계산
+                    //if (angle < 90)
+                    //{ //피 깎이는 조건 넣어줌
+                    //}
+
+                }
+
+
+                if (enemy_deg < deg)
+                {
+                    Transform hp = _player.Get_Enemy.transform.parent.FindChild("HP");
                     if (hp != null)
                     {
                         Life life = hp.GetComponent<Life>();
@@ -75,11 +111,7 @@ public class PlayerAttack : PlayerState
                         _player.Get_Enemy.enemy_anim = Enemy.ENEMY_ANIMATOR.DEAD;
                     }
                 }
-
-                Vector3 a = Vector3.forward;
-                Vector3 b = Vector3.left;
-                float deg = Mathf.Acos(Vector3.Dot(a, b)) * Mathf.Rad2Deg;
-                Debug.Log(deg);
+                
             }
 
             if (Time.time > nextTime && startTime != 0) //1초 후

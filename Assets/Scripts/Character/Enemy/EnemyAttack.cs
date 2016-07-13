@@ -25,6 +25,7 @@ public class EnemyAttack : EnemyState
         float delay         = 2.0f;
         float damage        = 3.0f;
         float nextTime      = currentTime + delay;
+        _enemy.transform.LookAt(_enemy.Get_Player.transform.position);
         float dis           = Vector3.Magnitude(_enemy.transform.position - _enemy.Get_Player.transform.position);
         if (dis > 1.1f)
         {

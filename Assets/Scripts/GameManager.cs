@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     private ControlCamera       _camera;
     private MapFactory          _map;
     private CharacterFactory    _factory;
+    //enemy를 저장하는 리스트를 만듦.
+    //매니저 싱글톤
 
     //나중에 xml 파싱을 통해 캐릭터의 수와 오브젝트의 수 등을 결정.
     private void Awake()
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour
     }
     private void CharacterInit()
     {
+        //for문.
         _factory.CreateCharacter("Player", ref _array[0]);
         _factory.CreateCharacter("Enemy", ref _array[1]);
         _factory.CreateCharacter("Enemy", ref _array[2]);
