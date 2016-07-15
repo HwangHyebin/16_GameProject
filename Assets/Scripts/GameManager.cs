@@ -3,13 +3,23 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour 
 {
-    private CharacterBase[]     _array;
+    private CharacterBase[]     _array; //포인터를 담기 위한 배열
     private ControlCamera       _camera;
     private MapFactory          _map;
     private CharacterFactory    _factory;
-    //enemy를 저장하는 리스트를 만듦.
-    //매니저 싱글톤
 
+	public 	CharacterBase[]     _enemyArray; //enemy만을 담기 위한 배열
+
+    private static GameManager instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = new GameManager();
+            return instance;
+        }
+    }
     //나중에 xml 파싱을 통해 캐릭터의 수와 오브젝트의 수 등을 결정.
     private void Awake()
     {
@@ -17,14 +27,14 @@ public class GameManager : MonoBehaviour
         _map        = GameObject.FindObjectOfType<MapFactory>();
         _factory    = GameObject.FindObjectOfType<CharacterFactory>();
         _camera     = GameObject.FindObjectOfType<ControlCamera>();
+		_enemyArray = new CharacterBase[2]; //현재는 2마리로 정해져 있으나 나중엔 xml파싱을 통해 갯수결정
     }
     private void Start()
     {
         _camera.init();
         _map.CreateMap();
-        _map.CreateObstacle(10);
+        _map.CreateObstacle(10); //오브젝트를 몇개나 생성할 것인지?
         CharacterInit();
-       
     }
     private void Update()
     {
@@ -48,16 +58,14 @@ public class GameManager : MonoBehaviour
     }
     private void CharacterInit()
     {
-        //for문.
         _factory.CreateCharacter("Player", ref _array[0]);
-        _factory.CreateCharacter("Enemy", ref _array[1]);
-        _factory.CreateCharacter("Enemy", ref _array[2]);
-
+		for (int i = 0; i < _enemyArray.Length; ++i)
+        {
+            _enemyArray[i] = _factory.CreateCharacter("Enemy", ref _array[i+1]);
+        }
         for (int i = 0; i < _array.Length; ++i)
         {
             _array[i].init();
         }
     }
-   
-
 }

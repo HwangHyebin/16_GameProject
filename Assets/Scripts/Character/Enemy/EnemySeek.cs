@@ -23,7 +23,7 @@ public class EnemySeek : EnemyState
         Debug.Log("enemy seek execute");
         float speed = 1.5f;
         _enemy.transform.LookAt(_enemy.Get_Player.transform.position);
-        _enemy.transform.Translate(Vector3.forward * Time.deltaTime * speed);
+		_enemy.transform.position += (_enemy.transform.forward * speed * Time.deltaTime);
         float dis   = Vector3.Magnitude(_enemy.transform.position - _enemy.Get_Player.transform.position);
         if (dis < 1.5f)
         {

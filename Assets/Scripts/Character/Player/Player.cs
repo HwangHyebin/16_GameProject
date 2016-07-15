@@ -13,6 +13,7 @@ public class Player : CharacterBase
     private JoystickControl         srt_input;
     //private ControlJoystick         srt_input;
     private PlayerStateMachine      player_state;
+	private GameManager				srt_gameManager;
     public enum PLAYER_ANIMATOR
     {
         DONE = -1,
@@ -32,9 +33,11 @@ public class Player : CharacterBase
     {
         position            = this.transform.position;
         player_state        = new PlayerStateMachine();
+		srt_gameManager 	= new GameManager ();
         srt_enemy           = GameObject.FindObjectOfType<Enemy>() as Enemy;
         srt_input           = GameObject.FindObjectOfType<JoystickControl>() as JoystickControl;
         srt_attackButton    = GameObject.FindObjectOfType<AttackButton>() as AttackButton;
+
         //버튼을 순서대로 가져오는 방법이 있는지?
         srt_skillButton[0]  = GameObject.Find("SkillButton1").GetComponent<SkillButton>();
         srt_skillButton[1]  = GameObject.Find("SkillButton2").GetComponent<SkillButton>();
@@ -77,4 +80,11 @@ public class Player : CharacterBase
             return srt_attackButton;
         }
     }
+	public GameManager Get_GameManager
+	{
+		get
+		{
+			return srt_gameManager;
+		}
+	}
 }

@@ -219,6 +219,7 @@
      <Compile Include="Assets\Scripts\Character\Player\PlayerStateMachine.cs" />
      <Compile Include="Assets\Scripts\ControlCamera.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Map\MapObjects.cs" />
      <Compile Include="Assets\Scripts\MapFactory.cs" />
      <Compile Include="Assets\Scripts\UI\AttackButton.cs" />
      <Compile Include="Assets\Scripts\UI\ControlJoystick.cs" />

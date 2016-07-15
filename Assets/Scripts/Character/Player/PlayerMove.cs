@@ -26,17 +26,11 @@ public class PlayerMove : PlayerState
 
         if (_player.Srt_Input.drag == true)
         {
-           
-            //_player.Srt_Input.stick.position = new Vector3(_player.transform.eulerAngles.x,
-            //    Mathf.Atan2(_player.Srt_Input.axis.x, _player.Srt_Input.axis.y) * Mathf.Rad2Deg,
-            //    _player.transform.eulerAngles.z);
-            //_player.transform.eulerAngles = _player.Srt_Input.stick.position;
             _player.transform.position += (_player.transform.forward * speed * Time.deltaTime);
             Vector3 Velocity = (_player.Srt_Input.stick.position - _player.Srt_Input.defaultCenter);
             Velocity.z = Velocity.y;
             Velocity.y = 0.0f;
             Velocity.Normalize();
-            Debug.Log(Velocity);
             _player.transform.forward += (Velocity * 100 * Time.deltaTime);
 
 
