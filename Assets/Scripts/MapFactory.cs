@@ -39,6 +39,7 @@ public class MapFactory : MonoBehaviour
 				//{}
 				//이걸 클래스로 만들어서 xml 파싱한뒤 적용해서 함수 사용해도 괜찮을듯.?
 				GameObject _map = Instantiate(planeObjects[0].MapObecjet[Random.Range(0, planeObjects.Length)], new Vector3(start_position.x+j, -0.45f, start_position.z-i), Quaternion.identity) as GameObject;
+                _map.transform.parent = this.gameObject.transform;
             }
         }
     }
@@ -51,6 +52,7 @@ public class MapFactory : MonoBehaviour
                                                new Vector3(Random.Range(start_position.x, start_position.z - 1), -0.45f, Random.Range(start_position.x, start_position.z - 1)), 
                                                Quaternion.identity) as GameObject;
             _obstacle.transform.rotation = Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f);
+            _obstacle.transform.parent = this.gameObject.transform;
         }
     }
 

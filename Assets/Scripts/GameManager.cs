@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
             _array[i].update();
         }
     }
+
     private void BaseInstance(int _num)
     {
         _array = new CharacterBase[_num];
@@ -46,21 +47,16 @@ public class GameManager : MonoBehaviour
             _array[i] = GetComponent<CharacterBase>();
         }
     }
-    private void MapInit()
-    {
-        //_map.CreateMapPlane();
-    }
     private void CharacterInit()
     {
         _factory.CreateCharacter("Player", ref _array[0]);
 
-		for (int i = 0; i < _enemyArray.Length; ++i)
+        for (int i = 0; i < _enemyArray.Length; ++i)
         {
-			CharacterBase a = _factory.CreateCharacter ("Enemy", ref _array [i + 1]);
-			Debug.Log (a);
-			_enemyArray[i] = a;
+            CharacterBase a = _factory.CreateCharacter("Enemy", ref _array[i + 1]);
+            Debug.Log(a);
+            _enemyArray[i] = a;
         }
-
         for (int i = 0; i < _array.Length; ++i)
         {
             _array[i].init();

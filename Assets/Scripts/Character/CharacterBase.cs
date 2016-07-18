@@ -3,8 +3,9 @@ using System.Collections;
 
 public class CharacterBase : MonoBehaviour 
 {
-    public      Animator    anim;
-    public      Vector3     position;
+    public  Animator    anim;
+    public  Vector3     position;
+
     public struct STATUS
     {
         float attack;
@@ -27,6 +28,4 @@ public class CharacterBase : MonoBehaviour
     public virtual void clean()
     { 
     }
-    
-    
 }
