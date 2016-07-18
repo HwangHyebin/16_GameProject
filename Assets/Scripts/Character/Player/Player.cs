@@ -10,8 +10,10 @@ public class Player : CharacterBase
     public  SkillButton[]           srt_skillButton;
     private Enemy                   srt_enemy;
     private AttackButton            srt_attackButton;
-    private ControlJoystick         srt_input;
+    private JoystickControl         srt_input;
     private PlayerStateMachine      player_state;
+	private GameManager				srt_gameManager;
+
     public enum PLAYER_ANIMATOR
     {
         DONE = -1,
@@ -32,12 +34,16 @@ public class Player : CharacterBase
         position            = this.transform.position;
         player_state        = new PlayerStateMachine();
         srt_enemy           = GameObject.FindObjectOfType<Enemy>() as Enemy;
-        srt_input           = GameObject.FindObjectOfType<ControlJoystick>() as ControlJoystick;
+        srt_input           = GameObject.FindObjectOfType<JoystickControl>() as JoystickControl;
         srt_attackButton    = GameObject.FindObjectOfType<AttackButton>() as AttackButton;
-        //버튼을 순서대로 가져오는 방법이 있는지?
-        srt_skillButton[0]  = GameObject.Find("SkillButton1").GetComponent<SkillButton>();
-        srt_skillButton[1]  = GameObject.Find("SkillButton2").GetComponent<SkillButton>();
-        srt_skillButton[2]  = GameObject.Find("SkillButton3").GetComponent<SkillButton>();
+		srt_gameManager 	= GameObject.FindObjectOfType<GameManager>() as GameManager;
+        
+		for (int i = 0; i < 3; ++i)
+		{
+			string ObjectName = string.Format ("SkillButton{0:0}", (i+1));
+			srt_skillButton [i] = GameObject.Find (ObjectName).GetComponent<SkillButton> ();
+		}
+
         player_state.Init(this);
         //player의 y값 계속 바뀜..
     }
@@ -62,7 +68,7 @@ public class Player : CharacterBase
             return player_state;
         }
     }
-    public ControlJoystick Srt_Input
+    public JoystickControl Srt_Input
     {
         get
         {
@@ -76,4 +82,12 @@ public class Player : CharacterBase
             return srt_attackButton;
         }
     }
+	public GameManager	Get_Gamemanager
+	{
+		get
+		{
+			return srt_gameManager;
+		}
+	}
+
 }

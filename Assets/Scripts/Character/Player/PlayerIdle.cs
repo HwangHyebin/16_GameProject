@@ -16,7 +16,6 @@ public class PlayerIdle : PlayerState
     }
     public sealed override void Enter(Player _player)
     {
-        //_player.myBody.velocity = Vector3.zero;
         _player.player_anim     = Player.PLAYER_ANIMATOR.IDLE;
         _player.player_skills   = Player.PLAYER_SKILLS.DONE;
         _player.anim.Play("Base Layer.idle1");
