@@ -6,13 +6,6 @@ public class CharacterBase : MonoBehaviour
     public  Animator    anim;
     public  Vector3     position;
 
-    public struct STATUS
-    {
-        float attack;
-        float shield;
-        float hp;
-        float attackSpeed;
-    };
     private void Start()
     {
     }

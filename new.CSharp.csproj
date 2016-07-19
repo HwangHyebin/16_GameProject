@@ -230,6 +230,8 @@
     <Compile Include="Assets\Scripts\Character\FriendSystem\Magician.cs" />
     <Compile Include="Assets\Scripts\Character\FriendSystem\Pirate.cs" />
     <Compile Include="Assets\Scripts\Character\FriendSystem\Shield.cs" />
+    <Compile Include="Assets\Scripts\Character\FriendSystem\SkillCharacterBase.cs" />
+    <Compile Include="Assets\Scripts\Character\FriendSystem\SkillCharacterFactory.cs" />
     <Compile Include="Assets\Scripts\Character\Life.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Character\Player\PlayerAttack.cs" />
@@ -246,6 +248,7 @@
     <Compile Include="Assets\Scripts\UI\ControlPlayerHPBar.cs" />
     <Compile Include="Assets\Scripts\UI\JoystickControl.cs" />
     <Compile Include="Assets\Scripts\UI\SkillButton.cs" />
+    <Compile Include="Assets\Scripts\UI\SkillManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\CactusPack\Shaders\Basic_Rimlight.shader" />

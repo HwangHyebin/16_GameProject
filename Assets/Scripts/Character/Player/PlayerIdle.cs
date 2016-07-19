@@ -17,38 +17,25 @@ public class PlayerIdle : PlayerState
     public sealed override void Enter(Player _player)
     {
         _player.player_anim     = Player.PLAYER_ANIMATOR.IDLE;
-        _player.player_skills   = Player.PLAYER_SKILLS.DONE;
+        //_player.player_skills   = Player.PLAYER_SKILLS.DONE;
         _player.anim.Play("Base Layer.idle1");
     }
     public sealed override void Execute(Player _player)
     {
-        if (_player.Srt_Input.drag == true)
+        if (_player.Get_Joystick.drag == true)
         {
-            _player.Player_State.ChangeState(PlayerMove.Instance);
+            _player.Get_PlayerState.ChangeState(PlayerMove.Instance);
         }
         if (_player.Get_AttackButton.GetPressButton() == true)
         {
-            _player.Player_State.ChangeState(PlayerAttack.Instance);
+            _player.Get_PlayerState.ChangeState(PlayerAttack.Instance);
         }
-        for (int i = 0; i < 3; ++i)
-        {
-            if (_player.srt_skillButton[i].GetPressButton() == true)
-            {
-                switch (i)
-                {
-                    case 0 :
-                        _player.player_skills = Player.PLAYER_SKILLS.SKILL_1;
-                        break;
-                    case 1 :
-                        _player.player_skills = Player.PLAYER_SKILLS.SKILL_2;
-                        break;
-                    case 2 :
-                        _player.player_skills = Player.PLAYER_SKILLS.SKILL_3;
-                        break;
-                }
-                _player.Player_State.ChangeState(PlayerSkills.Instance);
-            }
-        }
+
+        //_player.player_skills = _player.Get_Button.Check_Push_SkillButton();
+        //if (_player.player_skills != Player.PLAYER_SKILLS.DONE)
+        //{
+        //    _player.Get_PlayerState.ChangeState(PlayerSkills.Instance);
+        //}
     }
     public sealed override void Exit(Player _player)
     {

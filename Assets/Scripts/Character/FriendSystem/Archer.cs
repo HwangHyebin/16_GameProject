@@ -1,20 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Archer : CharacterBase
+public class Archer : SkillCharacterBase
 {
-    public float startTime;
-    public float nextTime;
-    public float delay;
+    private SkillManager srt_skillManager;
+    //public GameObject bullet;
 
     public sealed override void init()
     {
-        startTime = Time.time;
+        srt_skillManager = GameObject.FindObjectOfType<SkillManager>() as SkillManager;
+        Debug.Log("archer");
     }
     public sealed override void update()
     {
-        nextTime = startTime + delay;
-        
+       
     }
     public sealed override void clean()
     {

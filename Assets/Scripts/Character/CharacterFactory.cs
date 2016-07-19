@@ -23,14 +23,6 @@ public class CharacterFactory : MonoBehaviour
                 GameObject enemy = Instantiate(prefabs[1], rand_pos, Quaternion.identity) as GameObject;
                 _base = enemy.GetComponentInChildren<Enemy>();//.GetComponent<Enemy>();
                 return _base;
-            case "Archer" :
-                break;
-            case "Magician":
-                break;
-            case "Pirate":
-                break;
-            case "Shield":
-                break;
         }
         return null;
     }

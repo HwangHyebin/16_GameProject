@@ -24,15 +24,20 @@ public class PlayerMove : PlayerState
     {
         float speed = 5.0f;
 
-        if (_player.Srt_Input.drag == true)
+        if (_player.Get_Joystick.drag == true)
         {
             _player.transform.position += (_player.transform.forward * speed * Time.deltaTime);
-            Vector3 Velocity = (_player.Srt_Input.stick.position - _player.Srt_Input.defaultCenter);
+            Vector3 Velocity = (_player.Get_Joystick.stick.position - _player.Get_Joystick.defaultCenter);
             Velocity.z = Velocity.y;
             Velocity.y = 0.0f;
             Velocity.Normalize();
             _player.transform.forward += (Velocity * 100 * Time.deltaTime);
 
+            //_player.player_skills = _player.Get_Button.Check_Push_SkillButton();
+            //if (_player.player_skills != Player.PLAYER_SKILLS.DONE)
+            //{
+            //    _player.Get_PlayerState.ChangeState(PlayerSkills.Instance);
+            //}
 
             //_player.position.x = _player.Srt_Input.Horizontal();
             //_player.position.z = _player.Srt_Input.Vertical();
@@ -50,7 +55,7 @@ public class PlayerMove : PlayerState
         }
         else
         {
-            _player.Player_State.ChangeState(PlayerIdle.Instance);
+            _player.Get_PlayerState.ChangeState(PlayerIdle.Instance);
         }
     }
     public sealed override void Exit(Player _player)

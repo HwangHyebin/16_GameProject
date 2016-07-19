@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Pirate : CharacterBase 
+public class Pirate : SkillCharacterBase 
 {
     public sealed override void init()
     {
+        Debug.Log("Pirate");
     }
     public sealed override void update()
     {

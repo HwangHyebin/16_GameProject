@@ -27,12 +27,15 @@ public class PlayerAttack : PlayerState
     public sealed override void Execute(Player _player)
     {
         //float dis = Vector3.Magnitude(_player.transform.position - _player.Get_Enemy.transform.position);
-
-        if (_player.Srt_Input.drag == true)
+        //_player.player_skills = _player.Get_Button.Check_Push_SkillButton();
+        //if (_player.player_skills != Player.PLAYER_SKILLS.DONE)
+        //{
+        //    _player.Get_PlayerState.ChangeState(PlayerSkills.Instance);
+        //}
+        if (_player.Get_Joystick.drag == true)
         {
-            _player.Player_State.ChangeState(PlayerMove.Instance);
+            _player.Get_PlayerState.ChangeState(PlayerMove.Instance);
         }
-
         if (_player.Get_AttackButton.GetPressButton() == true)
         {
             ++combo_count;
@@ -82,6 +85,7 @@ public class PlayerAttack : PlayerState
 							{
 								Life life = hp.GetComponent<Life>();
                                 life.m_HP -= 5 * combo_count;
+                                //life가 넘어가는것 개선
 								//파티클 터지는 것 넣어줄 부분.
 							}
 							else
@@ -91,28 +95,7 @@ public class PlayerAttack : PlayerState
 						}
 					}
 				}
-                //raycast 사용시 맞추는것에 대한 정보 받아와서 hp 깎기.
-                //RaycastHit hit;
-                //Ray ray = new Ray(_player.transform.position + _player.transform.up * 0.25f, _player.transform.forward);
-                //Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 100);
-
-                //if (Physics.Raycast(ray, out hit, 4))
-                //{
-                //    // hp 줄여주는 부분
-                //    Transform hp = hit.transform.parent.FindChild("HP");
-                //    if (hp != null)
-                //    {
-                //        Life life = hp.GetComponent<Life>();
-                //        life.m_HP -= 10;
-                //        //파티클 터지는 것 넣어줄 부분.
-                //    }
-                //    else
-                //    {
-                //        _player.Get_Enemy.enemy_anim = Enemy.ENEMY_ANIMATOR.DEAD;
-                //    }
-                //}
             }
-
             if (Time.time > nextTime && startTime != 0) //1초 후
             {
                 if (_player.Get_AttackButton.GetPressButton() == false) //버튼이눌리지 않는다면
@@ -121,7 +104,7 @@ public class PlayerAttack : PlayerState
                     combo_count = 0;
                     _player.anim.SetInteger("combo", 0);
                     _player.player_anim = Player.PLAYER_ANIMATOR.IDLE;
-                    _player.Player_State.ChangeState(PlayerIdle.Instance);
+                    _player.Get_PlayerState.ChangeState(PlayerIdle.Instance);
                 }
             }
         }
@@ -134,4 +117,24 @@ public class PlayerAttack : PlayerState
     public sealed override void Clear()
     {
     }
+    //raycast 사용시 맞추는것에 대한 정보 받아와서 hp 깎기.
+    //RaycastHit hit;
+    //Ray ray = new Ray(_player.transform.position + _player.transform.up * 0.25f, _player.transform.forward);
+    //Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 100);
+
+    //if (Physics.Raycast(ray, out hit, 4))
+    //{
+    //    // hp 줄여주는 부분
+    //    Transform hp = hit.transform.parent.FindChild("HP");
+    //    if (hp != null)
+    //    {
+    //        Life life = hp.GetComponent<Life>();
+    //        life.m_HP -= 10;
+    //        //파티클 터지는 것 넣어줄 부분.
+    //    }
+    //    else
+    //    {
+    //        _player.Get_Enemy.enemy_anim = Enemy.ENEMY_ANIMATOR.DEAD;
+    //    }
+    //}
 }

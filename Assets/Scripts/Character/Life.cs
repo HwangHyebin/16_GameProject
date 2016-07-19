@@ -22,8 +22,8 @@ public class Life : MonoBehaviour
         transform.rotation  = Camera.main.transform.rotation;
 
         Vector3 hpScale     = m_StartScale;
-        hpScale.x           = hpScale.x * ((float)m_HP * 0.01f);
-
+        hpScale.x = hpScale.x * ((float)m_HP * 0.01f);
+        
         transform.localScale = hpScale;
 
         if(m_HP <= 0)
@@ -35,7 +35,6 @@ public class Life : MonoBehaviour
     IEnumerator Death()
     {
         yield return new WaitForSeconds(2.0f);
-        //Destroy(transform.parent.gameObject);
         transform.parent.gameObject.SetActive(false);
     }
 }
