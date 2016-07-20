@@ -49,18 +49,16 @@ public class GameManager : MonoBehaviour
     }
     private void CharacterInit()
     {
-        //플레이어 생성
         _factory.CreateCharacter("Player", ref _array[0]);
-        //enemy 생성
-        for (int i = 0; i < _enemyArray.Length; ++i)
+        for (int i = 0; i < _enemyArray.Length; ++i) // enemy 생성
         {
             CharacterBase enemy = _factory.CreateCharacter("Enemy", ref _array[i + 1]);
-            Debug.Log(enemy);
-            _enemyArray[i] = enemy;
+            _enemyArray[i]      = enemy;
         }
-        //init 함수 실행 시켜주기.
+        //character Init
         for (int i = 0; i < _array.Length; ++i)
         {
+            Debug.Log("Create");
             _array[i].init();
         }
     }

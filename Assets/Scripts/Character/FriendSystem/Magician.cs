@@ -3,14 +3,11 @@ using System.Collections;
 
 public class Magician : SkillCharacterBase 
 {
-    public sealed override void init()
+    public override void Init()
     {
-        Debug.Log("Magician");
+        base.Init();
     }
-    public sealed override void update()
-    {
-    }
-    public sealed override void clean()
+    private void Update()
     {
     }
 }

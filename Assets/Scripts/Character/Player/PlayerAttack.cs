@@ -27,11 +27,7 @@ public class PlayerAttack : PlayerState
     public sealed override void Execute(Player _player)
     {
         //float dis = Vector3.Magnitude(_player.transform.position - _player.Get_Enemy.transform.position);
-        //_player.player_skills = _player.Get_Button.Check_Push_SkillButton();
-        //if (_player.player_skills != Player.PLAYER_SKILLS.DONE)
-        //{
-        //    _player.Get_PlayerState.ChangeState(PlayerSkills.Instance);
-        //}
+        _player.Get_SkillManager.Create_Skill();
         if (_player.Get_Joystick.drag == true)
         {
             _player.Get_PlayerState.ChangeState(PlayerMove.Instance);

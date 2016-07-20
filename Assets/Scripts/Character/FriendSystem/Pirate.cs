@@ -3,14 +3,11 @@ using System.Collections;
 
 public class Pirate : SkillCharacterBase 
 {
-    public sealed override void init()
+    public override void Init()
     {
-        Debug.Log("Pirate");
+        base.Init();
     }
-    public sealed override void update()
-    {
-    }
-    public sealed override void clean()
+    private void Update()
     {
     }
 }

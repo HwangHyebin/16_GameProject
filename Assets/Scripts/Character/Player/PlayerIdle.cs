@@ -30,12 +30,7 @@ public class PlayerIdle : PlayerState
         {
             _player.Get_PlayerState.ChangeState(PlayerAttack.Instance);
         }
-
-        //_player.player_skills = _player.Get_Button.Check_Push_SkillButton();
-        //if (_player.player_skills != Player.PLAYER_SKILLS.DONE)
-        //{
-        //    _player.Get_PlayerState.ChangeState(PlayerSkills.Instance);
-        //}
+        _player.Get_SkillManager.Create_Skill();
     }
     public sealed override void Exit(Player _player)
     {

@@ -21,7 +21,8 @@ public class CharacterFactory : MonoBehaviour
             //player.AddComponent<Player>();
             case "Enemy" : //적군만 랜덤 생성 
                 GameObject enemy = Instantiate(prefabs[1], rand_pos, Quaternion.identity) as GameObject;
-                _base = enemy.GetComponentInChildren<Enemy>();//.GetComponent<Enemy>();
+                _base = enemy.GetComponentInChildren<Enemy>();
+            //.GetComponent<Enemy>();
                 return _base;
         }
         return null;

@@ -17,11 +17,11 @@ public class EnemyAttack : EnemyState
     public sealed override void Enter(Enemy _enemy)
     {
         _enemy.enemy_anim = Enemy.ENEMY_ANIMATOR.ATTACK;
-        Debug.Log("enemy attack enter");
+        //Debug.Log("enemy attack enter");
     }
     public sealed override void Execute(Enemy _enemy)
     {
-        Debug.Log("enemy seek execute");
+        //Debug.Log("enemy seek execute");
         float delay         = 2.0f;
         float damage        = 3.0f;
         float nextTime      = currentTime + delay;

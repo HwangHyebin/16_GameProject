@@ -3,6 +3,8 @@ using System.Collections;
 
 public class SkillCharacterBase : MonoBehaviour 
 {
+    private Player          srt_player;
+    private SkillManager    srt_skillManager;
     public struct STATUS
     {
         float attack;
@@ -10,14 +12,24 @@ public class SkillCharacterBase : MonoBehaviour
         float hp;
         float attackSpeed;
     };
-    public virtual void init()
+    public virtual void Init()
     {
+        srt_player          = GameObject.FindObjectOfType<Player>();
+        srt_skillManager    = GameObject.FindObjectOfType<SkillManager>() as SkillManager;
+        Debug.Log("base init");
     }
-    public virtual void update()
+    public Player Get_Player
     {
+        get
+        {
+            return srt_player;
+        }
     }
-    public virtual void clean()
+    public SkillManager Get_SkillManager
     {
+        get
+        {
+            return srt_skillManager;
+        }
     }
-
 }

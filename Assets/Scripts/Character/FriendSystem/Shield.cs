@@ -3,14 +3,19 @@ using System.Collections;
 
 public class Shield : SkillCharacterBase 
 {
-    public sealed override void init()
+    private Vector3     position;
+    public override void Init()
     {
-        Debug.Log("Shield");
+        base.Init();
+        
+        //Debug.Log("shield init");
     }
-    public sealed override void update()
+    private void Update()
     {
-    }
-    public sealed override void clean()
-    {
+        //Debug.Log("shield update");
+        position = new Vector3( Get_Player.transform.position.x, 
+                                Get_Player.transform.position.y, 
+                                Get_Player.transform.position.z);
+        this.transform.position = position;
     }
 }

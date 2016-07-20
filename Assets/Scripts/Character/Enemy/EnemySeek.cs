@@ -15,12 +15,12 @@ public class EnemySeek : EnemyState
     }
     public sealed override void Enter(Enemy _enemy)
     {
-        Debug.Log("enemy seek enter");
+        //Debug.Log("enemy seek enter");
         _enemy.enemy_anim       = Enemy.ENEMY_ANIMATOR.IDLE;
     }
     public override void Execute(Enemy _enemy)
     {
-        Debug.Log("enemy seek execute");
+        //Debug.Log("enemy seek execute");
         float speed = 1.5f;
         _enemy.transform.LookAt(_enemy.Get_Player.transform.position);
 		_enemy.transform.position += (_enemy.transform.forward * speed * Time.deltaTime);

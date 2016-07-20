@@ -17,6 +17,7 @@ public class PlayerMove : PlayerState
     }
     public sealed override void Enter(Player _player)
     {
+        _player.my_body.velocity = Vector3.zero;
         _player.player_anim = Player.PLAYER_ANIMATOR.RUN;
         _player.anim.Play("Base Layer.run");
     }
@@ -33,11 +34,7 @@ public class PlayerMove : PlayerState
             Velocity.Normalize();
             _player.transform.forward += (Velocity * 100 * Time.deltaTime);
 
-            //_player.player_skills = _player.Get_Button.Check_Push_SkillButton();
-            //if (_player.player_skills != Player.PLAYER_SKILLS.DONE)
-            //{
-            //    _player.Get_PlayerState.ChangeState(PlayerSkills.Instance);
-            //}
+            _player.Get_SkillManager.Create_Skill();
 
             //_player.position.x = _player.Srt_Input.Horizontal();
             //_player.position.z = _player.Srt_Input.Vertical();
