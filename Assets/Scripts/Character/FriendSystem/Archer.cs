@@ -8,6 +8,7 @@ public class Archer : SkillCharacterBase
     public override void Init()
     {
         base.Init();
+        Get_Player.player_skills = Player.PLAYER_SKILLS.ARCHER;
     }
     private void Update()
     { 

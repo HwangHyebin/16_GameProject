@@ -25,9 +25,10 @@ public class EnemySeek : EnemyState
         _enemy.transform.LookAt(_enemy.Get_Player.transform.position);
 		_enemy.transform.position += (_enemy.transform.forward * speed * Time.deltaTime);
         float dis   = Vector3.Magnitude(_enemy.transform.position - _enemy.Get_Player.transform.position);
-        if (dis < 1.5f)
+        if (dis < 1.2f)
         {
             _enemy.enemy_anim = Enemy.ENEMY_ANIMATOR.ATTACK;
+            _enemy.Enemy_State.ChangeState(EnemyAttack.Instance);
         }
     }
     public override void Exit(Enemy _enemy)

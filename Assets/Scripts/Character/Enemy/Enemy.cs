@@ -5,7 +5,6 @@ using System.Collections;
 public class Enemy : CharacterBase 
 {
     public  ENEMY_ANIMATOR      enemy_anim;
-
     private EnemyStateMachine   enemy_state;
     public enum ENEMY_ANIMATOR
     {
@@ -29,13 +28,13 @@ public class Enemy : CharacterBase
     public sealed override void clean()
     {
     }
-    private void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag == "Player" && enemy_anim == ENEMY_ANIMATOR.ATTACK)
-        {
-            enemy_state.ChangeState(EnemyAttack.Instance);
-        }
-    }
+    //private void OnCollisionEnter(Collision col)
+    //{
+    //    if (col.gameObject.tag == "Player" && enemy_anim == ENEMY_ANIMATOR.ATTACK)
+    //    {
+    //        enemy_state.ChangeState(EnemyAttack.Instance);
+    //    }
+    //}
     public EnemyStateMachine Enemy_State
     {
         get

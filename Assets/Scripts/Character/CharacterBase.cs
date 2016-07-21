@@ -3,13 +3,22 @@ using System.Collections;
 
 public class CharacterBase : MonoBehaviour 
 {
+    //public  int                 hp;
+    public  float               damage;
     public  Animator            anim;
     public  Vector3             position;
-
+    public  CharacterBase.S_CHARACTER_STATUS status;
+    
     private Enemy               srt_enemy;
     private Player              srt_player;
     private ControlPlayerHPBar  player_hp;
     private GameManager         srt_gameManager;
+
+    public struct S_CHARACTER_STATUS
+    {
+        public float demage;
+        public float hp;
+    };
 
     protected virtual void Start()
     {

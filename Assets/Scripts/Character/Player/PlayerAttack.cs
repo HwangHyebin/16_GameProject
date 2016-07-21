@@ -57,13 +57,17 @@ public class PlayerAttack : PlayerState
                 
                 Vector3 _forward        = _player.transform.forward;
                 Vector3 _right          = _player.transform.right;
+                //float deg_right = Vector3.Angle(_forward, _right) * Mathf.Rad2Deg;
+                //float deg_left = Vector3.Angle(_forward, (_right * -1)) * Mathf.Rad2Deg;
                 float   deg_right       = Mathf.Acos(Vector3.Dot(_forward, _right)) * Mathf.Rad2Deg;
                 float   deg_left        = Mathf.Acos(Vector3.Dot(_forward, (_right * -1))) * Mathf.Rad2Deg;
-                float   limit_deg       = 45;
+                //float   limit_deg       = 20;
+                //Debug.DrawLine(_forward, _right, Color.red);
 
                 Debug.Log("right =" + deg_right);
                 Debug.Log("left =" + deg_left);
                 //배열안의 몬스터에 대한 벡터를 각각 구함
+                //각도 계산 다시 하는게 좋을듯.
 				for (int i = 0; i < _player.Get_Gamemanager._enemyArray.Length; ++i) 
 				{
 					if ( _player.Get_Gamemanager._enemyArray[i] != null) 
@@ -73,14 +77,15 @@ public class PlayerAttack : PlayerState
                         //각을 알고싶을때 아크코사인 사용, Rad2Deg는 라디안을 degree로 바꿔줌.(도)
 
                         Debug.Log("enemy" + i + "=" + enemy_deg);
-                        if (enemy_deg < (deg_right - limit_deg) ||
-                            enemy_deg < (deg_left - limit_deg))  //각도 조건 검사 
+                        if (enemy_deg < deg_right ||
+                            enemy_deg < deg_left)  //각도 조건 검사 
+                        //enemy_deg < (deg_right - limit_deg) || enemy_deg < (deg_left - limit_deg)
 						{
 							Transform hp = _player.Get_Gamemanager._enemyArray[i].transform.parent.FindChild("HP");
 							if (hp != null)
 							{
 								Life life = hp.GetComponent<Life>();
-                                life.m_HP -= 5 * combo_count;
+                                life.m_HP -= _player.status.demage * combo_count;
                                 //life가 넘어가는것 개선
 								//파티클 터지는 것 넣어줄 부분.
 							}

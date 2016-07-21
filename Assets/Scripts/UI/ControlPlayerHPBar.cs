@@ -1,69 +1,60 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
-public class ControlPlayerHPBar : MonoBehaviour 
+public class ControlPlayerHPBar : HPBarBase 
 {
-    private UISprite    img;
-    private Vector3     m_StartScale;
-    private Animator    anim;
-    private Transform   target = null;
-
-    private float r = 0;
-    private float g = 212;
-    private float b = 15;
-
-    public float hp      = 100.0f;
+    private UISprite                img;
+    private Enemy.ENEMY_ANIMATOR    _enemyAnim;
+    private GameManager             srt_gameManager;
 
     private void Start()
     {
-        m_StartScale = transform.localScale;
-        target = transform.parent.FindChild("mon01");
-        img = GetComponent<UISprite>();
-        img.color = new Color(r/255, g/255, b/255);
-    }
+        base.Start();
 
-    // Update is called once per frame
+        img             = GetComponent<UISprite>(); 
+        m_StartScale    = transform.localScale;
+        img.color       = new Color((rgb.r / 255), (rgb.g / 255), (rgb.b / 255));
+        target          = transform.parent.FindChild("HP");
+        srt_gameManager = GameObject.FindObjectOfType<GameManager>();
+        start_HP = m_HP = GameObject.FindObjectOfType<Player>().status.hp;
+        
+    }
     private void Update()
     {
         Vector3 hpScale = m_StartScale;
-        hpScale.x = hpScale.x * ((float)hp * 0.01f);
-
-        transform.localScale = hpScale;
-
-        if (hp <= 0)
+        if (m_HP  >= 0.0f)
         {
-            anim.SetInteger("animation", 2);
-            //StartCoroutine("Death");
+            hpScale.x = hpScale.x * ((float)m_HP * 0.01f);
+            target.transform.localScale = hpScale;
         }
-        if (hpScale.x <= 0.9f) //  && enemy가 어택상태일때 컬러를 바꿔줌.
+        else
         {
-            StartCoroutine("Change_Color");
+            hpScale.x = 0.0f;
+            target.transform.localScale = hpScale;
+            //죽음.
+        }
+        for (int i = 0; i < srt_gameManager._enemyArray.Length; ++i)
+        {
+            _enemyAnim = srt_gameManager._enemyArray[i].gameObject.GetComponent<Enemy>().enemy_anim;
+            if (hpScale.x <= 0.5f) 
+            {
+                base.StartCoroutine("Change_Color");
+            }
         }
     }
     IEnumerator Change_Color()
     {
-        if (b > 0)
+        if (rgb.b == 0.0f && m_HP > 30.0f)
         {
-            b -= 0.1f;
-        }
-        else
-        {
-            b = 0.0f;
-            r += 0.2f;
-            if (r >= 255.0f)
+            rgb.r += 1.0f;
+            if (rgb.r >= 255.0f)
             {
-                r = 255.0f;
-                g -= 0.2f;
+                rgb.r = 255.0f;
+                rgb.g -= 0.5f;
             }
         }
-        img.color = new Color(r/255, g/255, b/255);
-
-        yield return new WaitForSeconds(1.0f);
+        img.color = new Color(rgb.r / 255, rgb.g / 255, rgb.b / 255);
+        yield return new WaitForSeconds(m_HP / start_HP);
     }
-    //IEnumerator Death()
-    //{
-    //    yield return new WaitForSeconds(1.0f);
-    //    //Destroy(transform.parent.gameObject);
-    //    //종료창 띄워줌
-    //}
 }

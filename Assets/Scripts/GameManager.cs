@@ -14,20 +14,16 @@ public class GameManager : MonoBehaviour
     //나중에 xml 파싱을 통해 캐릭터의 수와 오브젝트의 수 등을 결정.
     private void Awake()
     {
-        CharacterBase_Instance(3);
-
-		//현재는 2마리로 정해져 있으나 나중엔 xml파싱을 통해 갯수결정; //enemy만을 담기 위한 배열
-		_enemyArray = new CharacterBase[2]; 
-
         _map        = GameObject.FindObjectOfType<MapFactory>();
         _factory    = GameObject.FindObjectOfType<CharacterFactory>();
         _camera     = GameObject.FindObjectOfType<ControlCamera>();
-    }
-    private void Start()
-    {
+
         _camera.init();
         _map.CreateMap();
         _map.CreateObstacle(10); //오브젝트를 몇개나 생성할 것인지?
+        CharacterBase_Instance(3);
+        //현재는 2마리로 정해져 있으나 나중엔 xml파싱을 통해 갯수결정; //enemy만을 담기 위한 배열
+        _enemyArray = new CharacterBase[2]; 
         CharacterInit();
     }
     private void Update()
@@ -49,10 +45,12 @@ public class GameManager : MonoBehaviour
     }
     private void CharacterInit()
     {
-        _factory.CreateCharacter("Player", ref _array[0]);
+        CharacterBase player = _factory.CreateCharacter("Player", ref _array[0]);
+        Set_Character_Status(ref player, 100.0f, 10.0f);
         for (int i = 0; i < _enemyArray.Length; ++i) // enemy 생성
         {
             CharacterBase enemy = _factory.CreateCharacter("Enemy", ref _array[i + 1]);
+            Set_Character_Status(ref enemy, 100.0f, 3.0f);
             _enemyArray[i]      = enemy;
         }
         //character Init
@@ -61,5 +59,10 @@ public class GameManager : MonoBehaviour
             Debug.Log("Create");
             _array[i].init();
         }
+    }
+    public void Set_Character_Status(ref CharacterBase _base, float _hp, float _demage)
+    {
+        _base.status.hp     = _hp;
+        _base.status.demage = _demage;
     }
 }

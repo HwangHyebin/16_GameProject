@@ -9,7 +9,7 @@ public class Player : CharacterBase
     [HideInInspector]
     public  Rigidbody               my_body;
     //플레이어 스킬부분
-    //public  PLAYER_SKILLS           player_skills;
+    public  PLAYER_SKILLS           player_skills;
     
     //다른 오브젝트의 스크립트을 참조
     
@@ -17,7 +17,7 @@ public class Player : CharacterBase
     private AttackButton            srt_attackButton;
     private SkillManager            srt_skillManager;
     private PlayerStateMachine      player_state;
-   
+    
     public enum PLAYER_ANIMATOR
     {
         DONE = -1,
@@ -26,19 +26,21 @@ public class Player : CharacterBase
         ATTACK,
         DEAD
     };
-    //public enum PLAYER_SKILLS
-    //{
-    //    DONE = -1,
-    //    SKILL_1 = 0,
-    //    SKILL_2,
-    //    SKILL_3
-    //};
+    public enum PLAYER_SKILLS
+    {
+        DONE = -1,
+        ARCHER = 0,
+        MAGICIAN,
+        PIRATE,
+        SHIELD
+    };
     public sealed override void init()
     {
         base.Start();
         position            = this.transform.position;
         my_body             = GetComponent<Rigidbody>();
         player_state        = new PlayerStateMachine();
+        player_skills       = PLAYER_SKILLS.DONE;
         srt_input           = GameObject.FindObjectOfType<JoystickControl>() as JoystickControl;
         srt_attackButton    = GameObject.FindObjectOfType<AttackButton>() as AttackButton;
         srt_skillManager    = GameObject.FindObjectOfType<SkillManager>() as SkillManager;
@@ -48,6 +50,7 @@ public class Player : CharacterBase
     }
     public sealed override void update()
     {
+        Debug.Log("enemy anim = " + Get_Enemy.enemy_anim);
         player_state.Update();
     }
     public sealed override void clean()

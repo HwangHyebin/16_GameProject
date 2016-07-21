@@ -3,12 +3,11 @@ using System.Collections;
 
 public class MapFactory : MonoBehaviour 
 {
-	public MapObjects[] mapObjects;
-
+	public  MapObjects[]    mapObjects;
 	public  MapObjects[]    planeObjects;
 
     private Vector3         rand_pos;
-    private Vector3         start_position = new Vector3(-12.0f, 0.0f, 12.0f);
+    private Vector3         start_position = new Vector3(-20.0f, 0.0f, 20.0f);
     public enum MAP_PLANE
     {
         iced = 0,
@@ -28,9 +27,9 @@ public class MapFactory : MonoBehaviour
 	}
     public void CreateMap()
     {
-        for (int i = 0; i < 24; ++i)
+        for (int i = 0; i < 40; ++i)
         {
-            for (int j = 0; j < 24; ++j)
+            for (int j = 0; j < 40; ++j)
             {
                 //확률에 맞춰 오브젝트를 뽑을 수 있는지?
 				//rand = random.range(0,100); 해서 
