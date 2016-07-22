@@ -4,15 +4,16 @@ using System.Collections;
 
 public class SkillManager : MonoBehaviour 
 {
-    public  SkillButton[]           skillButton_array;      // 스킬 버튼 오브젝트 담는 배열
     public  Sprite[]                image_array;
     public  Sprite[]                bgImage_array;
+    public  SkillButton[]           skillButton_array;      // 스킬 버튼 오브젝트 담는 배열
 
     [HideInInspector]
     public  SkillCharacterBase[]    skill_array;            // 스킬을 가르키기 위한 포인터를 담는 배열. 부모로 접근해서 스킬에 접근.
     [HideInInspector]
     public  string[]                string_array;           // 인벤토리에서 설정한 스킬을 문자열로 담고있는 배열, 나중에 인벤토리(?)에서 설정한 스킬 xml파일로 읽어올것. 
-
+    [HideInInspector]
+    public  SkillCharacterBase[]    skill_priority;
     private SkillCharacterFactory   srt_skillFactory;
 
     private void Awake()
@@ -40,6 +41,7 @@ public class SkillManager : MonoBehaviour
     private void Array_Instance() //skill array 인스턴스.
     {
         skill_array                 = new SkillCharacterBase[3];
+        skill_priority              = new SkillCharacterBase[3];
         string_array                = new string[] {"Archer","Magician","Shield"};
         for (int i = 0; i < skillButton_array.Length; ++i)
         {
@@ -79,7 +81,7 @@ public class SkillManager : MonoBehaviour
     }
     public void Skill_Create(int _num)
     {
-        srt_skillFactory.CreateSkillCharacter(string_array[_num], ref skill_array[_num]);
+        SkillCharacterBase _base = srt_skillFactory.CreateSkillCharacter(string_array[_num], ref skill_array[_num]);
         skill_array[_num].Init();
     }
 }

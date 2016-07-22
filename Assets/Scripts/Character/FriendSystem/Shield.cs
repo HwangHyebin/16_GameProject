@@ -4,9 +4,7 @@ using System.Collections;
 public class Shield : SkillCharacterBase 
 {
     private Vector3     position;
-    private float       startTime;
-    private float       nextTime;
-    private float       delay;
+    
     public override void Init()
     {
         base.Init();

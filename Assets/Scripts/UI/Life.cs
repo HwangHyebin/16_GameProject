@@ -18,7 +18,7 @@ public class Life : HPBarBase
         target              = transform.parent.FindChild("mon01");
         m_StartScale        = transform.localScale;
         img.color           = new Color((rgb.r / 255), (rgb.g / 255), (rgb.b / 255));
-        anim                = target.GetComponent<Animator>();
+        //anim                = target.GetComponent<Animator>();
         srt_player          = GameObject.FindObjectOfType<Player>();
         start_HP   = m_HP   = target.GetComponent<Enemy>().status.hp;
 	}

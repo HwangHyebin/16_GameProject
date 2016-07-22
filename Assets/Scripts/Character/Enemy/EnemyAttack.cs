@@ -5,7 +5,9 @@ public class EnemyAttack : EnemyState
 {
     private float startTime;
     private float nextTime;
-    //private float  currentTime           = Time.time;
+    //우선순위를 만들어 사용 해야함. 
+    //
+   
     private static EnemyAttack instance;
     public static EnemyAttack Instance
     {
@@ -40,6 +42,9 @@ public class EnemyAttack : EnemyState
             {
                 startTime = Time.time;
                 nextTime = startTime + delay;
+                
+                //플레이어의 스킬을 검사. 궁수.위자드.해적. 실드 등을 나눔.
+                //
                 if (_enemy.Get_Player.player_skills != Player.PLAYER_SKILLS.SHIELD)
                 {
                     Debug.Log("player HP = " + _enemy.Get_Player_HP.m_HP);

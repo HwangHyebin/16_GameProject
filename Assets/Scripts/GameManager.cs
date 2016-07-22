@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
             _array[i].update();
         }
     }
-
     private void CharacterBase_Instance(int _num)
     {
         _array = new CharacterBase[_num];
@@ -53,7 +52,6 @@ public class GameManager : MonoBehaviour
             Set_Character_Status(ref enemy, 100.0f, 3.0f);
             _enemyArray[i]      = enemy;
         }
-        //character Init
         for (int i = 0; i < _array.Length; ++i)
         {
             Debug.Log("Create");

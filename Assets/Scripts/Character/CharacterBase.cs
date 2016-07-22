@@ -11,8 +11,9 @@ public class CharacterBase : MonoBehaviour
     
     private Enemy               srt_enemy;
     private Player              srt_player;
-    private ControlPlayerHPBar  player_hp;
+    private ControlPlayerHPBar  srt_player_hp;
     private GameManager         srt_gameManager;
+    private SkillManager        srt_skillManager;
 
     public struct S_CHARACTER_STATUS
     {
@@ -22,10 +23,11 @@ public class CharacterBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        srt_enemy       = GameObject.FindObjectOfType<Enemy>() as Enemy;
-        srt_player      = GameObject.FindObjectOfType<Player>() as Player;
-        player_hp       = GameObject.FindObjectOfType<ControlPlayerHPBar>() as ControlPlayerHPBar;
-        srt_gameManager = GameObject.FindObjectOfType<GameManager>() as GameManager;
+        srt_enemy           = GameObject.FindObjectOfType<Enemy>() as Enemy;
+        srt_player          = GameObject.FindObjectOfType<Player>() as Player;
+        srt_player_hp       = GameObject.FindObjectOfType<ControlPlayerHPBar>() as ControlPlayerHPBar;
+        srt_gameManager     = GameObject.FindObjectOfType<GameManager>() as GameManager;
+        srt_skillManager    = GameObject.FindObjectOfType<SkillManager>() as SkillManager;
     }
     public virtual void init() 
     {}
@@ -44,7 +46,7 @@ public class CharacterBase : MonoBehaviour
     {
         get
         {
-            return player_hp;
+            return srt_player_hp;
         }
     }
     public Enemy Get_Enemy
@@ -59,6 +61,13 @@ public class CharacterBase : MonoBehaviour
         get
         {
             return srt_gameManager;
+        }
+    }
+    public SkillManager Get_SkillManager
+    {
+        get
+        {
+            return srt_skillManager;
         }
     }
 }

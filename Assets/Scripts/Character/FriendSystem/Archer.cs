@@ -11,6 +11,7 @@ public class Archer : SkillCharacterBase
         Get_Player.player_skills = Player.PLAYER_SKILLS.ARCHER;
     }
     private void Update()
-    { 
+    {
+        //Get_Player.player_skills = Player.PLAYER_SKILLS.DONE;
     }
 }

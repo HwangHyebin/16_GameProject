@@ -15,8 +15,9 @@ public class Player : CharacterBase
     
     private JoystickControl         srt_input;
     private AttackButton            srt_attackButton;
-    private SkillManager            srt_skillManager;
     private PlayerStateMachine      player_state;
+
+    //플레이어 체력 200 공격력 35
     
     public enum PLAYER_ANIMATOR
     {
@@ -43,14 +44,14 @@ public class Player : CharacterBase
         player_skills       = PLAYER_SKILLS.DONE;
         srt_input           = GameObject.FindObjectOfType<JoystickControl>() as JoystickControl;
         srt_attackButton    = GameObject.FindObjectOfType<AttackButton>() as AttackButton;
-        srt_skillManager    = GameObject.FindObjectOfType<SkillManager>() as SkillManager;
         player_state.Init(this);
         
         //*문제점* player의 y값 계속 바뀜..
     }
     public sealed override void update()
     {
-        Debug.Log("enemy anim = " + Get_Enemy.enemy_anim);
+        Debug.Log("player skill = "+player_skills);
+        //Debug.Log("enemy anim = " + Get_Enemy.enemy_anim);
         player_state.Update();
     }
     public sealed override void clean()
@@ -75,13 +76,6 @@ public class Player : CharacterBase
         get
         {
             return srt_input;
-        }
-    }
-    public SkillManager Get_SkillManager
-    {
-        get
-        {
-            return srt_skillManager;
         }
     }
 }
