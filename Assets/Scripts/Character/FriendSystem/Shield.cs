@@ -12,9 +12,7 @@ public class Shield : SkillCharacterBase
     }
     private void Start()
     {
-        startTime   = Time.time;
-        delay       = 5.0f;
-        nextTime    = startTime + delay;
+        Invoke("Destroy", status.removeTime);
     }
     private void Update()
     {
@@ -22,11 +20,5 @@ public class Shield : SkillCharacterBase
                                 Get_Player.transform.position.y, 
                                 Get_Player.transform.position.z);
         this.transform.position = position;
-
-        if ( startTime != 0 && Time.time > nextTime )
-        {
-            Get_Player.player_skills = Player.PLAYER_SKILLS.DONE;
-            Destroy(this.gameObject, 0.1f);
-        }
     }
 }

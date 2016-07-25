@@ -9,6 +9,7 @@ public class HPBarBase : MonoBehaviour
     protected   S_RGB       rgb;
     protected   Vector3     m_StartScale;
     protected   Transform   target          = null;
+    protected CharacterBase _base;
 
     protected struct S_RGB
     {
@@ -16,11 +17,14 @@ public class HPBarBase : MonoBehaviour
         public float g;
         public float b;
     };
+
 	protected void Start () 
     {
         rgb     = new S_RGB();
         rgb.r   = 0.0f;
         rgb.g   = 212.0f;
         rgb.b   = 0.0f;
+        _base = GameObject.FindObjectOfType<CharacterBase>();
+        m_HP = start_HP = _base.status.hp; 
 	}
 }

@@ -11,7 +11,7 @@ public class SkillButton : MonoBehaviour
     public  Button  button;
   
     private float   timer;
-    private float   delay;
+    public float    delay;
     private SkillManager srt_skillManager;
 
     private void Start()
@@ -29,7 +29,6 @@ public class SkillButton : MonoBehaviour
             name    = this.gameObject.name;
             pressed = true;
             timer   = 0.0f;
-            delay   = 10.0f;
         }
     }
     public bool GetPressButton() //이게 true면 생성
@@ -49,7 +48,9 @@ public class SkillButton : MonoBehaviour
                img.fillAmount = ratio;
            }
        }
-        //Debug.Log(this.gameObject.name + "timer = " + timer);
-        //Debug.Log(this.gameObject.name + "pressed = " + pressed);
+    }
+    public void Set_ButtonCoolTime(float _delay)
+    {
+        delay = _delay;
     }
 }

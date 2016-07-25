@@ -3,8 +3,6 @@ using System.Collections;
 
 public class CharacterBase : MonoBehaviour 
 {
-    //public  int                 hp;
-    public  float               damage;
     public  Animator            anim;
     public  Vector3             position;
     public  CharacterBase.S_CHARACTER_STATUS status;
@@ -17,8 +15,10 @@ public class CharacterBase : MonoBehaviour
 
     public struct S_CHARACTER_STATUS
     {
-        public float demage;
+        public int   lv;
         public float hp;
+        public float power;
+        public float defense;
     };
 
     protected virtual void Start()
@@ -35,6 +35,13 @@ public class CharacterBase : MonoBehaviour
     {}
     public virtual void clean()
     {}
+    public void Set_Character_Status(int _lv, float _hp, float _power, float _defense)
+    {
+        status.lv = _lv;
+        status.hp = _hp;
+        status.power = _power;
+        status.defense = _defense;
+    }
     public Player Get_Player
     {
         get
@@ -56,7 +63,7 @@ public class CharacterBase : MonoBehaviour
             return srt_enemy;
         }
     }
-    public GameManager Get_Gamemanager
+    public GameManager Get_GameManager
     {
         get
         {

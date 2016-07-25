@@ -14,16 +14,11 @@ public class MapFactory : MonoBehaviour
         fire,
         desirt
     };
-
-	// Use this for initialization
 	void Start () 
     {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+    }
+	void Update () 
+    {
 	}
     public void CreateMap()
     {

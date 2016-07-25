@@ -21,14 +21,9 @@ public class EnemyAttack : EnemyState
     public sealed override void Enter(Enemy _enemy)
     {
         _enemy.enemy_anim = Enemy.ENEMY_ANIMATOR.ATTACK;
-        //Debug.Log("enemy attack enter");
     }
     public sealed override void Execute(Enemy _enemy)
     {
-        //enemy공격1번에 1번 hp 깎일수 있게 
-        //Debug.Log("enemy seek execute");
-        float delay         = 1.0f;
-        //float nextTime      = currentTime + delay;
         _enemy.transform.LookAt(_enemy.Get_Player.transform.position);
         float dis           = Vector3.Magnitude(_enemy.transform.position - _enemy.Get_Player.transform.position);
         if (dis > 1.1f)
@@ -36,20 +31,16 @@ public class EnemyAttack : EnemyState
             _enemy.enemy_anim = Enemy.ENEMY_ANIMATOR.IDLE;
             _enemy.Enemy_State.ChangeState(EnemySeek.Instance);
         }
-        if (_enemy.anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+        if (_enemy.anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f) //애니메이션이 끝날때, 
         {
             if (startTime == 0)
             {
                 startTime = Time.time;
-                nextTime = startTime + delay;
+                nextTime = startTime + 1.0f; // delay
                 
-                //플레이어의 스킬을 검사. 궁수.위자드.해적. 실드 등을 나눔.
-                //
                 if (_enemy.Get_Player.player_skills != Player.PLAYER_SKILLS.SHIELD)
                 {
-                    Debug.Log("player HP = " + _enemy.Get_Player_HP.m_HP);
-                    Debug.Log("demage = " + _enemy.status.demage);
-                    _enemy.Get_Player_HP.m_HP -= _enemy.status.demage;
+                    _enemy.Get_Player_HP.m_HP -= (_enemy.status.power - _enemy.Get_Player.status.defense);
                 }
             }
             if (Time.time > nextTime && startTime != 0)
@@ -57,11 +48,6 @@ public class EnemyAttack : EnemyState
                 startTime = 0.0f;
             }
         }
-        //if (Time.time > nextTime)
-        //{
-        //    currentTime = Time.time;
-          
-        //}
     }
     public sealed override void Exit(Enemy _enemy)
     {

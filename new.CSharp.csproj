@@ -251,7 +251,7 @@
     <Compile Include="Assets\Scripts\UI\HPBarBase.cs" />
     <Compile Include="Assets\Scripts\UI\JoystickControl.cs" />
     <Compile Include="Assets\Scripts\UI\SkillButton.cs" />
-    <Compile Include="Assets\Scripts\UI\SkillManager.cs" />
+    <Compile Include="Assets\Scripts\Character\FriendSystem\SkillManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\CactusPack\Shaders\Basic_Rimlight.shader" />
