@@ -24,8 +24,10 @@ public class SkillButton : MonoBehaviour
     }
     public void PressButton() //버튼이벤트
     {
+        Debug.Log("호출");
         if (timer >= delay && pressed == false)
         {
+            Debug.Log("pressed");
             name    = this.gameObject.name;
             pressed = true;
             timer   = 0.0f;
