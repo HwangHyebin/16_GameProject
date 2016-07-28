@@ -21,15 +21,15 @@ public class EnemySeek : EnemyState
     public override void Execute(Enemy _enemy)
     {
         float speed = 1.5f;
-        _enemy.transform.LookAt(_enemy.target.transform.position);
+        _enemy.Target_Check();
+        _enemy.transform.LookAt(_enemy.current_target.transform.position);
         _enemy.transform.position += (_enemy.transform.forward * speed * Time.deltaTime);
-        float dis   = Vector3.Magnitude(_enemy.transform.position - _enemy.target.transform.position);
+        float dis = Vector3.Magnitude(_enemy.transform.position - _enemy.current_target.transform.position);
         if (dis < 1.4f)
         {
             _enemy.enemy_anim = Enemy.ENEMY_ANIMATOR.ATTACK;
             _enemy.Enemy_State.ChangeState(EnemyAttack.Instance);
         }
-        _enemy.Target_Check();
     }
     public override void Exit(Enemy _enemy)
     {

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SummonsLife : HPBarBase 
 {
-    public      float           m_Hight         = 2.0f;
+    public      float           m_Hight         = 1.2f;
     public      GameObject      UI_back;
     public      GameObject      UI_HP_back;
     protected   Transform       target          = null;
@@ -22,6 +22,8 @@ public class SummonsLife : HPBarBase
     {
         UI_HP_back.transform.position = UI_back.transform.position = transform.position = target.position + (Vector3.up * m_Hight);
         UI_HP_back.transform.rotation = UI_back.transform.rotation = transform.rotation = Camera.main.transform.rotation;
+
+        Debug.Log(Vector3.up * m_Hight);
 
         Vector3 hpScale = m_StartScale;
         if (m_HP > 0.0f)

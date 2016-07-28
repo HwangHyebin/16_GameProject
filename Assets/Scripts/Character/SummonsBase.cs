@@ -7,6 +7,8 @@ public class SummonsBase : Actor
     public      STATUS          status;
     protected   Transform       hp_bar;
     protected   SummonsLife     life;
+    protected   float           startTime;
+    protected   float           nextTime;
     private     Player          srt_player;
     //private     Enemy           srt_enemy;
     private     ObjectManager   srt_objectManager;
@@ -24,14 +26,14 @@ public class SummonsBase : Actor
     public virtual void Init()
     {
         base.Start();
-        srt_objectManager   = GameObject.FindObjectOfType<ObjectManager>();
-        hp_bar              = gameObject.transform.FindChild("HP");
-        life                = hp_bar.GetComponent<SummonsLife>();
+        startTime           = 0.0f;
+        nextTime            = startTime + 1.0f;
         srt_player          = GameObject.FindObjectOfType<Player>();
+        srt_objectManager   = GameObject.FindObjectOfType<ObjectManager>();
+        
     }
     protected void Destroy()
     {
-        Get_Player.player_skills = Player.PLAYER_SKILLS.DONE;
         destroy = true;
         Debug.Log("Destroy");
     }

@@ -23,8 +23,8 @@ public class EnemyAttack : EnemyState
     public sealed override void Execute(Enemy _enemy)
     {
         _enemy.Target_Check();
-        _enemy.transform.LookAt(_enemy.target.transform.position);
-        float dis = Vector3.Magnitude(_enemy.transform.position - _enemy.target.transform.position);
+        _enemy.transform.LookAt(_enemy.current_target.transform.position);
+        float dis = Vector3.Magnitude(_enemy.transform.position - _enemy.current_target.transform.position);
 
         if (dis > 0.8f)
         {

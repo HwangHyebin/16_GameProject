@@ -8,6 +8,8 @@ public class Pirate : SummonsBase
     {
         base.Init();
         Get_Player.player_skills = Player.PLAYER_SKILLS.PIRATE;
+        hp_bar = gameObject.transform.FindChild("HP");
+        life = hp_bar.GetComponent<SummonsLife>();
         //anim.speed = 1.2f;
     }
     private void Update()

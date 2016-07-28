@@ -66,6 +66,8 @@ public class PlayerAttack : PlayerState
                         //각을 알고싶을때 아크코사인 사용, Rad2Deg는 라디안을 degree로 바꿔줌.(도)
                         if (deg < 45.0f && distance < 1.5f)
 						{
+                            //_player.Get_GameManager._enemyArray[i].SendMessage("Target_Change", _player.gameObject);
+                            //_player.Get_GameManager._enemyArray[i].SendMessage("Targer_Check", true);
                             _player.attack_check = true;
                             //파티클 터지는거 넣어줘야함
 						}

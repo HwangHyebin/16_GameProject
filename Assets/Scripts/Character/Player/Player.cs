@@ -36,7 +36,6 @@ public class Player : CharacterBase
         base.Start();
         position            = this.transform.position;
         my_body             = GetComponent<Rigidbody>();
-        //_collider            = GetComponent<CapsuleCollider>();
         player_state        = new PlayerStateMachine();
         player_skills       = PLAYER_SKILLS.DONE;
         srt_input           = GameObject.FindObjectOfType<JoystickControl>() as JoystickControl;
@@ -49,26 +48,65 @@ public class Player : CharacterBase
     }
     public sealed override void update()
     {
+        Debug.Log("player attack= " + attack_check);
         player_state.Update();
     }
-    private void OnTriggerEnter(Collider col)
+    //private void OnTriggerEnter(Collider col)
+    //{
+    //    if (col.tag == "Enemy")
+    //    {
+    //        Debug.Log("충돌!");
+    //        if (attack_check == true)
+    //        {
+    //            col.gameObject.SendMessage("Target_Change", true);
+    //        }
+    //        if (col.GetComponent<Enemy>().attack_check == true && col.GetComponent<Enemy>().target == this.gameObject)
+    //        {
+    //            if (player_skills != PLAYER_SKILLS.SHIELD)
+    //            {
+    //                Debug.Log("player hp 줄어듦!");
+    //                life.m_HP -= (col.GetComponent<Enemy>().status.power - this.status.defense);
+    //            }
+    //        }
+    //        Debug.Log("player enemy에 충돌");
+    //    }
+    //}
+    private void OnTriggerStay(Collider col)
     {
         if (col.tag == "Enemy")
         {
-            Debug.Log("충돌!");
-            if (attack_check == true)
+            col.GetComponent<Enemy>();
+            HP_Control(col);
+        }
+    }
+    private void HP_Control(Collider col)
+    {
+        if (startTime == 0.0f)
+        {
+            startTime = Time.time;
+            nextTime = startTime + 1.0f;
+            Debug.Log("enemy attack check = " + col.GetComponent<Enemy>().attack_check);
+            //Debug.Log("enemy target = " + col.GetComponent<Enemy>().target);
+
+            if (col.GetComponent<Enemy>().attack_check == true) 
+                //&&col.GetComponent<Enemy>().target == this.gameObject) //enemy가 공격상태면
             {
-                col.gameObject.SendMessage("Target_Change", true);
-            }
-            if (col.GetComponent<Enemy>().attack_check == true && col.GetComponent<Enemy>().target == this.gameObject)
-            {
+                Debug.Log("enemy의 attack!");
                 if (player_skills != PLAYER_SKILLS.SHIELD)
                 {
                     Debug.Log("player hp 줄어듦!");
                     life.m_HP -= (col.GetComponent<Enemy>().status.power - this.status.defense);
                 }
             }
-            Debug.Log("player enemy에 충돌");
+            //else if (col.GetComponent<Enemy>().attack_check == true &&
+            //        col.GetComponent<Enemy>().target != this.gameObject) //enemy가 공격상태면
+            //{
+            //    col.gameObject.SendMessage("Target_Check");
+            //}
+        }
+        if (Time.time > nextTime && startTime != 0)
+        {
+            startTime = 0;
         }
     }
     public AttackButton Get_AttackButton

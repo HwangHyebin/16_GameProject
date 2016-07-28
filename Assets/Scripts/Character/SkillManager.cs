@@ -18,8 +18,16 @@ public class SkillManager : MonoBehaviour
 
     public  List<KeyValuePair<DateTime, SummonsBase>>   priority_list; //우선 순위 정렬
     private SummonsFactory                              srt_skillFactory;
+    [HideInInspector]
     public  GameObject target;
-    
+    public bool new_Object = false;
+
+    //public Delegate MyDelegate(GameObject _target);
+    public void Register(Enemy _enemy)
+    {
+ 
+    }
+
     private void Awake()
     {
         srt_skillFactory = GameObject.FindObjectOfType<SummonsFactory>() as SummonsFactory;
@@ -27,6 +35,7 @@ public class SkillManager : MonoBehaviour
     }
     private void Start()
     {
+        //MyDelegate m_delegate = target;
         Init_ButtonIMG();
     }
     private void Update()
@@ -46,13 +55,14 @@ public class SkillManager : MonoBehaviour
                     Shield shiled = GameObject.FindObjectOfType<Shield>();
                     if (_base != shiled)
                     {
+                        //new_Object = true;
                         priority_list.Add(new KeyValuePair<DateTime, SummonsBase>(DateTime.Now, _base));
                         priority_list.Sort((Lhs, Rhs) => Lhs.Key.Ticks.CompareTo(Rhs.Key.Ticks) 
                             );
+                        target = priority_list[0].Value.gameObject;
                     }
-                    target = priority_list[0].Value.gameObject;
-                    skill_array[i].Init();
                 }
+                skill_array[i].Init();
             }
         }
     }
@@ -107,6 +117,20 @@ public class SkillManager : MonoBehaviour
                 StartCoroutine("Death");
                 Destroy(priority_list[i].Value.gameObject);
                 priority_list.RemoveAt(i);
+                if(priority_list.Count != 0)
+                {
+                    priority_list.Sort((Lhs, Rhs) => Lhs.Key.Ticks.CompareTo(Rhs.Key.Ticks)
+                           );
+                    //new_Object = false;
+                    if (priority_list[0].Value != null)
+                    {
+                        target = priority_list[0].Value.gameObject;
+                    }
+                    else
+                    {
+                        target = GameObject.FindObjectOfType<Player>().gameObject;
+                    }
+                }
             }
         }
     }

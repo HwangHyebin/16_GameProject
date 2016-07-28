@@ -11,13 +11,15 @@ public class Magician : SummonsBase
         base.Init();
         Get_Player.player_skills    = Player.PLAYER_SKILLS.MAGICIAN;
         attack_col                  = GetComponentInChildren<SphereCollider>();
+        hp_bar = gameObject.transform.FindChild("HP");
+        life = hp_bar.GetComponent<SummonsLife>();
         attack_col.gameObject.SetActive(false);
         Set_CastTime(status.lv);
     }
     private void Start()
     {
         Invoke("Meteo", castTime);
-        Invoke("Destroy", (status.removeTime + 10.0f));
+        Invoke("Destroy", (status.removeTime + 1.0f));
     }
     private void Meteo()
     {
@@ -34,28 +36,29 @@ public class Magician : SummonsBase
         else if (_num <= 20 && _num >= 14)
             castTime = 3.0f;
     }
-    private void OnCollisionEnter(Collision col)
+    private void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.tag == "Enemy")
+        if (col.tag == "Enemy")
         {
-            Debug.Log("magician enemy와 충돌");
-            if (col.gameObject.GetComponent<Enemy>().attack_check == true && col.gameObject.GetComponent<Enemy>().target == this.gameObject)
-            {
-                Debug.Log("magician hp깎임");
-                life.m_HP -= (col.gameObject.GetComponent<Enemy>().status.power - this.status.defense);
-            }
+            col.GetComponent<Enemy>();
+            HP_Control(col);
         }
     }
-    //private void OnTriggerEnter(Collider col)
-    //{
-    //    if (col.tag == "Enemy")
-    //    {
-    //        Debug.Log("magician enemy와 충돌");
-    //        if (col.GetComponent<Enemy>().attack_check == true && col.GetComponent<Enemy>().target == this.gameObject)
-    //        {
-    //            Debug.Log("magician hp깎임");
-    //            life.m_HP -= (col.GetComponent<Enemy>().status.power - this.status.defense);
-    //        }
-    //    }
-    //}
+    private void HP_Control(Collider col)
+    {
+        if (startTime == 0.0f)
+        {
+            startTime = Time.time;
+            nextTime = startTime + 1.0f;
+            if (col.GetComponent<Enemy>().attack_check == true && col.GetComponent<Enemy>().current_target == this.gameObject)
+            {
+                //Debug.Log("magician hp깎임");
+                life.m_HP -= (col.GetComponent<Enemy>().status.power - this.status.defense);
+            }
+        }
+        if (Time.time > nextTime && startTime != 0)
+        {
+            startTime = 0;
+        }
+    }
 }

@@ -12,7 +12,7 @@ public class Shield : SummonsBase
     }
     private void Start()
     {
-        Invoke("Destroy", status.removeTime);
+        Invoke("Sheild_Destroy", status.removeTime);
     }
     private void Update()
     {
@@ -20,5 +20,10 @@ public class Shield : SummonsBase
                                 Get_Player.transform.position.y, 
                                 Get_Player.transform.position.z);
         this.transform.position = position;
+    }
+    private void Sheild_Destroy()
+    {
+        Get_Player.player_skills = Player.PLAYER_SKILLS.DONE;
+        Destroy(this.gameObject, 1.0f);
     }
 }
