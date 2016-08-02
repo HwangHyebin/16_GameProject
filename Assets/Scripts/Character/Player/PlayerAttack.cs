@@ -54,9 +54,9 @@ public class PlayerAttack : PlayerState
 				{
                     if (_player.Get_GameManager._enemyArray[i] != null) 
 					{
-                        Vector3 enemy_vec = (_player.Get_GameManager._enemyArray[i].transform.position - _player.transform.position).normalized;
+                        Vector3 enemy_vec   = (_player.Get_GameManager._enemyArray[i].transform.position - _player.transform.position).normalized;
                         float deg           = Mathf.Acos(Vector3.Dot(_forward, enemy_vec)) * Mathf.Rad2Deg;
-                        float distance = Vector3.Magnitude(_player.transform.position - _player.Get_GameManager._enemyArray[i].transform.position);
+                        float distance      = Vector3.Magnitude(_player.transform.position - _player.Get_GameManager._enemyArray[i].transform.position);
 
                         //오른쪽이냐 왼쪽이냐를 알고 싶을때는 right벡터랑 enemy 벡터를 내적해서, 양수면 오른쪽 음수면 왼쪽
                         //float enemy_deg = Mathf.Acos(Vector3.Dot(_forward, pos)) * Mathf.Rad2Deg;

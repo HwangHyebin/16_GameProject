@@ -26,6 +26,7 @@ public class Magician : SummonsBase
         anim.SetInteger("animation", 1);
         anim.Play("Base Layer.atk3");
         attack_col.gameObject.SetActive(true);
+        CancelInvoke("Meteo");
     }
     private void Set_CastTime(int _num)
     {

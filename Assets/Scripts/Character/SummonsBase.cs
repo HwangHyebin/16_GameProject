@@ -10,7 +10,6 @@ public class SummonsBase : Actor
     protected   float           startTime;
     protected   float           nextTime;
     private     Player          srt_player;
-    //private     Enemy           srt_enemy;
     private     ObjectManager   srt_objectManager;
     
     //각각 캐릭터 정보 파싱해서 딜레이에 영향 주기.

@@ -19,15 +19,8 @@ public class SkillManager : MonoBehaviour
     public  List<KeyValuePair<DateTime, SummonsBase>>   priority_list; //우선 순위 정렬
     private SummonsFactory                              srt_skillFactory;
     [HideInInspector]
-    public  GameObject target;
-    public bool new_Object = false;
-    private Player _player;
-
-    //public Delegate MyDelegate(GameObject _target);
-    public void Register(Enemy _enemy)
-    {
- 
-    }
+    public  GameObject                                  target;
+    private Player                                      _player;
 
     private void Awake()
     {
@@ -38,7 +31,6 @@ public class SkillManager : MonoBehaviour
     }
     private void Start()
     {
-        //MyDelegate m_delegate = target;
         Init_ButtonIMG();
     }
     private void Update()
@@ -58,7 +50,6 @@ public class SkillManager : MonoBehaviour
                     Shield shiled = GameObject.FindObjectOfType<Shield>();
                     if (_base != shiled)
                     {
-                        //new_Object = true;
                         priority_list.Add(new KeyValuePair<DateTime, SummonsBase>(DateTime.Now, _base));
                         priority_list.Sort((Lhs, Rhs) => Lhs.Key.Ticks.CompareTo(Rhs.Key.Ticks) 
                             );
@@ -72,7 +63,7 @@ public class SkillManager : MonoBehaviour
     private void Array_Instance() //skill array 인스턴스.
     {
         skill_array                 = new SummonsBase[3];
-        string_array                = new string[] {"Archer","Magician","Shield"};
+        string_array                = new string[] {"Archer","Magician","Pirate"};
         priority_list               = new List<KeyValuePair<DateTime, SummonsBase>>();
         for (int i = 0; i < skillButton_array.Length; ++i)
         {
@@ -124,7 +115,6 @@ public class SkillManager : MonoBehaviour
                 {
                     priority_list.Sort((Lhs, Rhs) => Lhs.Key.Ticks.CompareTo(Rhs.Key.Ticks)
                            );
-                   
                         target = priority_list[0].Value.gameObject;
                 }
                 else

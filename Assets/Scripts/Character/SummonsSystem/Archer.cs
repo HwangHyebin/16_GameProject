@@ -3,44 +3,41 @@ using System.Collections;
 
 public class Archer : SummonsBase
 {
-    private GameObject  prefab;
-    private Transform   spwanPoint;
-    private Vector3 right_vec;
-   
+    private GameObject      prefab;
+    private GameObject[]    _bullet;
+    private Transform       spwanPoint;
+    private int             _bulletCount;
+
     public override void Init()
     {
         base.Init();
         Get_Player.player_skills    = Player.PLAYER_SKILLS.ARCHER;
-        my_body                     = GetComponent<Rigidbody>();
-        prefab                      = Resources.Load("Prefabs/bullet") as GameObject;
         hp_bar                      = gameObject.transform.FindChild("HP");
         life                        = hp_bar.GetComponent<SummonsLife>();
-
-        spwanPoint                  = gameObject.transform.FindChild("spwanPoint");
-        GameObject _bullet          = Instantiate(prefab, spwanPoint.position, Quaternion.identity) as GameObject;
+        Bullet_Init();
+        anim.SetInteger("animation", 1);
+        anim.Play("Base Layer.atk3");
     }
     private void Start()
     {
-        anim.SetInteger("animation", 1);
-        anim.Play("Base Layer.atk3");
+        anim.SetInteger("animation", 0);
         Invoke("Destroy", (status.removeTime + 1.0f));
+        Invoke("Bullet_Destroy", 3.0f);
     }
     private void Update()
     {
-        Vector3 _forward = this.transform.forward;
-        Vector3 _riget = this.transform.right;
+        for (int i = 0; i < _bulletCount; ++i)
+        {
+            if (_bullet[i] != null)
+            {
+                Vector3 right_vec = new Vector3((transform.forward.x + transform.right.x), (transform.forward.y + transform.right.y), (transform.forward.z + transform.right.z)).normalized;
+                Vector3 left_vec = new Vector3((transform.forward.x + (transform.right.x * -1.0f)), (transform.forward.y + (transform.right.y * -1.0f)), (transform.forward.z + (transform.right.z * -1.0f))).normalized;
 
-        right_vec = new Vector3(_forward.x + _riget.x, _forward.y + _riget.y, _forward.z + _riget.z);
-
-        //float dis = Vector3.Magnitude(this.transform.position - _bullet.transform.position);
-        //Debug.Log("distance = " + dis);
-        //if (dis > 5.0f)
-        //{
-        //    Destroy(_bullet, 0.1f);
-        //}
-        //일정 범위이상 멀어지면 사라지게 하기.
-        // archer와 자신의 position을 이용해 거리를 체크해서 bullet을 destroy
-        //StartCoroutine("Bullet");
+                _bullet[0].transform.Translate(transform.forward * 2.0f * Time.deltaTime);
+                _bullet[1].transform.Translate(right_vec * 2.0f * Time.deltaTime);
+                _bullet[2].transform.Translate(left_vec * 2.0f * Time.deltaTime);
+            }
+        }
     }
     private void OnTriggerStay(Collider col)
     {
@@ -66,10 +63,25 @@ public class Archer : SummonsBase
             startTime = 0;
         }
     }
-    IEnumerator Bullet()
+    private void Bullet_Destroy()
     {
-        
-        //prefab.GetComponent<Rigidbody>().AddForce(spwanPoint.forward * 10.0f * Time.deltaTime);
-        yield return new WaitForSeconds(3.0f);
+        for (int i = 0; i < _bulletCount; ++i)
+        {
+            Destroy(_bullet[i].gameObject, 0.1f);
+        }
+        CancelInvoke("Bullet_Destroy");
+    }
+    private void Bullet_Init()
+    {
+        spwanPoint      = gameObject.transform.FindChild("spwanPoint");
+        prefab          = Resources.Load("Prefabs/bullet") as GameObject;
+        _bulletCount    = 3;
+        _bullet         = new GameObject[_bulletCount];
+
+        for (int i = 0; i < _bulletCount; ++i)
+        {
+            _bullet[i] = Instantiate(prefab, spwanPoint.position, Quaternion.identity) as GameObject;
+            _bullet[i].tag = "Archer";
+        }
     }
 }

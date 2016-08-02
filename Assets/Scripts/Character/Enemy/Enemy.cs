@@ -53,13 +53,13 @@ public class Enemy : CharacterBase
         }
         else if (col.tag == "Archer")
         {
-            if (col.transform.parent.GetComponent<Archer>().status.power > this.status.defense)
-                life.m_HP -= (col.transform.parent.GetComponent<Archer>().status.power - this.status.defense);
+            if (GameObject.FindObjectOfType<Archer>().status.power > this.status.defense)
+                life.m_HP -= (GameObject.FindObjectOfType<Archer>().status.power - this.status.defense);
         }
         else if (col.tag == "Pirate")
         {
-            if (col.transform.parent.GetComponent<Pirate>().status.power > this.status.defense)
-                life.m_HP -= (col.transform.parent.GetComponent<Pirate>().status.power - this.status.defense);
+            if (GameObject.FindObjectOfType<Pirate>().status.power > this.status.defense)
+                life.m_HP -= (GameObject.FindObjectOfType<Pirate>().status.power - this.status.defense);
         }
     }
     private void OnTriggerStay(Collider col)
