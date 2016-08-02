@@ -48,29 +48,8 @@ public class Player : CharacterBase
     }
     public sealed override void update()
     {
-        Debug.Log("player attack= " + attack_check);
         player_state.Update();
     }
-    //private void OnTriggerEnter(Collider col)
-    //{
-    //    if (col.tag == "Enemy")
-    //    {
-    //        Debug.Log("충돌!");
-    //        if (attack_check == true)
-    //        {
-    //            col.gameObject.SendMessage("Target_Change", true);
-    //        }
-    //        if (col.GetComponent<Enemy>().attack_check == true && col.GetComponent<Enemy>().target == this.gameObject)
-    //        {
-    //            if (player_skills != PLAYER_SKILLS.SHIELD)
-    //            {
-    //                Debug.Log("player hp 줄어듦!");
-    //                life.m_HP -= (col.GetComponent<Enemy>().status.power - this.status.defense);
-    //            }
-    //        }
-    //        Debug.Log("player enemy에 충돌");
-    //    }
-    //}
     private void OnTriggerStay(Collider col)
     {
         if (col.tag == "Enemy")
@@ -85,24 +64,14 @@ public class Player : CharacterBase
         {
             startTime = Time.time;
             nextTime = startTime + 1.0f;
-            Debug.Log("enemy attack check = " + col.GetComponent<Enemy>().attack_check);
-            //Debug.Log("enemy target = " + col.GetComponent<Enemy>().target);
 
             if (col.GetComponent<Enemy>().attack_check == true) 
-                //&&col.GetComponent<Enemy>().target == this.gameObject) //enemy가 공격상태면
             {
-                Debug.Log("enemy의 attack!");
                 if (player_skills != PLAYER_SKILLS.SHIELD)
                 {
-                    Debug.Log("player hp 줄어듦!");
                     life.m_HP -= (col.GetComponent<Enemy>().status.power - this.status.defense);
                 }
             }
-            //else if (col.GetComponent<Enemy>().attack_check == true &&
-            //        col.GetComponent<Enemy>().target != this.gameObject) //enemy가 공격상태면
-            //{
-            //    col.gameObject.SendMessage("Target_Check");
-            //}
         }
         if (Time.time > nextTime && startTime != 0)
         {

@@ -27,7 +27,7 @@ public class SummonsFactory :MonoBehaviour
             case "Magician":
                 GameObject magician = Instantiate(skill_prefabs[1], behind_spwanPoint.transform.position, Quaternion.LookRotation(srt_player.transform.forward)) as GameObject;
                 _base = magician.GetComponent<Magician>();
-                _base.Set_Status(ref _base, 1, 100.0f ,100.0f ,1.0f ,5.0f ,10.0f);//status 받아와서 변경해주기
+                _base.Set_Status(ref _base, 1, 100.0f ,10.0f ,1.0f ,5.0f ,10.0f);//status 받아와서 변경해주기
                 return _base;
             case "Pirate":
                 GameObject pirate = Instantiate(skill_prefabs[2], behind_spwanPoint.transform.position, Quaternion.LookRotation(srt_player.transform.forward)) as GameObject;

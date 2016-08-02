@@ -21,6 +21,7 @@ public class SkillManager : MonoBehaviour
     [HideInInspector]
     public  GameObject target;
     public bool new_Object = false;
+    private Player _player;
 
     //public Delegate MyDelegate(GameObject _target);
     public void Register(Enemy _enemy)
@@ -30,6 +31,8 @@ public class SkillManager : MonoBehaviour
 
     private void Awake()
     {
+        _player = GameObject.FindObjectOfType<Player>() as Player;
+        target = _player.gameObject;
         srt_skillFactory = GameObject.FindObjectOfType<SummonsFactory>() as SummonsFactory;
         Array_Instance();
     }
@@ -121,15 +124,12 @@ public class SkillManager : MonoBehaviour
                 {
                     priority_list.Sort((Lhs, Rhs) => Lhs.Key.Ticks.CompareTo(Rhs.Key.Ticks)
                            );
-                    //new_Object = false;
-                    if (priority_list[0].Value != null)
-                    {
+                   
                         target = priority_list[0].Value.gameObject;
-                    }
-                    else
-                    {
-                        target = GameObject.FindObjectOfType<Player>().gameObject;
-                    }
+                }
+                else
+                {
+                    target = _player.gameObject;
                 }
             }
         }

@@ -23,11 +23,9 @@ public class PlayerAttack : PlayerState
         _player.player_anim = Player.PLAYER_ANIMATOR.ATTACK;
         _player.anim.SetInteger("combo", 1);
         _player.anim.Play("Base Layer.ark1");
-        //_player._collider.enabled = true;
     }
     public sealed override void Execute(Player _player)
     {
-        //_player.Get_SkillManager.Create_Skill();
         if (_player.Get_Joystick.drag == true)
         {
             _player.Get_PlayerState.ChangeState(PlayerMove.Instance);
@@ -38,7 +36,6 @@ public class PlayerAttack : PlayerState
         }
         if (_player.anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f) //현재 애니메이션이 끝나면
         {
-            //_player._collider.enabled = false;
             if (combo_count == 2) 
             {
                 _player.anim.SetInteger("combo", 2);
@@ -66,8 +63,6 @@ public class PlayerAttack : PlayerState
                         //각을 알고싶을때 아크코사인 사용, Rad2Deg는 라디안을 degree로 바꿔줌.(도)
                         if (deg < 45.0f && distance < 1.5f)
 						{
-                            //_player.Get_GameManager._enemyArray[i].SendMessage("Target_Change", _player.gameObject);
-                            //_player.Get_GameManager._enemyArray[i].SendMessage("Targer_Check", true);
                             _player.attack_check = true;
                             //파티클 터지는거 넣어줘야함
 						}

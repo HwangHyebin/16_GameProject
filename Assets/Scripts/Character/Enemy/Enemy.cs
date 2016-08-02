@@ -26,6 +26,10 @@ public class Enemy : CharacterBase
         ATTACK,
         DEAD
     };
+    private void Start()
+    {
+        current_target = Get_SkillManager.target;
+    }
     public sealed override void init()
     {
         base.Start();
@@ -33,12 +37,11 @@ public class Enemy : CharacterBase
         enemy_state = new EnemyStateMachine();
         hp_bar      = gameObject.transform.parent.FindChild("HP");
         life        = hp_bar.GetComponent<EnemyLife>();
-        //current_target = GameObject.FindObjectOfType<Player>().gameObject;
+        
         enemy_state.Init(this);
     }
     public sealed override void update()
     {
-        Debug.Log("enemy attack = " + attack_check);
         enemy_state.Update();
     }
     private void OnTriggerEnter(Collider col)
@@ -82,102 +85,16 @@ public class Enemy : CharacterBase
         if (Time.time > nextTime && startTime != 0)
         {
             startTime = 0;
-            //player_attack_check = false;
         }
     }
     private void Target_Change(GameObject _target)
     {
         current_target = _target;
     }
-
-    //public void Target_Change(bool _check)
-    //{
-    //    target = GameObject.FindObjectOfType<Player>().gameObject;
-    //    player_attack_check = _check;
-    //}
-    //private void think()
-    //{
-    //    if (리스트가 비었다면)
-    //    {
-    //        현재 타겟을 플레이어.
-    //    }
-    //    else(리스트가 차 있다면)
-    //    {
-    //        if (플레이어가 공격을 하지 않았다면) //공격을 안한다면
-    //        {
-    //            현재 타겟은 리스트 타겟.
-    //        }
-    //        else (플레이어가 공격했다면)
-    //        {
-    //              if(새로운 리스트에 오브젝트가 생기지 않았다면.) - 플레이어
-    //              else(리스트에 새로운 오브젝트가 생겼다면) - 새로운 오브젝트
-    //            if(리스트목록의 오브젝트가 사라지지 않았다면)
-    //                현재의 타겟을 플레이어로 교체.
-    //            else(리스트 목록의 오브젝트가 사라졌다면)
-    //                플레이어의 공격 상태를 false로 바꿔줌.
-    //        }
-    //    }
-    //}
     public void Target_Check()
     {
-        Player player = GameObject.FindObjectOfType<Player>();
-
-        if (Get_SkillManager.target == null)
-        {
-            current_target = player.gameObject;
-        }
-        else
-        {
-            current_target = Get_SkillManager.target;
-            //if (_check == false)
-            //{
-            //    current_target = Get_SkillManager.target;
-            //}
-            //else
-            //{
-            //    if (Get_SkillManager.new_Object == true)
-            //    {
-            //        current_target = Get_SkillManager.target;
-            //    }
-            //}
-        }
+        current_target = Get_SkillManager.target;
     }
-        //Player player = GameObject.FindObjectOfType<Player>();
-
-        //if (Get_SkillManager.target == null)
-        //{
-        //    current_target = player.gameObject;
-        //}
-        //else
-        //{
-        //    if (_test == true) // 공격당함
-        //    {
-        //        if (Get_SkillManager.destroy_Object == false)
-        //        {
-        //            before_target = Get_SkillManager.target.gameObject;
-        //            current_target = player.gameObject;
-        //        }
-        //        else
-        //        {
-        //            _test = false;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        before_target = player.gameObject;
-        //        current_target = Get_SkillManager.target.gameObject;
-        //    }
-            
-        //    //if (_test.attack_check == true)
-        //    //{
-        //    //    target = _test.gameObject;
-        //    //}
-        //    //else
-        //    //{
-        //    //    target = Get_SkillManager.target;
-        //    //}
-        //}
-    //}
     public EnemyStateMachine Enemy_State
     {
         get{ return enemy_state; }

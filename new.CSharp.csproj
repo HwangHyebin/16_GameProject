@@ -219,6 +219,7 @@
     <Compile Include="Assets\NGUI\iTweenEditor\iTween.cs" />
     <Compile Include="Assets\NGUI\iTweenEditor\iTweenEvent.cs" />
     <Compile Include="Assets\NGUI\iTweenEditor\iTweenPath.cs" />
+    <Compile Include="Assets\Scripts\BulletControl.cs" />
     <Compile Include="Assets\Scripts\Character\Actor.cs" />
     <Compile Include="Assets\Scripts\Character\CharacterBase.cs" />
     <Compile Include="Assets\Scripts\Character\CharacterFactory.cs" />

@@ -11,8 +11,8 @@ public class Magician : SummonsBase
         base.Init();
         Get_Player.player_skills    = Player.PLAYER_SKILLS.MAGICIAN;
         attack_col                  = GetComponentInChildren<SphereCollider>();
-        hp_bar = gameObject.transform.FindChild("HP");
-        life = hp_bar.GetComponent<SummonsLife>();
+        hp_bar                      = gameObject.transform.FindChild("HP");
+        life                        = hp_bar.GetComponent<SummonsLife>();
         attack_col.gameObject.SetActive(false);
         Set_CastTime(status.lv);
     }
@@ -52,7 +52,6 @@ public class Magician : SummonsBase
             nextTime = startTime + 1.0f;
             if (col.GetComponent<Enemy>().attack_check == true && col.GetComponent<Enemy>().current_target == this.gameObject)
             {
-                //Debug.Log("magician hp깎임");
                 life.m_HP -= (col.GetComponent<Enemy>().status.power - this.status.defense);
             }
         }
