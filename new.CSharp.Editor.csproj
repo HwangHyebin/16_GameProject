@@ -181,7 +181,6 @@
     <Compile Include="Assets\NGUI\NGUI\Scripts\Editor\UITweenerEditor.cs" />
     <Compile Include="Assets\NGUI\NGUI\Scripts\Editor\UIWidgetContainerEditor.cs" />
     <Compile Include="Assets\NGUI\NGUI\Scripts\Editor\UIWidgetInspector.cs" />
-    <Compile Include="Assets\NGUI\iTweenEditor\Editor\iTweenEventDataEditor.cs" />
     <Compile Include="Assets\NGUI\iTweenEditor\Editor\iTweenPathEditor.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -301,8 +300,9 @@
     <None Include="Assets\NGUI\NGUI\Resources\Shaders\Unlit - Transparent Colored (SoftClip).shader" />
     <None Include="Assets\NGUI\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
     <None Include="Assets\NGUI\iTweenEditor\README.txt" />
-    <None Include="Assets\Scripts\project.txt" />
+    <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+    <None Include="Assets\StreamingAssets\Skills.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

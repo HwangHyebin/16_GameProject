@@ -66,6 +66,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plugins\Pixelplacement\iTween\Sample\MoveSample.cs" />
+    <Compile Include="Assets\Plugins\Pixelplacement\iTween\Sample\RotateSample.cs" />
+    <Compile Include="Assets\Plugins\Pixelplacement\iTween\Sample\SampleInfo.cs" />
+    <Compile Include="Assets\Plugins\Pixelplacement\iTween\iTween.cs" />
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\ButtonHandler.cs" />
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs" />
@@ -195,8 +199,9 @@
     <None Include="Assets\NGUI\NGUI\Resources\Shaders\Unlit - Transparent Colored (SoftClip).shader" />
     <None Include="Assets\NGUI\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
     <None Include="Assets\NGUI\iTweenEditor\README.txt" />
-    <None Include="Assets\Scripts\project.txt" />
+    <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+    <None Include="Assets\StreamingAssets\Skills.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

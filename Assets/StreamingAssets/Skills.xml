@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Skill>
+	<Magic level="1" hp="100" attack="100" defcens="0" delete_time="6" waitingtime="10" reach="3" casting_time="5" attack_speed="0" attack_angle="0"/>
+	<Pracy level="1" hp="150" attack="30" defcens="0" delete_time="3" waitingtime="10" reach="4" casting_time="0" attack_speed="1" attack_angle="0"/>
+	<Archer level="1" hp="50" attack="150" defcens="0" delete_time="2" waitingtime="5" reach="5" casting_time="0" attack_speed="0" attack_angle="2"/>
+	<Player level="1" hp="100" attack="10" defcens="2" delete_time="0" waitingtime="0" reach="0" casting_time="0" attack_speed="0" attack_angle="0"/>
+</Skill>
