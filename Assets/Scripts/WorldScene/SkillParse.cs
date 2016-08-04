@@ -14,7 +14,7 @@ public class SkillParse : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(DataManager.Instance.character_list.Count);
+        //Debug.Log(DataManager.Instance.character_list.Count);
     }
     IEnumerator Process()
     {
