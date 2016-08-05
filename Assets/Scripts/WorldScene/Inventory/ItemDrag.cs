@@ -4,19 +4,31 @@ using UnityEngine.EventSystems;
 
 public class ItemDrag : MonoBehaviour
 {
-    private Vector3 startPosition;
-    private Transform startParent;
+    private Vector3     startPosition;
+    private Transform   startParent;
 
     private void Start()
     {
-        startParent = transform.parent;
+        
     }
     private void Update()
     {
-        //**터치가 떼졌을때로 수정.**
-        if (transform.parent != startParent)
+        for (int i = 0; i < Input.touchCount; i++)
         {
-            transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y, transform.parent.position.z);
+            Touch touch = Input.GetTouch(i);
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                startParent = transform.parent;
+            }
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                if (transform.parent.childCount == 2)
+                {
+                    transform.parent = startParent;
+                }
+                transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y, transform.parent.position.z);  
+            }
         }
     }
 }
