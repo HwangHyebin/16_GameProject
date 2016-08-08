@@ -253,13 +253,20 @@
     <Compile Include="Assets\Scripts\ActionScene\UI\SummonsLife.cs" />
     <Compile Include="Assets\Scripts\WorldScene\CharacterInformation.cs" />
     <Compile Include="Assets\Scripts\WorldScene\DataManager.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\Inventory_Button.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\ItemButton_Control.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\PageControl.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\Select_LeaveItem.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Inventory.cs" />
-    <Compile Include="Assets\Scripts\WorldScene\Inventory\Inventory_Button.cs" />
-    <Compile Include="Assets\Scripts\WorldScene\Inventory\Item.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\ItemDrag.cs" />
-    <Compile Include="Assets\Scripts\WorldScene\Inventory\PageControl.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\Inventory\ItemManager.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\Inventory\ItemScript.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\Inventory\Item_Info.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\Inventory\Set_Gear.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\obj.cs" />
-    <Compile Include="Assets\Scripts\WorldScene\SkillParse.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\Parse\EnemyParse.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\Parse\ItemParse.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\Parse\SkillParse.cs" />
     <Compile Include="Assets\Scripts\WorldScene\ZoomEffect.cs" />
     <Compile Include="Assets\Test\itween_target.cs" />
   </ItemGroup>
@@ -383,6 +390,7 @@
     <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\StreamingAssets\Skills.xml" />
+    <None Include="Assets\StreamingAssets\equipment.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

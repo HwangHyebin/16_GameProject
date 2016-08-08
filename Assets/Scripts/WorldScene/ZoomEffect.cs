@@ -3,11 +3,12 @@ using System.Collections;
 
 public class ZoomEffect : MonoBehaviour 
 {
-    public Camera target;
-    private bool check = false;
-    private int min = 15;
-    private int max = 60;
-    private int smooth = 5;
+    public  Camera      target;
+    public  UISprite    img;
+    private bool        check = false;
+    private int         min = 15;
+    private int         max = 60;
+    private int         smooth = 5;
 
 	private void Start () 
     { 
@@ -23,8 +24,14 @@ public class ZoomEffect : MonoBehaviour
     public void Toggle_Button()
     {
         if (check == true)
+        {
             check = false;
+            img.spriteName = "retun";
+        }
         else
+        {
             check = true;
+            img.spriteName = "full_screen";
+        }
     }
 }

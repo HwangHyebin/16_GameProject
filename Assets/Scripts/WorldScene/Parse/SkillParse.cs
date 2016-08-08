@@ -12,10 +12,6 @@ public class SkillParse : MonoBehaviour
     {
         StartCoroutine(Process());
     }
-    private void Update()
-    {
-        //Debug.Log(DataManager.Instance.character_list.Count);
-    }
     IEnumerator Process()
     {
         string strPath = string.Empty;
@@ -69,6 +65,7 @@ public class SkillParse : MonoBehaviour
                     {
                         CharacterInformation player     = new CharacterInformation();
                         Set_Status(child, player);
+                        //player.Gold = int.Parse(child.Attributes.GetNamedItem("gold").Value);
                         DataManager.Instance.character_list.Add(player);
                     }
                 }

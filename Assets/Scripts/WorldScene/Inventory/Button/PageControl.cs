@@ -3,29 +3,26 @@ using System.Collections;
 
 public class PageControl : MonoBehaviour 
 {
-   // public  GameObject  button;
-    public GameObject firstPage;
-    public GameObject secondPage;
+    public  GameObject  firstPage;
+    public  GameObject  secondPage;
+    public  UILabel     label;
     private Vector3     vec;
 
 	private void Start () 
     {
         vec = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
+        secondPage.SetActive(false);
 	}
     public void NextPage() 
     {
-        //button.transform.localPosition = new Vector3(-485.0f, 0.0f, transform.localPosition.z);
         firstPage.SetActive(false);
         secondPage.SetActive(true);
+        label.text = "2";
     }
     public void PrevPage()
     {
-        //button.transform.localPosition = new Vector3(0.0f, 0.0f, transform.localPosition.z);
         firstPage.SetActive(true);
         secondPage.SetActive(false);
+        label.text = "1";
     }
-	private void Update ()
-    {
-	
-	}
 }

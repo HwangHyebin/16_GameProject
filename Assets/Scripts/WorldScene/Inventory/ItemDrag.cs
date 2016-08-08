@@ -7,21 +7,17 @@ public class ItemDrag : MonoBehaviour
     private Vector3     startPosition;
     private Transform   startParent;
 
-    private void Start()
-    {
-        
-    }
     private void Update()
     {
         for (int i = 0; i < Input.touchCount; i++)
         {
             Touch touch = Input.GetTouch(i);
 
-            if (touch.phase == TouchPhase.Began)
+            if (touch.phase == TouchPhase.Began )
             {
                 startParent = transform.parent;
             }
-            else if (touch.phase == TouchPhase.Ended)
+            else if (touch.phase == TouchPhase.Ended )
             {
                 if (transform.parent.childCount == 2)
                 {
