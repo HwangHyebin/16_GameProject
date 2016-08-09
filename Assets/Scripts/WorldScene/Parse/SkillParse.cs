@@ -34,7 +34,9 @@ public class SkillParse : MonoBehaviour
         XmlNodeList xmlNodeList     = null;
         XmlDocument xmlDoc          = new XmlDocument();
 
-        xmlDoc.LoadXml(stringReader.ReadToEnd());   // XML 로드하고.
+        stringReader.Read();
+        xmlDoc.LoadXml(stringReader.ReadToEnd());
+      
         xmlNodeList = xmlDoc.SelectNodes("Skill");  // 최 상위 노드 선택.
 
         foreach (XmlNode node in xmlNodeList)
@@ -63,10 +65,28 @@ public class SkillParse : MonoBehaviour
                     }
                     else if (child.Name == "Player")
                     {
-                        CharacterInformation player     = new CharacterInformation();
+                        CharacterInformation player = new CharacterInformation();
                         Set_Status(child, player);
-                        //player.Gold = int.Parse(child.Attributes.GetNamedItem("gold").Value);
+                        player.Gold = int.Parse(child.Attributes.GetNamedItem("gold").Value);
                         DataManager.Instance.character_list.Add(player);
+                    }
+                    else
+                    {
+
+                        Item_Info item = new Item_Info();
+                        
+                        item.ID     = int.Parse(child.Attributes.GetNamedItem("id").Value);
+                        item.NAME   = child.Attributes.GetNamedItem("name").Value;
+                        item.LV     = int.Parse(child.Attributes.GetNamedItem("level").Value);
+                        item.MIN    = float.Parse(child.Attributes.GetNamedItem("Min").Value);
+                        item.MAX    = float.Parse(child.Attributes.GetNamedItem("Max").Value);
+                        item.INFO   = (child.Attributes.GetNamedItem("info").Value).ToString();
+                        float rand  = UnityEngine.Random.Range(item.MIN, item.MAX);
+                        item.POWER  = rand;
+                        Debug.Log("id = " + item.ID + " name = " + item.NAME + " lv = " + item.LV + " min = " + item.MIN + " max = " + item.MAX + " info = " + item.INFO);
+                        
+                        // 다 만들어 졌다면 이제 매니저에 넣어줍시다.
+                        ItemManager.Instance.AddItem(item);
                     }
                 }
             }
@@ -80,5 +100,15 @@ public class SkillParse : MonoBehaviour
         _info.Defence       = float.Parse(_child.Attributes.GetNamedItem("defcens").Value);
         _info.RemoveTime    = float.Parse(_child.Attributes.GetNamedItem("delete_time").Value);
         _info.CoolTime      = float.Parse(_child.Attributes.GetNamedItem("waitingtime").Value);
+    }
+    private string ByteToString(byte[] _byte)
+    {
+        string str = System.Text.Encoding.Default.GetString(_byte);
+        return str;
+    }
+    private byte[] StringToByte(string _string)
+    {
+        byte[] _byte = System.Text.Encoding.UTF8.GetBytes(_string);
+        return _byte;
     }
 }

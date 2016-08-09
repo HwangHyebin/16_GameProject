@@ -1,7 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Skill>
 	<Magic level="1" hp="100" attack="100" defcens="0" delete_time="6" waitingtime="10" reach="3" casting_time="5" attack_speed="0" attack_angle="0"/>
 	<Pracy level="1" hp="150" attack="30" defcens="0" delete_time="3" waitingtime="10" reach="4" casting_time="0" attack_speed="1" attack_angle="0"/>
 	<Archer level="1" hp="50" attack="150" defcens="0" delete_time="2" waitingtime="5" reach="5" casting_time="0" attack_speed="0" attack_angle="2"/>
-	<Player level="1" hp="100" attack="10" defcens="2" delete_time="0" waitingtime="0" reach="0" casting_time="0" attack_speed="0" attack_angle="0"/>
+	<Player level="1" hp="100" attack="10" defcens="2" delete_time="0" waitingtime="0" reach="0" casting_time="0" attack_speed="0" attack_angle="0" gold="0"/>
+	<Weapon id="1" name="W_1" level="1" Min="24" Max="36" info="녹슨 검"/>
+	<Weapon id="2" name="W_2" level="2" Min="40" Max="60" info="뭔가 찍기 좋게생긴 칼"/>
+	<Weapon id="3" name="W_3" level="3" Min="120" Max="180" info="염화도 : 화르륵 잘타는 검"/>
+	<Weapon id="4" name="W_4" level="4" Min="160" Max="240" info="무식하게 생긴 검 : 드..등짝을보자"/>
+	<Weapon id="5" name="W_5" level="5" Min="200" Max="300" info="에고소드(한) : 말소리가 들려온다. (내가말이야! 어! 맘만 먹음 어!)"/>
+	<Armor id="6" name="E_1" level="1" Min="4" Max="6" info="일반 병사가 입던 갑옷"/>
+	<Armor id="7" name="E_2" level="2" Min="8" Max="12" info="크로스 체인 메일 : 단풍나무 게임의 알려진 갑옷"/>
+	<Armor id="8" name="E_3" level="3" Min="24" Max="36" info="배틀 체인 메일 : 단단하게 잘 만들어진 갑옷"/>
+	<Armor id="9" name="E_4" level="4" Min="40" Max="60" info="지휘관 갑옷 : 고급진 장군의 갑옷"/>
+	<Armor id="10" name="E_5" level="5" Min="56" Max="84" info="날개 옷 : 옷이 날개"/>
+	<serve id="11" name="S_1" level="1" Min="1.1" Max="1.12" info="견습 마법사의 마법서"/>
+	<serve id="12" name="S_2" level="2" Min="1.24" Max="1.36" info="마력이 깃든 마법서"/>
+	<serve id="13" name="S_3" level="3" Min="1.4" Max="1.6" info="마력이 개방된 마법서 : 취급주의"/>
 </Skill>
