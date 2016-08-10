@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
            
     private List<string>        m_ItemNames     = new List<string>();       // 이름 저장
     [HideInInspector]
-    public List<ItemScript>     m_Items         = new List<ItemScript>();    // 실질적인 아이템 저장
+    public List<ItemScript>     m_Items         = new List<ItemScript>();   // 실질적인 아이템 저장
     private static int          count           = 0;
     private int                 totalCount      = 0;                        // 아이템 총 합계
 
@@ -44,9 +44,13 @@ public class Inventory : MonoBehaviour
     {
         GameObject itemObj = NGUITools.AddChild(_grid.transform.GetChild(count).gameObject, m_itemObj);  //새로 만들어서 그리드의 자식으로 넣음
         itemObj.SetActive(true);                                                                         //sampleItem으로 만들어진 오브젝트인데 sampleItem가 꺼져있는걸로 셋팅 되어있음.
+        
         ItemScript itemScript = itemObj.GetComponent<ItemScript>();
+        
         itemScript.SetInfo(ItemManager.Instance.GetItem(_num));
-
+        float rand = UnityEngine.Random.Range(itemScript.GetInfo().MIN, itemScript.GetInfo().MAX);
+        itemScript.GetInfo().STATUS_RAND = rand;
+        
         _grid.Reposition();                                                                             //그리드 재정렬                                                         
         m_Items.Add(itemScript);
        

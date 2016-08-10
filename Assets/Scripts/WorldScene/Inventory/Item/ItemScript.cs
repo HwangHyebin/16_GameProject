@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ItemScript : MonoBehaviour 
 {
+    //아이템 빛나는 효과 여기서 조절해주기.
     public  UISprite    img;
     public  UILabel     info_text;
     private Item_Info   m_item;
@@ -14,8 +15,6 @@ public class ItemScript : MonoBehaviour
     {
         m_item = _itemInfo;
         img.spriteName = m_item.NAME;
-        info_text.text = m_item.INFO;
-
     }
     public Item_Info GetInfo()
     {
@@ -23,6 +22,7 @@ public class ItemScript : MonoBehaviour
     }
     private void OnClick()
     {
+        info_text.text = m_item.INFO;
         Debug.Log(m_item.INFO);
     }
 }

@@ -31,10 +31,11 @@ public class SkillParse : MonoBehaviour
     private void Interpret(string _strSource)
     {
         StringReader stringReader   = new StringReader(_strSource);
+        stringReader.Read();
         XmlNodeList xmlNodeList     = null;
         XmlDocument xmlDoc          = new XmlDocument();
 
-        stringReader.Read();
+
         xmlDoc.LoadXml(stringReader.ReadToEnd());
       
         xmlNodeList = xmlDoc.SelectNodes("Skill");  // 최 상위 노드 선택.
@@ -49,30 +50,33 @@ public class SkillParse : MonoBehaviour
                     {
                         CharacterInformation magician   = new CharacterInformation();
                         Set_Status(child,magician);
+                        magician.Name = "Magician";
                         DataManager.Instance.character_list.Add(magician);
                     }
                     else if (child.Name == "Pracy")
                     {
                         CharacterInformation pracy      = new CharacterInformation();
                         Set_Status(child, pracy);
+                        pracy.Name = "Pracy";
                         DataManager.Instance.character_list.Add(pracy);
                     }
                     else if (child.Name == "Archer")
                     {
                         CharacterInformation archer     = new CharacterInformation();
                         Set_Status(child, archer);
+                        archer.Name = "Archer";
                         DataManager.Instance.character_list.Add(archer);
                     }
                     else if (child.Name == "Player")
                     {
                         CharacterInformation player = new CharacterInformation();
                         Set_Status(child, player);
+                        player.Name = "Player";
                         player.Gold = int.Parse(child.Attributes.GetNamedItem("gold").Value);
                         DataManager.Instance.character_list.Add(player);
                     }
                     else
                     {
-
                         Item_Info item = new Item_Info();
                         
                         item.ID     = int.Parse(child.Attributes.GetNamedItem("id").Value);
@@ -81,14 +85,15 @@ public class SkillParse : MonoBehaviour
                         item.MIN    = float.Parse(child.Attributes.GetNamedItem("Min").Value);
                         item.MAX    = float.Parse(child.Attributes.GetNamedItem("Max").Value);
                         item.INFO   = (child.Attributes.GetNamedItem("info").Value).ToString();
-                        float rand  = UnityEngine.Random.Range(item.MIN, item.MAX);
-                        item.POWER  = rand;
+                        //float rand  = UnityEngine.Random.Range(item.MIN, item.MAX);
+                        //item.STATUS_RAND  = rand;
                         Debug.Log("id = " + item.ID + " name = " + item.NAME + " lv = " + item.LV + " min = " + item.MIN + " max = " + item.MAX + " info = " + item.INFO);
                         
                         // 다 만들어 졌다면 이제 매니저에 넣어줍시다.
                         ItemManager.Instance.AddItem(item);
                     }
                 }
+                Debug.Log("count =" + DataManager.Instance.character_list.Count);
             }
         }
     }

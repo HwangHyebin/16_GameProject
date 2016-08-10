@@ -67,7 +67,7 @@ public class Item_Info
     private int m_id;
     private string m_name;
     private int m_lv;
-    private float m_power;
+    private float m_status;
     private float m_min;
     private float m_max;
     private string m_info;
@@ -101,9 +101,9 @@ public class Item_Info
         set { m_info = value; }
         get { return m_info; }
     }
-    public float POWER
+    public float STATUS_RAND
     {
-        set { m_power = value; }
-        get { return m_power;  }
+        set { m_status = value; }
+        get { return m_status; }
     }
 }
