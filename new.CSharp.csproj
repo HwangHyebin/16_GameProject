@@ -256,7 +256,8 @@
     <Compile Include="Assets\Scripts\WorldScene\CharacterData\Parse\EnemyParse.cs" />
     <Compile Include="Assets\Scripts\WorldScene\CharacterData\Parse\SkillParse.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\Inventory_Button.cs" />
-    <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\ItemButton_Control.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\ItemUse.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\NotUse.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\PageControl.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\Select_LeaveItem.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Inventory.cs" />

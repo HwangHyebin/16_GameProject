@@ -8,15 +8,19 @@ public class ItemDrag : MonoBehaviour
     private Transform       startParent;
     private Transform       currentParent;
     private Set_PlayerInfo  srt_gear;
+    private Inventory       srt_inven;
 
-    private int             power_start;
-    private int             defence_start;
+    [HideInInspector]
+    public int              power_start;
+    [HideInInspector]
+    public int              defence_start;
     private int             plus_value;
     private int             result_value;
-    
+  
     private void Start()
     {
         srt_gear        = GameObject.FindObjectOfType<Set_PlayerInfo>();
+        srt_inven       = GameObject.FindObjectOfType<Inventory>();
         power_start     = (int)srt_gear.player.Power;
         defence_start   = (int)srt_gear.player.Defence;
     }
@@ -26,13 +30,13 @@ public class ItemDrag : MonoBehaviour
         {
             Touch touch = Input.GetTouch(i);
 
-            if (touch.phase == TouchPhase.Began )
+            if (touch.phase == TouchPhase.Began)
             {
                 startParent = transform.parent;
             }
-            else if (touch.phase == TouchPhase.Ended )
+            else if (touch.phase == TouchPhase.Ended)
             {
-                if (transform.parent.childCount == 2)
+                if (transform.parent.childCount == 2 || this.gameObject.tag != transform.parent.tag && transform.parent.tag != "slot")
                 {
                     transform.parent = startParent;
                 }
@@ -45,43 +49,30 @@ public class ItemDrag : MonoBehaviour
             }
         }
     }
-    //public CharacterInformation Get_Player()
-    //{
-    //    foreach (CharacterInformation node in DataManager.Instance.character_list)
-    //    {
-    //        if (node.Name == "Player")
-    //        {
-    //            srt_gear.player = node;
-    //        }
-    //    }
-    //    return srt_gear.player;
-    //}
     public void Set_Weapon(Transform _obj)
     {
         ItemScript child    = this.gameObject.GetComponent<ItemScript>();
         plus_value          = (int)child.GetInfo().STATUS_RAND;
-        //Get_Player();
+        srt_inven.effect.gameObject.SetActive(false);
 
-        if (_obj.name == "gear1")
+        if (_obj.tag == "Weapon")
         {
             result_value                = power_start + plus_value;
             srt_gear.player.Power       = result_value;
-
-            if (startParent.name == "gear2")
-                srt_gear.player.Defence = defence_start; 
         }
-        else if (_obj.name == "gear2")
+        else if (_obj.tag == "Armor")
         {
             result_value                = defence_start + plus_value;
             srt_gear.player.Defence     = result_value;
-
-            if (startParent.name == "gear1")
-                srt_gear.player.Power   = power_start;
+        }
+        else if (_obj.tag == "Serve")
+        {
+ 
         }
         else if (_obj.tag == "slot")
         {
             if (startParent.name == "gear1")
-                srt_gear.player.Power   = power_start;
+                srt_gear.player.Power = power_start;
 
             else if (startParent.name == "gear2")
                 srt_gear.player.Defence = defence_start;

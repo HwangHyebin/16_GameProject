@@ -78,15 +78,22 @@ public class SkillParse : MonoBehaviour
                     else
                     {
                         Item_Info item = new Item_Info();
-                        
-                        item.ID     = int.Parse(child.Attributes.GetNamedItem("id").Value);
-                        item.NAME   = child.Attributes.GetNamedItem("name").Value;
-                        item.LV     = int.Parse(child.Attributes.GetNamedItem("level").Value);
-                        item.MIN    = float.Parse(child.Attributes.GetNamedItem("Min").Value);
-                        item.MAX    = float.Parse(child.Attributes.GetNamedItem("Max").Value);
-                        item.INFO   = (child.Attributes.GetNamedItem("info").Value).ToString();
-                        //float rand  = UnityEngine.Random.Range(item.MIN, item.MAX);
-                        //item.STATUS_RAND  = rand;
+                        switch (child.Name)
+                        {
+                            case "Weapon":
+                                item.TAG = "Weapon";
+                                break;
+                            case "Armor":
+                                item.TAG = "Armor";
+                                break;
+                            case "serve":
+                                item.TAG = "Serve";
+                                break;
+                            case "Food" :
+                                item.TAG = "Food";
+                                break;
+                        }
+                        Set_ItemStatus(child, item);
                         Debug.Log("id = " + item.ID + " name = " + item.NAME + " lv = " + item.LV + " min = " + item.MIN + " max = " + item.MAX + " info = " + item.INFO);
                         
                         // 다 만들어 졌다면 이제 매니저에 넣어줍시다.
@@ -97,14 +104,24 @@ public class SkillParse : MonoBehaviour
             }
         }
     }
+    
     private void Set_Status(XmlNode _child, CharacterInformation _info)
     {
-        _info.Level         = int.Parse(_child.Attributes.GetNamedItem("level").Value);
-        _info.HP            = float.Parse(_child.Attributes.GetNamedItem("hp").Value);
-        _info.Power         = float.Parse(_child.Attributes.GetNamedItem("attack").Value);
-        _info.Defence       = float.Parse(_child.Attributes.GetNamedItem("defcens").Value);
-        _info.RemoveTime    = float.Parse(_child.Attributes.GetNamedItem("delete_time").Value);
-        _info.CoolTime      = float.Parse(_child.Attributes.GetNamedItem("waitingtime").Value);
+        _info.Level = int.Parse(_child.Attributes.GetNamedItem("level").Value);
+        _info.HP = int.Parse(_child.Attributes.GetNamedItem("hp").Value);
+        _info.Power = int.Parse(_child.Attributes.GetNamedItem("attack").Value);
+        _info.Defence = int.Parse(_child.Attributes.GetNamedItem("defcens").Value);
+        _info.RemoveTime = float.Parse(_child.Attributes.GetNamedItem("delete_time").Value);
+        _info.CoolTime = float.Parse(_child.Attributes.GetNamedItem("waitingtime").Value);
+    }
+    private void Set_ItemStatus(XmlNode _child, Item_Info _item)
+    {
+        _item.ID = int.Parse(_child.Attributes.GetNamedItem("id").Value);
+        _item.NAME = _child.Attributes.GetNamedItem("name").Value;
+        _item.LV = int.Parse(_child.Attributes.GetNamedItem("level").Value);
+        _item.MIN = float.Parse(_child.Attributes.GetNamedItem("Min").Value);
+        _item.MAX = float.Parse(_child.Attributes.GetNamedItem("Max").Value);
+        _item.INFO = (_child.Attributes.GetNamedItem("info").Value).ToString();
     }
     private string ByteToString(byte[] _byte)
     {

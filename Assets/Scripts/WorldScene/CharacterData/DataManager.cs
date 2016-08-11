@@ -23,13 +23,13 @@ public class DataManager
 }
 public class CharacterInformation
 {
-    private string m_name;
-    private int m_lv;
-    private float m_hp;
-    private float m_power;
-    private float m_defense;
-    private float m_removeTime;
-    private float m_coolTime;
+    private string  m_name;
+    private int     m_lv;
+    private int     m_hp;
+    private int     m_power;
+    private int     m_defense;
+    private float   m_removeTime;
+    private float   m_coolTime;
 
     private int m_gold;
 
@@ -43,17 +43,17 @@ public class CharacterInformation
         set { m_lv = value; }
         get { return m_lv; }
     }
-    public float HP
+    public int HP
     {
         set { m_hp = value; }
         get { return m_hp; }
     }
-    public float Power
+    public int Power
     {
         set { m_power = value; }
         get { return m_power; }
     }
-    public float Defence
+    public int Defence
     {
         set { m_defense = value; }
         get { return m_defense; }
