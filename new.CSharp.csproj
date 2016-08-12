@@ -255,6 +255,9 @@
     <Compile Include="Assets\Scripts\WorldScene\CharacterData\DataManager.cs" />
     <Compile Include="Assets\Scripts\WorldScene\CharacterData\Parse\EnemyParse.cs" />
     <Compile Include="Assets\Scripts\WorldScene\CharacterData\Parse\SkillParse.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\FriendshipSystem\CharacterDrag.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\FriendshipSystem\ChoiceButton.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\FriendshipSystem\Getout_Character.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\Inventory_Button.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\ItemUse.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\NotUse.cs" />

@@ -4,7 +4,6 @@ using UnityEngine.EventSystems;
 
 public class ItemDrag : MonoBehaviour
 {
-    private Vector3         startPosition;
     private Transform       startParent;
     private Transform       currentParent;
     private Set_PlayerInfo  srt_gear;

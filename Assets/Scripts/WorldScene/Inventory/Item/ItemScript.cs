@@ -29,7 +29,6 @@ public class ItemScript : MonoBehaviour
     {
         info_text.text = m_item.INFO;
         srt_inven.SelectItem(this.gameObject.GetComponent<ItemScript>());
-        Debug.Log("Onclick =" + m_item.TAG);
     }
 }
 

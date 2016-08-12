@@ -11,13 +11,15 @@ public class ItemUse : MonoBehaviour
     private Inventory       srt_inven;
     private Set_PlayerInfo  srt_player;
     private StatusView      srt_stateView;
+    
+    //public bool[] destroy_check;
 
     private void Start()
     {
-        srt_inven = GameObject.FindObjectOfType<Inventory>();
-        srt_player = GameObject.FindObjectOfType<Set_PlayerInfo>();
+        srt_inven   = GameObject.FindObjectOfType<Inventory>();
+        srt_player  = GameObject.FindObjectOfType<Set_PlayerInfo>();
+        //destroy_check = new bool[12];
     }
-    
     public void Use()
     {
         int result = 0;
@@ -41,7 +43,7 @@ public class ItemUse : MonoBehaviour
     {
         srt_inven.effect.transform.parent = srt_inven.transform;
         srt_inven.effect.gameObject.SetActive(false);
-        srt_inven.button.SetActive(false);
+        srt_inven.use_button.gameObject.SetActive(false);
         for (int i = 0; i < srt_inven.m_Items.Count; i++)
         {
             if (_itemScript == srt_inven.m_Items[i])
@@ -49,9 +51,16 @@ public class ItemUse : MonoBehaviour
                 --srt_inven.totalCount;
                 DestroyImmediate(srt_inven.m_Items[i].gameObject);
                 srt_inven.m_Items.RemoveAt(i);
+                if (i < 12)
+                {
+                    --srt_inven.page1_total;
+                }
+                else if (i >= 12)
+                {
+                    --srt_inven.page2_total;
+                }
                 break;
             }
         }
-    }
-   
+    }   
 }

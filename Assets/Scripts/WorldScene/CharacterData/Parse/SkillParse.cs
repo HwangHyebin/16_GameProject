@@ -94,43 +94,30 @@ public class SkillParse : MonoBehaviour
                                 break;
                         }
                         Set_ItemStatus(child, item);
-                        Debug.Log("id = " + item.ID + " name = " + item.NAME + " lv = " + item.LV + " min = " + item.MIN + " max = " + item.MAX + " info = " + item.INFO);
-                        
-                        // 다 만들어 졌다면 이제 매니저에 넣어줍시다.
+                        //Debug.Log("id = " + item.ID + " name = " + item.NAME + " lv = " + item.LV + " min = " + item.MIN + " max = " + item.MAX + " info = " + item.INFO);
                         ItemManager.Instance.AddItem(item);
                     }
                 }
-                Debug.Log("count =" + DataManager.Instance.character_list.Count);
             }
         }
     }
     
     private void Set_Status(XmlNode _child, CharacterInformation _info)
     {
-        _info.Level = int.Parse(_child.Attributes.GetNamedItem("level").Value);
-        _info.HP = int.Parse(_child.Attributes.GetNamedItem("hp").Value);
-        _info.Power = int.Parse(_child.Attributes.GetNamedItem("attack").Value);
-        _info.Defence = int.Parse(_child.Attributes.GetNamedItem("defcens").Value);
-        _info.RemoveTime = float.Parse(_child.Attributes.GetNamedItem("delete_time").Value);
-        _info.CoolTime = float.Parse(_child.Attributes.GetNamedItem("waitingtime").Value);
+        _info.Level         = int.Parse(_child.Attributes.GetNamedItem("level").Value);
+        _info.HP            = int.Parse(_child.Attributes.GetNamedItem("hp").Value);
+        _info.Power         = int.Parse(_child.Attributes.GetNamedItem("attack").Value);
+        _info.Defence       = int.Parse(_child.Attributes.GetNamedItem("defcens").Value);
+        _info.RemoveTime    = float.Parse(_child.Attributes.GetNamedItem("delete_time").Value);
+        _info.CoolTime      = float.Parse(_child.Attributes.GetNamedItem("waitingtime").Value);
     }
     private void Set_ItemStatus(XmlNode _child, Item_Info _item)
     {
-        _item.ID = int.Parse(_child.Attributes.GetNamedItem("id").Value);
-        _item.NAME = _child.Attributes.GetNamedItem("name").Value;
-        _item.LV = int.Parse(_child.Attributes.GetNamedItem("level").Value);
-        _item.MIN = float.Parse(_child.Attributes.GetNamedItem("Min").Value);
-        _item.MAX = float.Parse(_child.Attributes.GetNamedItem("Max").Value);
-        _item.INFO = (_child.Attributes.GetNamedItem("info").Value).ToString();
-    }
-    private string ByteToString(byte[] _byte)
-    {
-        string str = System.Text.Encoding.Default.GetString(_byte);
-        return str;
-    }
-    private byte[] StringToByte(string _string)
-    {
-        byte[] _byte = System.Text.Encoding.UTF8.GetBytes(_string);
-        return _byte;
+        _item.ID            = int.Parse(_child.Attributes.GetNamedItem("id").Value);
+        _item.NAME          = _child.Attributes.GetNamedItem("name").Value;
+        _item.LV            = int.Parse(_child.Attributes.GetNamedItem("level").Value);
+        _item.MIN           = float.Parse(_child.Attributes.GetNamedItem("Min").Value);
+        _item.MAX           = float.Parse(_child.Attributes.GetNamedItem("Max").Value);
+        _item.INFO          = (_child.Attributes.GetNamedItem("info").Value).ToString();
     }
 }

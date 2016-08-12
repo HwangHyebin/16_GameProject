@@ -41,6 +41,14 @@ public class Select_LeaveItem : MonoBehaviour
                 --srt_inven.totalCount;
                 DestroyImmediate(srt_inven.m_Items[i].gameObject);
                 srt_inven.m_Items.RemoveAt(i);
+                if (i < 12)
+                {
+                    --srt_inven.page1_total;
+                }
+                else if (i >= 12)
+                {
+                    --srt_inven.page2_total;
+                }
                 break;
             }
         }
