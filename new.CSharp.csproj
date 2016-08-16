@@ -251,17 +251,20 @@
     <Compile Include="Assets\Scripts\ActionScene\UI\JoystickControl.cs" />
     <Compile Include="Assets\Scripts\ActionScene\UI\SkillButton.cs" />
     <Compile Include="Assets\Scripts\ActionScene\UI\SummonsLife.cs" />
+    <Compile Include="Assets\Scripts\LoadingScene\Data.cs" />
+    <Compile Include="Assets\Scripts\LoadingScene\LoadSprite.cs" />
+    <Compile Include="Assets\Scripts\LoadingScene\Parse\EnemyParse.cs" />
+    <Compile Include="Assets\Scripts\LoadingScene\Parse\SkillParse.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Camera\ZoomEffect.cs" />
     <Compile Include="Assets\Scripts\WorldScene\CharacterData\DataManager.cs" />
-    <Compile Include="Assets\Scripts\WorldScene\CharacterData\Parse\EnemyParse.cs" />
-    <Compile Include="Assets\Scripts\WorldScene\CharacterData\Parse\SkillParse.cs" />
     <Compile Include="Assets\Scripts\WorldScene\FriendshipSystem\CharacterDrag.cs" />
     <Compile Include="Assets\Scripts\WorldScene\FriendshipSystem\ChoiceButton.cs" />
     <Compile Include="Assets\Scripts\WorldScene\FriendshipSystem\Getout_Character.cs" />
-    <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\Inventory_Button.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\FriendshipSystem\SetFriend.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\ItemUse.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\NotUse.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\PageControl.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\Press_Button.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\Select_LeaveItem.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Item\ItemDrag.cs" />
@@ -269,7 +272,11 @@
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Item\ItemScript.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Set_PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\StatusView.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\SetData.cs" />
     <Compile Include="Assets\Test\itween_target.cs" />
+    <Compile Include="Assets\click.cs" />
+    <Compile Include="Assets\test.cs" />
+    <Compile Include="Assets\worldtest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\CactusPack\Shaders\Basic_Rimlight.shader" />

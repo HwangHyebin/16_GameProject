@@ -10,8 +10,11 @@ public class ZoomEffect : MonoBehaviour
     private int         max = 60;
     private int         smooth = 5;
 
+    private Inventory srt_inven;
+
 	private void Start () 
-    { 
+    {
+        srt_inven = GameObject.FindObjectOfType<Inventory>();
 	}
 
 	private void Update () 
@@ -23,6 +26,8 @@ public class ZoomEffect : MonoBehaviour
 	}
     public void Toggle_Button()
     {
+        //인벤토리에 있는 아이템을 전부 저장.
+        Application.LoadLevel(2);// test
         if (check == true)
         {
             check = false;

@@ -12,23 +12,21 @@ public class Inventory : MonoBehaviour
     public GameObject           m_itemObj;                                  // 이걸 이용해서 아이템 만들 예정.
     [HideInInspector]
     public ItemScript           m_currentItem   = null;
+    public int                  totalCount;                        // 아이템 총 합계
+    public GameObject[] slot_array1;
+    public GameObject[] slot_array2;
     [HideInInspector]
-    public List<ItemScript>     m_Items         = new List<ItemScript>();   // 실질적인 아이템 저장
-    public int                  totalCount      = 0;                        // 아이템 총 합계
-
-    private static int          count           = 0;
-    public GameObject[]         slot_array1;
-    public GameObject[]         slot_array2;
-
-     [HideInInspector]
-    public int                  page1_total     = 0;
-     [HideInInspector]
-    public int                  page2_total     = 0;
-   
+    public int                  page1_total;
+    [HideInInspector]
+    public int                  page2_total;
+    private StatusView          srt_status;
     private void Start()
     {
         effect.gameObject.SetActive(false);
         use_button.gameObject.SetActive(false);
+        srt_status = GameObject.FindObjectOfType<StatusView>();
+        Debug.Log(Data.m_Items.Count);
+        //인벤토리에 아이템이 있다면 넣어주기.
     }
 	private void Update () 
     {
@@ -41,23 +39,29 @@ public class Inventory : MonoBehaviour
     private void AddItem()
     {
         int nRandom = Random.Range(1, ItemManager.Instance.GetItemsCount() + 1 ); //랜덤으로 아이템 생성되게 함
+        
+        //만약 리스트가 차있는 상태라면 리스트의 갯수대로 다시 생성해줌.
         for (int i = 0; i < 12; ++i)
         {
-            if (slot_array1[i].transform.childCount == 0 && page1_total < 12) 
+            //if (Data.slot_array1[i] == null)
+            //{
+            //    string ObjectName = string.Format("Slot ({0:0})", (i + 1));
+            //    Data.slot_array1[i] = GameObject.Find(ObjectName);
+            //}
+            if (slot_array1[i].transform.childCount == 0 && page1_total < 12)
             {
-                ++totalCount;
                 ++page1_total;
                 SetItem(m_grid, nRandom, i);
                 break;
             }
             else if (slot_array2[i].transform.childCount == 0 && page1_total >= 12)
             {
-                ++totalCount;
                 ++page2_total;
                 SetItem(m_grid2, nRandom, i);
                 break;
             }
         }
+        totalCount = page1_total + page2_total;
         Debug.Log(totalCount);
     }
     private void SetItem(UIGrid _grid, int _num, int slot_number) //리스트의 랜덤번째 있는걸 그리드에 생성하고 있음.
@@ -67,13 +71,13 @@ public class Inventory : MonoBehaviour
         
         ItemScript itemScript = itemObj.GetComponent<ItemScript>();
         
-        itemScript.SetInfo(ItemManager.Instance.GetItem(14)); // _num
+        itemScript.SetInfo(ItemManager.Instance.GetItem(_num)); // _num
         float rand = UnityEngine.Random.Range(itemScript.GetInfo().MIN, itemScript.GetInfo().MAX);
         itemScript.GetInfo().STATUS_RAND = rand;
         itemScript.gameObject.tag = itemScript.GetInfo().TAG;
         
-        _grid.Reposition();                                                                             //그리드 재정렬                                                         
-        m_Items.Add(itemScript);
+        _grid.Reposition();          //그리드 재정렬
+        Data.m_Items.Add(itemScript);                                  
     }
     public void SelectItem(ItemScript itemScript)
     {
@@ -86,7 +90,7 @@ public class Inventory : MonoBehaviour
         {
             use_button.gameObject.SetActive(true);
             ItemUse srt_itemUse = GameObject.FindObjectOfType<ItemUse>();
-            if (srt_itemUse.current_hp < srt_itemUse.start_hp)
+            if (srt_status.GetCurrentHP < srt_status.GetStartHP())
             {
                 use_button.spriteName = "button_use";
             }

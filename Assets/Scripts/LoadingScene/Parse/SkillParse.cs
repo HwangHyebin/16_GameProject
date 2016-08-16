@@ -51,21 +51,21 @@ public class SkillParse : MonoBehaviour
                         CharacterInformation magician   = new CharacterInformation();
                         Set_Status(child,magician);
                         magician.Name = "Magician";
-                        DataManager.Instance.character_list.Add(magician);
+                        Data.characters.Add(magician);
                     }
                     else if (child.Name == "Pracy")
                     {
                         CharacterInformation pracy      = new CharacterInformation();
                         Set_Status(child, pracy);
                         pracy.Name = "Pracy";
-                        DataManager.Instance.character_list.Add(pracy);
+                        Data.characters.Add(pracy);
                     }
                     else if (child.Name == "Archer")
                     {
                         CharacterInformation archer     = new CharacterInformation();
                         Set_Status(child, archer);
                         archer.Name = "Archer";
-                        DataManager.Instance.character_list.Add(archer);
+                        Data.characters.Add(archer);
                     }
                     else if (child.Name == "Player")
                     {
@@ -73,7 +73,8 @@ public class SkillParse : MonoBehaviour
                         Set_Status(child, player);
                         player.Name = "Player";
                         player.Gold = int.Parse(child.Attributes.GetNamedItem("gold").Value);
-                        DataManager.Instance.character_list.Add(player);
+                        player.StartHP = int.Parse(child.Attributes.GetNamedItem("hp").Value);
+                        Data.characters.Add(player);
                     }
                     else
                     {
@@ -89,13 +90,20 @@ public class SkillParse : MonoBehaviour
                             case "serve":
                                 item.TAG = "Serve";
                                 break;
-                            case "Food" :
+                            case "Food":
                                 item.TAG = "Food";
                                 break;
                         }
                         Set_ItemStatus(child, item);
-                        //Debug.Log("id = " + item.ID + " name = " + item.NAME + " lv = " + item.LV + " min = " + item.MIN + " max = " + item.MAX + " info = " + item.INFO);
-                        ItemManager.Instance.AddItem(item);
+                        {
+                            if (Data.m_dicData.ContainsKey(item.ID))
+                            {
+                                return;
+                            }
+                            Data.m_dicData.Add(item.ID, item);
+                        }
+                        Data.parseCount = 1;
+                        Debug.Log("parse");
                     }
                 }
             }

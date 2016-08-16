@@ -8,6 +8,7 @@ public class ItemDrag : MonoBehaviour
     private Transform       currentParent;
     private Set_PlayerInfo  srt_gear;
     private Inventory       srt_inven;
+    private SetData srt_data;
 
     [HideInInspector]
     public int              power_start;
@@ -15,13 +16,15 @@ public class ItemDrag : MonoBehaviour
     public int              defence_start;
     private int             plus_value;
     private int             result_value;
+
   
     private void Start()
     {
+        srt_data        = GameObject.FindObjectOfType<SetData>();
         srt_gear        = GameObject.FindObjectOfType<Set_PlayerInfo>();
         srt_inven       = GameObject.FindObjectOfType<Inventory>();
-        power_start     = (int)srt_gear.player.Power;
-        defence_start   = (int)srt_gear.player.Defence;
+        power_start     = (int)srt_data.player.Power;
+        defence_start   = (int)srt_data.player.Defence;
     }
     private void Update()
     {
@@ -57,12 +60,12 @@ public class ItemDrag : MonoBehaviour
         if (_obj.tag == "Weapon")
         {
             result_value                = power_start + plus_value;
-            srt_gear.player.Power       = result_value;
+            srt_data.player.Power = result_value;
         }
         else if (_obj.tag == "Armor")
         {
             result_value                = defence_start + plus_value;
-            srt_gear.player.Defence     = result_value;
+            srt_data.player.Defence = result_value;
         }
         else if (_obj.tag == "Serve")
         {
@@ -71,10 +74,10 @@ public class ItemDrag : MonoBehaviour
         else if (_obj.tag == "slot")
         {
             if (startParent.name == "gear1")
-                srt_gear.player.Power = power_start;
+                srt_data.player.Power = power_start;
 
             else if (startParent.name == "gear2")
-                srt_gear.player.Defence = defence_start;
+                srt_data.player.Defence = defence_start;
         }
     }
 }

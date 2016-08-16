@@ -3,9 +3,6 @@ using System.Collections;
 
 public class ItemScript : MonoBehaviour 
 {
-    //아이템 빛나는 효과 여기서 조절해주기.
-
-
     public  UISprite    img;
     public  UILabel     info_text;
 

@@ -26,21 +26,21 @@ public class Select_LeaveItem : MonoBehaviour
     {
         srt_inven.effect.transform.parent = srt_inven.transform;
         srt_inven.effect.gameObject.SetActive(false);
-        if(_itemScript.transform.parent.tag == "Weapon")
+        //if(_itemScript.transform.parent.tag == "Weapon")
+        //{
+        //    srt_player.Get_Player().Power = srt_item.power_start;
+        //}
+        //else if (_itemScript.transform.parent.tag == "Armor")
+        //{
+        //    srt_player.Get_Player().Defence = srt_item.defence_start;
+        //}
+        for (int i = 0; i < Data.m_Items.Count; i++)
         {
-            srt_player.Get_Player().Power = srt_item.power_start;
-        }
-        else if (_itemScript.transform.parent.tag == "Armor")
-        {
-            srt_player.Get_Player().Defence = srt_item.defence_start;
-        }
-        for (int i = 0; i < srt_inven.m_Items.Count; i++)
-        {
-            if (_itemScript == srt_inven.m_Items[i])
+            if (_itemScript == Data.m_Items[i])
             {
                 --srt_inven.totalCount;
-                DestroyImmediate(srt_inven.m_Items[i].gameObject);
-                srt_inven.m_Items.RemoveAt(i);
+                DestroyImmediate(Data.m_Items[i].gameObject);
+                Data.m_Items.RemoveAt(i);
                 if (i < 12)
                 {
                     --srt_inven.page1_total;
