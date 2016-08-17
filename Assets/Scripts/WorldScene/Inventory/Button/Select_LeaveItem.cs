@@ -3,13 +3,14 @@ using System.Collections;
 
 public class Select_LeaveItem : MonoBehaviour 
 {
-    private Inventory       srt_inven;
+
     private Set_PlayerInfo  srt_player;
     private ItemDrag        srt_item;
+    private Inventory srt_inven;
 
     private void Start()
     {
-        srt_inven   = GameObject.FindObjectOfType<Inventory>();
+        srt_inven = GameObject.FindObjectOfType<Inventory>();
         srt_player  = GameObject.FindObjectOfType<Set_PlayerInfo>();
         srt_item    = GameObject.FindObjectOfType<ItemDrag>();
     }
@@ -38,7 +39,6 @@ public class Select_LeaveItem : MonoBehaviour
         {
             if (_itemScript == Data.m_Items[i])
             {
-                --srt_inven.totalCount;
                 DestroyImmediate(Data.m_Items[i].gameObject);
                 Data.m_Items.RemoveAt(i);
                 if (i < 12)

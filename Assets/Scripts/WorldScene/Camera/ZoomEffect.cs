@@ -10,19 +10,13 @@ public class ZoomEffect : MonoBehaviour
     private int         max = 60;
     private int         smooth = 5;
 
-    private Inventory srt_inven;
-
-	private void Start () 
-    {
-        srt_inven = GameObject.FindObjectOfType<Inventory>();
-	}
 
 	private void Update () 
     {
-        if (check == true)
-            target.fieldOfView = Mathf.Lerp(target.fieldOfView, min, Time.deltaTime * smooth);
-        else
-            target.fieldOfView = Mathf.Lerp(target.fieldOfView, max, Time.deltaTime * smooth);
+        //if (check == true)
+        //    target.fieldOfView = Mathf.Lerp(target.fieldOfView, min, Time.deltaTime * smooth);
+        //else
+        //    target.fieldOfView = Mathf.Lerp(target.fieldOfView, max, Time.deltaTime * smooth);
 	}
     public void Toggle_Button()
     {

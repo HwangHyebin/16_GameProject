@@ -8,17 +8,18 @@ public class ItemUse : MonoBehaviour
     //[HideInInspector]
     //public  int             current_hp;
 
-    private Inventory       srt_inven;
     //private StatusView srt_status;
     //private Set_PlayerInfo  srt_player;
     private StatusView      srt_stateView;
+    private Inventory srt_inven;
     
     //public bool[] destroy_check;
 
     private void Start()
     {
-        srt_inven   = GameObject.FindObjectOfType<Inventory>();
+  
         srt_stateView = GameObject.FindObjectOfType<StatusView>();
+        srt_inven = GameObject.FindObjectOfType<Inventory>();
         //srt_player  = GameObject.FindObjectOfType<Set_PlayerInfo>();
         
         //destroy_check = new bool[12];
@@ -51,7 +52,6 @@ public class ItemUse : MonoBehaviour
         {
             if (_itemScript == Data.m_Items[i])
             {
-                --srt_inven.totalCount;
                 DestroyImmediate(Data.m_Items[i].gameObject);
                 Data.m_Items.RemoveAt(i);
                 if (i < 12)

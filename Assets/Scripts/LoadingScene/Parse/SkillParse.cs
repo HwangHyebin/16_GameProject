@@ -51,6 +51,8 @@ public class SkillParse : MonoBehaviour
                         CharacterInformation magician   = new CharacterInformation();
                         Set_Status(child,magician);
                         magician.Name = "Magician";
+                        magician.TAG = "Summons";
+                        magician.Info = "마법사";
                         Data.characters.Add(magician);
                     }
                     else if (child.Name == "Pracy")
@@ -58,6 +60,8 @@ public class SkillParse : MonoBehaviour
                         CharacterInformation pracy      = new CharacterInformation();
                         Set_Status(child, pracy);
                         pracy.Name = "Pracy";
+                        pracy.TAG = "Summons";
+                        pracy.Info = "해적";
                         Data.characters.Add(pracy);
                     }
                     else if (child.Name == "Archer")
@@ -65,6 +69,8 @@ public class SkillParse : MonoBehaviour
                         CharacterInformation archer     = new CharacterInformation();
                         Set_Status(child, archer);
                         archer.Name = "Archer";
+                        archer.TAG = "Summons";
+                        archer.Info = "궁수";
                         Data.characters.Add(archer);
                     }
                     else if (child.Name == "Player")

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class test : MonoBehaviour 
+public class LoadSprite : MonoBehaviour 
 {
     public  UISprite    load;
     private int         startTime = 0;

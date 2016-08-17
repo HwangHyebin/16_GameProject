@@ -13,20 +13,19 @@ public class Inventory : MonoBehaviour
     [HideInInspector]
     public ItemScript           m_currentItem   = null;
     public int                  totalCount;                        // 아이템 총 합계
-    public GameObject[] slot_array1;
-    public GameObject[] slot_array2;
+    public GameObject[]         slot_array1;
+    public GameObject[]         slot_array2;
     [HideInInspector]
     public int                  page1_total;
     [HideInInspector]
     public int                  page2_total;
     private StatusView          srt_status;
+
     private void Start()
     {
         effect.gameObject.SetActive(false);
         use_button.gameObject.SetActive(false);
         srt_status = GameObject.FindObjectOfType<StatusView>();
-        Debug.Log(Data.m_Items.Count);
-        //인벤토리에 아이템이 있다면 넣어주기.
     }
 	private void Update () 
     {
@@ -39,15 +38,9 @@ public class Inventory : MonoBehaviour
     private void AddItem()
     {
         int nRandom = Random.Range(1, ItemManager.Instance.GetItemsCount() + 1 ); //랜덤으로 아이템 생성되게 함
-        
-        //만약 리스트가 차있는 상태라면 리스트의 갯수대로 다시 생성해줌.
+
         for (int i = 0; i < 12; ++i)
         {
-            //if (Data.slot_array1[i] == null)
-            //{
-            //    string ObjectName = string.Format("Slot ({0:0})", (i + 1));
-            //    Data.slot_array1[i] = GameObject.Find(ObjectName);
-            //}
             if (slot_array1[i].transform.childCount == 0 && page1_total < 12)
             {
                 ++page1_total;
@@ -71,13 +64,14 @@ public class Inventory : MonoBehaviour
         
         ItemScript itemScript = itemObj.GetComponent<ItemScript>();
         
-        itemScript.SetInfo(ItemManager.Instance.GetItem(_num)); // _num
+        itemScript.SetInfo(ItemManager.Instance.GetItem(_num));
+       
         float rand = UnityEngine.Random.Range(itemScript.GetInfo().MIN, itemScript.GetInfo().MAX);
         itemScript.GetInfo().STATUS_RAND = rand;
         itemScript.gameObject.tag = itemScript.GetInfo().TAG;
         
         _grid.Reposition();          //그리드 재정렬
-        Data.m_Items.Add(itemScript);                                  
+        Data.m_Items.Add(itemScript);   
     }
     public void SelectItem(ItemScript itemScript)
     {

@@ -11,7 +11,7 @@ public class StatusView : MonoBehaviour
 
     private Set_PlayerInfo  srt_player;
     private ItemUse         srt_useButton;
-    private SetData srt_data;
+    private SetData         srt_data;
     private int             startTime = 0;
 
     private int m_gold;
@@ -52,7 +52,7 @@ public class StatusView : MonoBehaviour
     {
         power.text      = srt_data.player.Power.ToString();
         defence.text    = srt_data.player.Defence.ToString();
-        hp.text         = currentHP.ToString();
+        hp.text         = srt_data.player.HP.ToString();
         gold.text       = m_gold.ToString();
     }
 }

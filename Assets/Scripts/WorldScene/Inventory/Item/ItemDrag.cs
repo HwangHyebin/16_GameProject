@@ -7,7 +7,6 @@ public class ItemDrag : MonoBehaviour
     private Transform       startParent;
     private Transform       currentParent;
     private Set_PlayerInfo  srt_gear;
-    private Inventory       srt_inven;
     private SetData srt_data;
 
     [HideInInspector]
@@ -16,6 +15,8 @@ public class ItemDrag : MonoBehaviour
     public int              defence_start;
     private int             plus_value;
     private int             result_value;
+
+    private Inventory srt_inven;
 
   
     private void Start()

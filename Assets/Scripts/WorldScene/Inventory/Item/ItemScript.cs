@@ -7,9 +7,9 @@ public class ItemScript : MonoBehaviour
     public  UILabel     info_text;
 
     private Item_Info   m_item;
-    private Inventory srt_inven;
+    private Inventory   srt_inven;
 
-    void Start()
+    private void Start()
     {
         srt_inven = GameObject.FindObjectOfType<Inventory>();
     }

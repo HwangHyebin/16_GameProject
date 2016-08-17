@@ -7,7 +7,7 @@ public static class Data
     public static List<CharacterInformation> characters = new List<CharacterInformation>();
     public static Dictionary<int, Item_Info> m_dicData = new Dictionary<int, Item_Info>();
     public static List<ItemScript> m_Items = new List<ItemScript>();   // 실질적인 아이템 저장
-    public static GameObject[] slot_item = new GameObject[24];
+    public static List<GameObject> m_ItemsObj = new List<GameObject>();
     //public static GameObject[] slot_array1 = new GameObject[12];
     //public static GameObject[] slot_array2 = new GameObject[12];
     public static int parseCount;
@@ -21,9 +21,11 @@ public class CharacterInformation
     private int     m_defense;
     private float   m_removeTime;
     private float   m_coolTime;
+    private string  m_info;
 
     private int     m_gold;
     private int     m_startHP;
+    private string  m_tag;
 
     public string Name
     {
@@ -69,6 +71,16 @@ public class CharacterInformation
     {
         set { m_gold = value; }
         get { return m_gold; }
+    }
+    public string TAG
+    {
+        set { m_tag = value; }
+        get { return m_tag;  }
+    }
+    public string Info
+    {
+        set { m_info = value; }
+        get { return m_info;  }
     }
 }
 public class Item_Info
