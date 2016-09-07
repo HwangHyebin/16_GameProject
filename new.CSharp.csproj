@@ -255,6 +255,8 @@
     <Compile Include="Assets\Scripts\LoadingScene\LoadSprite.cs" />
     <Compile Include="Assets\Scripts\LoadingScene\Parse\EnemyParse.cs" />
     <Compile Include="Assets\Scripts\LoadingScene\Parse\SkillParse.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\Camera\CameraControl.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\Camera\SelectStage.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Camera\ZoomEffect.cs" />
     <Compile Include="Assets\Scripts\WorldScene\CharacterData\DataManager.cs" />
     <Compile Include="Assets\Scripts\WorldScene\CharacterData\DontDestroy.cs" />
@@ -263,6 +265,7 @@
     <Compile Include="Assets\Scripts\WorldScene\FriendshipSystem\ChoiceButton.cs" />
     <Compile Include="Assets\Scripts\WorldScene\FriendshipSystem\Getout_Character.cs" />
     <Compile Include="Assets\Scripts\WorldScene\FriendshipSystem\SetFriend.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\Input\TouchManager.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\ItemUse.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\NotUse.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Inventory\Button\PageControl.cs" />

@@ -4,10 +4,8 @@ using System.Collections;
 public class Press_Button : MonoBehaviour 
 {
     public  GameObject  window;
-    private void Start()
-    {
-        //window.SetActive(false);
-    }
+    public  bool        open = false;
+
     public void X()
     {
         if (window.name == "Inventory")
@@ -15,9 +13,11 @@ public class Press_Button : MonoBehaviour
             window.GetComponent<Inventory>().effect.gameObject.SetActive(false);
         }
         window.SetActive(false);
+        open = false;
     }
     public void Open()
     {
         window.SetActive(true);
+        open = true;
     }
 }

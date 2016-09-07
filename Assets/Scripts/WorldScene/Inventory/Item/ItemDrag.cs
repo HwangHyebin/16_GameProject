@@ -4,51 +4,46 @@ using UnityEngine.EventSystems;
 
 public class ItemDrag : MonoBehaviour
 {
-    private Transform       startParent;
-    private Transform       currentParent;
-    private Set_PlayerInfo  srt_gear;
-    private SetData srt_data;
-
     [HideInInspector]
     public int              power_start;
     [HideInInspector]
     public int              defence_start;
+
+    private Set_PlayerInfo  srt_gear;
+    private SetData         srt_data;
+    private Inventory       srt_inven;
+    private TouchManager    srt_touchManager;
+    private Transform       startParent;
+    private Transform       currentParent;
     private int             plus_value;
     private int             result_value;
 
-    private Inventory srt_inven;
-
-  
     private void Start()
     {
-        srt_data        = GameObject.FindObjectOfType<SetData>();
-        srt_gear        = GameObject.FindObjectOfType<Set_PlayerInfo>();
-        srt_inven       = GameObject.FindObjectOfType<Inventory>();
-        power_start     = (int)srt_data.player.Power;
-        defence_start   = (int)srt_data.player.Defence;
+        srt_data            = GameObject.FindObjectOfType<SetData>();
+        srt_gear            = GameObject.FindObjectOfType<Set_PlayerInfo>();
+        srt_inven           = GameObject.FindObjectOfType<Inventory>();
+        srt_touchManager    = GameObject.FindObjectOfType<TouchManager>();
+        power_start         = (int)srt_data.player.Power;
+        defence_start       = (int)srt_data.player.Defence;
     }
     private void Update()
     {
-        for (int i = 0; i < Input.touchCount; i++)
+        if (srt_touchManager.CurrentTouch.phase == TouchPhase.Began)
         {
-            Touch touch = Input.GetTouch(i);
-
-            if (touch.phase == TouchPhase.Began)
+            startParent = transform.parent;
+        }
+        else if (srt_touchManager.CurrentTouch.phase == TouchPhase.Ended)
+        {
+            if (transform.parent.childCount == 2 || this.gameObject.tag != transform.parent.tag && transform.parent.tag != "slot")
             {
-                startParent = transform.parent;
+                transform.parent = startParent;
             }
-            else if (touch.phase == TouchPhase.Ended)
+            transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y, transform.parent.position.z);
+            currentParent = transform.parent;
+            if (startParent != currentParent && startParent != null)
             {
-                if (transform.parent.childCount == 2 || this.gameObject.tag != transform.parent.tag && transform.parent.tag != "slot")
-                {
-                    transform.parent = startParent;
-                }
-                transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y, transform.parent.position.z);
-                currentParent = transform.parent;
-                if (startParent != currentParent)
-                {
-                    Set_Weapon(currentParent);
-                }
+                Set_Weapon(currentParent);
             }
         }
     }
