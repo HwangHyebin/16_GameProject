@@ -4,20 +4,28 @@ using System.Collections;
 public class Press_Button : MonoBehaviour 
 {
     public  GameObject  window;
-    public  bool        open = false;
+    private CameraControl srt_camera;
 
+    private void Start()
+    {
+        srt_camera = GameObject.FindObjectOfType<CameraControl>();
+    }
     public void X()
     {
+        srt_camera.open = false;
         if (window.name == "Inventory")
         {
             window.GetComponent<Inventory>().effect.gameObject.SetActive(false);
         }
         window.SetActive(false);
-        open = false;
     }
     public void Open()
     {
+        srt_camera.open = true;
         window.SetActive(true);
-        open = true;
+    }
+    public bool Result()
+    {
+        return srt_camera.open;
     }
 }

@@ -15,34 +15,33 @@ public class StatusView : MonoBehaviour
     private int             startTime = 0;
 
     private int m_gold;
-    private int startHP;
-    private int currentHP;
+    //private int startHP;
 
-    public int GetStartHP()
+    public int GetStartHP
     {
-        return startHP;
+        get { return srt_data.player.StartHP; }
     }
     public int GetCurrentHP
     {
-        set{currentHP = value;}
-        get { return currentHP; }
+        set { srt_data.player.HP = value; }
+        get { return srt_data.player.HP; }
     }
     private void Start()
     {
         srt_data = GameObject.FindObjectOfType<SetData>();
-    }
-    private void Update()
-    {
         if (startTime == 0)
         {
-            if (srt_data.player.HP > 0 )
+            if (srt_data.player.HP > 0)
             {
-                startHP = srt_data.player.StartHP;
-                currentHP = srt_data.player.HP;
+                //startHP = srt_data.player.StartHP;
+                //currentHP = srt_data.player.HP;
                 m_gold = srt_data.player.Gold;
                 startTime = 1;
             }
         }
+    }
+    private void Update()
+    {
         if (inven.activeInHierarchy == true)
         {
             ShowInfo();

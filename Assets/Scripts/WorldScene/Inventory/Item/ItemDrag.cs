@@ -29,23 +29,31 @@ public class ItemDrag : MonoBehaviour
     }
     private void Update()
     {
-        if (srt_touchManager.CurrentTouch.phase == TouchPhase.Began)
+        //왜 touch manager를 통해 하면 돌아왔을때 드래그가 안되는지???
+        if (Input.touchCount > 0)
         {
-            startParent = transform.parent;
-        }
-        else if (srt_touchManager.CurrentTouch.phase == TouchPhase.Ended)
-        {
-            if (transform.parent.childCount == 2 || this.gameObject.tag != transform.parent.tag && transform.parent.tag != "slot")
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)//(srt_touchManager.CurrentTouch.phase == TouchPhase.Began)
             {
-                transform.parent = startParent;
+                startParent = transform.parent;
             }
-            transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y, transform.parent.position.z);
-            currentParent = transform.parent;
-            if (startParent != currentParent && startParent != null)
+            else if (touch.phase == TouchPhase.Ended)//(srt_touchManager.CurrentTouch.phase == TouchPhase.Ended)
             {
-                Set_Weapon(currentParent);
+
+                if (transform.parent.childCount == 2 || this.gameObject.tag != transform.parent.tag && transform.parent.tag != "slot")
+                {
+                    transform.parent = startParent;
+                }
+                transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y, transform.parent.position.z);
+                currentParent = transform.parent;
+                if (startParent != currentParent && startParent != null)
+                {
+                    Set_Weapon(currentParent);
+                }
             }
+        
         }
+        
     }
     public void Set_Weapon(Transform _obj)
     {

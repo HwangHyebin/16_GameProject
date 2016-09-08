@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ZoomEffect : MonoBehaviour 
 {
-    public  Camera      target;
+    private  Camera      target;
     public  UISprite    img;
     private bool        check = false;
     private int         min = 15;
@@ -12,7 +12,11 @@ public class ZoomEffect : MonoBehaviour
 
 	private void Update () 
     {
-        if (target != null)
+        if (target == null && Application.loadedLevelName == "stage")
+        {
+            target = GameObject.Find("Main Camera").GetComponent<Camera>();
+        }
+        else if (target != null)
         {
             if (check == true)
                 target.fieldOfView = Mathf.Lerp(target.fieldOfView, min, Time.deltaTime * smooth);

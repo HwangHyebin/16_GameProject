@@ -20,12 +20,17 @@ public class Inventory : MonoBehaviour
     [HideInInspector]
     public int                  page2_total;
     private StatusView          srt_status;
+    private TouchManager        srt_touchManager;
+    private CameraControl       srt_camera;
 
     private void Start()
     {
         effect.gameObject.SetActive(false);
         use_button.gameObject.SetActive(false);
         srt_status = GameObject.FindObjectOfType<StatusView>();
+        srt_touchManager = GameObject.FindObjectOfType<TouchManager>();
+        srt_camera = GameObject.FindObjectOfType<CameraControl>();
+        //effect = GameObject.Find("effect").GetComponent<UISprite>();
     }
 	private void Update () 
     {
@@ -63,7 +68,7 @@ public class Inventory : MonoBehaviour
         itemObj.SetActive(true);                                                                         //sampleItem으로 만들어진 오브젝트인데 sampleItem가 꺼져있는걸로 셋팅 되어있음.
         
         ItemScript itemScript = itemObj.GetComponent<ItemScript>();
-        
+
         itemScript.SetInfo(ItemManager.Instance.GetItem(_num));
        
         float rand = UnityEngine.Random.Range(itemScript.GetInfo().MIN, itemScript.GetInfo().MAX);
@@ -76,7 +81,18 @@ public class Inventory : MonoBehaviour
     public void SelectItem(ItemScript itemScript)
     {
         m_currentItem = itemScript;
-        effect.gameObject.transform.parent = itemScript.gameObject.transform;
+        Debug.Log(m_currentItem.gameObject.transform.parent.name);
+
+        Vector2 pos = srt_touchManager.CurrentTouch.position;
+        Vector3 touchPos = new Vector3(pos.x, pos.y, 0.0f);
+        Ray ray = srt_camera.CurrentCamera.ScreenPointToRay(touchPos);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        {
+            effect.gameObject.transform.parent = hit.collider.gameObject.transform;//m_currentItem.gameObject.transform;
+        }
+        
         effect.depth = itemScript.gameObject.GetComponent<UIPanel>().depth - 1;
         effect.transform.position = new Vector3(effect.transform.parent.position.x, effect.transform.parent.position.y, effect.transform.parent.position.z);
         effect.gameObject.SetActive(true);
@@ -84,7 +100,7 @@ public class Inventory : MonoBehaviour
         {
             use_button.gameObject.SetActive(true);
             ItemUse srt_itemUse = GameObject.FindObjectOfType<ItemUse>();
-            if (srt_status.GetCurrentHP < srt_status.GetStartHP())
+            if (srt_status.GetCurrentHP < srt_status.GetStartHP)
             {
                 use_button.spriteName = "button_use";
             }

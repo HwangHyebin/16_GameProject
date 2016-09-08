@@ -7,6 +7,7 @@ public class TouchManager : MonoBehaviour
     private float   touchDelay;
     private bool    doubleTouch = false;
     private bool    singleTouch = false;
+    private bool drag = false;
 
     public Touch CurrentTouch
     {
@@ -20,6 +21,10 @@ public class TouchManager : MonoBehaviour
     {
         get { return doubleTouch; }
     }
+    public bool Drag
+    {
+        get { return drag; }
+    }
 	void Start () 
     {
 	}
@@ -29,6 +34,14 @@ public class TouchManager : MonoBehaviour
         {
             touchDelay += Time.deltaTime;
             touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Moved)
+            {
+                drag = true;
+            }
+            else
+            {
+                drag = false;
+            }
             if (touch.phase == TouchPhase.Ended && touchDelay < 0.2f)
             {
                 singleTouch = false;

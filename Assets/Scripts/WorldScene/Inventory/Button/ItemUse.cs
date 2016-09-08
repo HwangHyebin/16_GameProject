@@ -28,12 +28,12 @@ public class ItemUse : MonoBehaviour
     {
         int result = 0;
         int max = srt_stateView.GetCurrentHP + (int)srt_inven.m_currentItem.GetInfo().STATUS_RAND;
-        if (srt_stateView.GetCurrentHP < srt_stateView.GetStartHP()) // 사용
+        if (srt_stateView.GetCurrentHP < srt_stateView.GetStartHP) // 사용
         {
             result = max;
-            if (result > srt_stateView.GetStartHP())
+            if (result > srt_stateView.GetStartHP)
             {
-                result = srt_stateView.GetStartHP();
+                result = srt_stateView.GetStartHP;
             }
             srt_stateView.GetCurrentHP = result;
             ClearOne(srt_inven.m_currentItem);

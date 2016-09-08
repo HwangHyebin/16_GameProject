@@ -8,10 +8,21 @@ public class ItemScript : MonoBehaviour
 
     private Item_Info   m_item;
     private Inventory   srt_inven;
+    private TouchManager srt_touchManager;
 
     private void Start()
     {
         srt_inven = GameObject.FindObjectOfType<Inventory>();
+        srt_touchManager = GameObject.FindObjectOfType<TouchManager>();
+    }
+    private void Update()
+    {
+        if (srt_touchManager.CurrentTouch.phase == TouchPhase.Began)
+        {
+            info_text.text = m_item.INFO;
+            srt_inven.SelectItem(this.gameObject.GetComponent<ItemScript>());
+
+        }
     }
     public void SetInfo(Item_Info _itemInfo)
     {
@@ -24,8 +35,7 @@ public class ItemScript : MonoBehaviour
     }
     private void OnClick()
     {
-        info_text.text = m_item.INFO;
-        srt_inven.SelectItem(this.gameObject.GetComponent<ItemScript>());
+        
     }
 }
 
