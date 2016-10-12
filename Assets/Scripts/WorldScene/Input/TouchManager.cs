@@ -25,9 +25,6 @@ public class TouchManager : MonoBehaviour
     {
         get { return drag; }
     }
-	void Start () 
-    {
-	}
 	void Update () 
     {
         if (Input.touchCount > 0)
@@ -61,12 +58,12 @@ public class TouchManager : MonoBehaviour
         if (touch.tapCount == 1)
         {
             singleTouch = true;
-            Debug.Log("single");
+            //Debug.Log("single");
         }
         else if (touch.tapCount == 2)
         {
             doubleTouch = true;
-            Debug.Log("double");
+            //Debug.Log("double");
         }
         StopCoroutine("TouchCheck");
     }

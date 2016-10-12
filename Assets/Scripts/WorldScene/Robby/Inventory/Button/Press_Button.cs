@@ -12,19 +12,19 @@ public class Press_Button : MonoBehaviour
     }
     public void X()
     {
-        srt_camera.open = false;
         if (window.name == "Inventory")
         {
             window.GetComponent<Inventory>().effect.gameObject.SetActive(false);
         }
+        Result(false);
         window.SetActive(false);
     }
     public void Open()
     {
-        srt_camera.open = true;
+        Result(true);
         window.SetActive(true);
     }
-    public bool Result()
+    public bool Result(bool check)
     {
         return srt_camera.open;
     }

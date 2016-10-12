@@ -15,7 +15,6 @@ public class StatusView : MonoBehaviour
     private int             startTime = 0;
 
     private int m_gold;
-    //private int startHP;
 
     public int GetStartHP
     {
@@ -33,8 +32,6 @@ public class StatusView : MonoBehaviour
         {
             if (srt_data.player.HP > 0)
             {
-                //startHP = srt_data.player.StartHP;
-                //currentHP = srt_data.player.HP;
                 m_gold = srt_data.player.Gold;
                 startTime = 1;
             }

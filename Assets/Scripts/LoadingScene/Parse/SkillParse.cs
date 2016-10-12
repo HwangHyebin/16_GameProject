@@ -82,7 +82,7 @@ public class SkillParse : MonoBehaviour
                         player.StartHP = int.Parse(child.Attributes.GetNamedItem("hp").Value);
                         Data.characters.Add(player);
                     }
-                    else
+                    else // item도 함께 parse.
                     {
                         Item_Info item = new Item_Info();
                         switch (child.Name)

@@ -73,7 +73,7 @@ public class Inventory : MonoBehaviour
        
         float rand = UnityEngine.Random.Range(itemScript.GetInfo().MIN, itemScript.GetInfo().MAX);
         itemScript.GetInfo().STATUS_RAND = rand;
-        itemScript.gameObject.tag = itemScript.GetInfo().TAG;
+        itemScript.tag = itemScript.GetInfo().TAG;
         
         _grid.Reposition();          //그리드 재정렬
         Data.m_Items.Add(itemScript);   
@@ -82,16 +82,17 @@ public class Inventory : MonoBehaviour
     {
         m_currentItem = itemScript;
         Debug.Log(m_currentItem.gameObject.transform.parent.name);
+        Debug.Log("tag = " + m_currentItem.tag);
 
-        Vector2 pos = srt_touchManager.CurrentTouch.position;
-        Vector3 touchPos = new Vector3(pos.x, pos.y, 0.0f);
-        Ray ray = srt_camera.CurrentCamera.ScreenPointToRay(touchPos);
-        RaycastHit hit;
+        //Vector2 pos = srt_touchManager.CurrentTouch.position;
+        //Vector3 touchPos = new Vector3(pos.x, pos.y, 0.0f);
+        //Ray ray = srt_camera.CurrentCamera.ScreenPointToRay(touchPos);
+        //RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-        {
-            effect.gameObject.transform.parent = hit.collider.gameObject.transform;//m_currentItem.gameObject.transform;
-        }
+        //if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        //{
+        effect.gameObject.transform.parent = m_currentItem.gameObject.transform; //hit.collider.gameObject.transform;//
+        //}
         
         effect.depth = itemScript.gameObject.GetComponent<UIPanel>().depth - 1;
         effect.transform.position = new Vector3(effect.transform.parent.position.x, effect.transform.parent.position.y, effect.transform.parent.position.z);

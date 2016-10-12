@@ -3,10 +3,15 @@ using System.Collections;
 
 public class click : MonoBehaviour
 {
+    private StartSetting     srt_Init;
+    private void Start()
+    {
+        srt_Init = GameObject.FindObjectOfType<StartSetting>();
+    }
     private void OnClick()
     {
-        //Debug.Log(Data.m_Items.Count);
         Data.characters[3].HP = 80;
+        srt_Init.RobbyUI.SetActive(true);
         Application.LoadLevel(1);
     }
 }

@@ -33,13 +33,12 @@ public class ItemDrag : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)//(srt_touchManager.CurrentTouch.phase == TouchPhase.Began)
+            if (touch.phase == TouchPhase.Began)//(srt_touchManager.CurrentTouch.phase == TouchPhase.Began)//
             {
                 startParent = transform.parent;
             }
-            else if (touch.phase == TouchPhase.Ended)//(srt_touchManager.CurrentTouch.phase == TouchPhase.Ended)
+            else if (touch.phase == TouchPhase.Ended)//(srt_touchManager.CurrentTouch.phase == TouchPhase.Ended)//
             {
-
                 if (transform.parent.childCount == 2 || this.gameObject.tag != transform.parent.tag && transform.parent.tag != "slot")
                 {
                     transform.parent = startParent;
@@ -51,9 +50,7 @@ public class ItemDrag : MonoBehaviour
                     Set_Weapon(currentParent);
                 }
             }
-        
         }
-        
     }
     public void Set_Weapon(Transform _obj)
     {
@@ -71,10 +68,10 @@ public class ItemDrag : MonoBehaviour
             result_value                = defence_start + plus_value;
             srt_data.player.Defence = result_value;
         }
-        else if (_obj.tag == "Serve")
-        {
- 
-        }
+        //else if (_obj.tag == "Serve")
+        //{
+        //    //추후 추가예정
+        //}
         else if (_obj.tag == "slot")
         {
             if (startParent.name == "gear1")
