@@ -6,6 +6,7 @@ public class EnemyLife : HPBarBase
 	public      float           m_Hight         = 2.0f;
     public      GameObject      UI_back;
     public      GameObject      UI_HP_back;
+    public static int           death_count;
     protected   Transform       target          = null;
     private     SpriteRenderer  img;
     private     Animator        anim;
@@ -53,10 +54,15 @@ public class EnemyLife : HPBarBase
     IEnumerator Death()
     {
         yield return new WaitForSeconds(1.8f);
+        ++death_count;
         this.transform.parent.gameObject.SetActive(false);
         //if (this.transform.parent.gameObject.activeInHierarchy == false)
         //{
         //    Destroy(transform.parent.gameObject);
         //}
+    }
+    public int DeathCount
+    {
+        get { return death_count; }
     }
 }

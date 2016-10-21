@@ -27,7 +27,7 @@ public class StatusView : MonoBehaviour
     }
     private void Start()
     {
-        srt_data = GameObject.FindObjectOfType<SetData>();
+       srt_data = GameObject.FindObjectOfType<SetData>();
         if (startTime == 0)
         {
             if (srt_data.player.HP > 0)

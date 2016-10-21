@@ -5,6 +5,8 @@ public class Press_Button : MonoBehaviour
 {
     public  GameObject  window;
     private CameraControl srt_camera;
+    private Inventory srt_inven;
+    private SetFriend srt_friendship;
 
     private void Start()
     {

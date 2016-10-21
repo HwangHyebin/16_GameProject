@@ -9,17 +9,20 @@ public class StartSetting : MonoBehaviour
     {
         get { return robbyUI; }
     }
-
+    private void Awake()
+    {
+        //if (GameObject.Find("RobbyUI").gameObject != null)
+        //{
+        //    robbyUI = GameObject.Find("RobbyUI").gameObject;
+        //    if (robbyUI.activeInHierarchy == true)
+        //    {
+        //        robbyUI.SetActive(false);
+        //    }
+        //}
+    }
 	private void Start ()
     {
-        if (GameObject.Find("RobbyUI").gameObject != null)
-        {
-            robbyUI = GameObject.Find("RobbyUI").gameObject;
-            if (robbyUI.activeInHierarchy == true)
-            {
-                robbyUI.SetActive(false);
-            }
-        }
+        
 	}
 
     private void Update() 

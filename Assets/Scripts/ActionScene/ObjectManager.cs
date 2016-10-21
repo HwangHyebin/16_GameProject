@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ObjectManager : MonoBehaviour 
@@ -7,6 +8,10 @@ public class ObjectManager : MonoBehaviour
     private ControlCamera       _camera;
     private MapFactory          _map;
     private CharacterFactory    _factory;
+    private SetData             srt_data;
+    private EnemyLife           srt_enemyLife;
+
+    public  Image               clear;
 
 	[HideInInspector] 
 	public 	CharacterBase[]     _enemyArray = null; //오직 enemy만 담는 배열 
@@ -17,6 +22,7 @@ public class ObjectManager : MonoBehaviour
         _map        = GameObject.FindObjectOfType<MapFactory>();
         _factory    = GameObject.FindObjectOfType<CharacterFactory>();
         _camera     = GameObject.FindObjectOfType<ControlCamera>();
+        srt_data    = GameObject.FindObjectOfType<SetData>();
 
         _camera.init();
         _map.CreateMap();
@@ -24,6 +30,8 @@ public class ObjectManager : MonoBehaviour
         CharacterBase_Instance(3);
         _enemyArray = new CharacterBase[(_array.Length - 1)]; //현재는 2마리로 정해져 있으나 나중엔 xml파싱을 통해 갯수결정; //enemy만을 담기 위한 배열
         CharacterInit();
+        srt_enemyLife = GameObject.FindObjectOfType<EnemyLife>();
+        clear.gameObject.SetActive(false);
     }
     private void Update()
     {
@@ -32,6 +40,14 @@ public class ObjectManager : MonoBehaviour
         {
             _array[i].update();
         }
+
+        if (srt_enemyLife.DeathCount != 0)
+        {
+            if (_enemyArray.Length == srt_enemyLife.DeathCount)
+            {
+                clear.gameObject.SetActive(true);
+            }   
+        }   
     }
     private void CharacterBase_Instance(int _num)
     {
@@ -44,7 +60,7 @@ public class ObjectManager : MonoBehaviour
     private void CharacterInit()
     {
         CharacterBase player = _factory.CreateCharacter("Player", ref _array[0]);
-        player.Set_Character_Status(1, 100.0f, 10.0f, 2.0f); //레벨, hp, 공격력, 방어력
+        player.Set_Character_Status(1, srt_data.player.HP, 10.0f, 2.0f); //레벨, hp, 공격력, 방어력
         for (int i = 0; i < _enemyArray.Length; ++i)
         {
             CharacterBase enemy = _factory.CreateCharacter("Enemy", ref _array[i + 1]);

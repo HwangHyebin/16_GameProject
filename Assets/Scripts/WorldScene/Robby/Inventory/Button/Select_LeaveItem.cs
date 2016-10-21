@@ -25,6 +25,7 @@ public class Select_LeaveItem : MonoBehaviour
     }
     private void ClearOne(ItemScript _itemScript)
     {
+        srt_inven.m_currentItem.info_text.text = "";
         srt_inven.effect.transform.parent = srt_inven.transform;
         srt_inven.effect.gameObject.SetActive(false);
         //if(_itemScript.transform.parent.tag == "Weapon")

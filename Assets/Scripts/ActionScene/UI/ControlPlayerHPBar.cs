@@ -6,6 +6,7 @@ public class ControlPlayerHPBar : HPBarBase
 {
     private UISprite        img;
     private ObjectManager   srt_objectManager;
+    private SetData srt_data;
 
     //***전투가 끝나고나면 hpScale값과 rgb값을 함께 보내줌으로써 월드씬에서 적용시켜야 함***
 
@@ -17,10 +18,12 @@ public class ControlPlayerHPBar : HPBarBase
         m_StartScale        = transform.localScale;
         img.color           = new Color((rgb.r / 255), (rgb.g / 255), (rgb.b / 255));
         srt_objectManager   = GameObject.FindObjectOfType<ObjectManager>();
-        m_HP                = GameObject.FindObjectOfType<Player>().status.hp;
+        srt_data = GameObject.FindObjectOfType<SetData>();
+        m_HP                = srt_data.player.HP;
     }
     private void Update()
     {
+        srt_data.player.HP = (int)m_HP;
         Vector3 hpScale = m_StartScale;
         if (m_HP  >= 0.0f)
         {

@@ -240,6 +240,7 @@
     <Compile Include="Assets\Scripts\ActionScene\Character\SummonsSystem\Magician.cs" />
     <Compile Include="Assets\Scripts\ActionScene\Character\SummonsSystem\Pirate.cs" />
     <Compile Include="Assets\Scripts\ActionScene\Character\SummonsSystem\Shield.cs" />
+    <Compile Include="Assets\Scripts\ActionScene\ClearControl.cs" />
     <Compile Include="Assets\Scripts\ActionScene\ControlCamera.cs" />
     <Compile Include="Assets\Scripts\ActionScene\Map\MapFactory.cs" />
     <Compile Include="Assets\Scripts\ActionScene\Map\MapObjects.cs" />
@@ -252,8 +253,6 @@
     <Compile Include="Assets\Scripts\ActionScene\UI\SkillButton.cs" />
     <Compile Include="Assets\Scripts\ActionScene\UI\SummonsLife.cs" />
     <Compile Include="Assets\Scripts\EventScene\EventSceneManager.cs" />
-    <Compile Include="Assets\Scripts\EventScene\EventState.cs" />
-    <Compile Include="Assets\Scripts\EventScene\EventStateMachine.cs" />
     <Compile Include="Assets\Scripts\EventScene\QAType.cs" />
     <Compile Include="Assets\Scripts\EventScene\SelectButton.cs" />
     <Compile Include="Assets\Scripts\EventScene\StartSetting.cs" />

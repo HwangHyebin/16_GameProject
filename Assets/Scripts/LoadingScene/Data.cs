@@ -93,6 +93,7 @@ public class Item_Info
     private float       m_max;
     private string      m_info;
     private string      m_tag;
+    private string      m_itemName;
     public int ID
     {
         set { m_id = value; }
@@ -132,6 +133,11 @@ public class Item_Info
     {
         set { m_tag = value; }
         get { return m_tag; }
+    }
+    public string ITEMNAME
+    {
+        set { m_itemName = value; }
+        get { return m_itemName;  }
     }
 }
 

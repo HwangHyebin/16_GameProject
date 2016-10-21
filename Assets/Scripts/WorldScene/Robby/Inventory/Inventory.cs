@@ -23,6 +23,9 @@ public class Inventory : MonoBehaviour
     private TouchManager        srt_touchManager;
     private CameraControl       srt_camera;
 
+    public  int select_num;
+
+
     private void Start()
     {
         effect.gameObject.SetActive(false);
@@ -30,32 +33,33 @@ public class Inventory : MonoBehaviour
         srt_status = GameObject.FindObjectOfType<StatusView>();
         srt_touchManager = GameObject.FindObjectOfType<TouchManager>();
         srt_camera = GameObject.FindObjectOfType<CameraControl>();
+
         //effect = GameObject.Find("effect").GetComponent<UISprite>();
     }
 	private void Update () 
     {
-        //후에 스테이지가끝나면 아이템이 추가되게 변경.
-	    if(Input.GetKeyDown(KeyCode.I))
-        {
-            AddItem();
-        }
 	}
-    private void AddItem()
+    public int GetNumber
     {
-        int nRandom = Random.Range(1, ItemManager.Instance.GetItemsCount() + 1 ); //랜덤으로 아이템 생성되게 함
+        get { return select_num; }
+    }
+    
+    public void AddItem(int _num)
+    {
+        //int nRandom = Random.Range(1, ItemManager.Instance.GetItemsCount() + 1); //랜덤으로 아이템 생성되게 함
 
         for (int i = 0; i < 12; ++i)
         {
             if (slot_array1[i].transform.childCount == 0 && page1_total < 12)
             {
                 ++page1_total;
-                SetItem(m_grid, nRandom, i);
+                SetItem(m_grid, _num, i);
                 break;
             }
             else if (slot_array2[i].transform.childCount == 0 && page1_total >= 12)
             {
                 ++page2_total;
-                SetItem(m_grid2, nRandom, i);
+                SetItem(m_grid2, _num, i);
                 break;
             }
         }

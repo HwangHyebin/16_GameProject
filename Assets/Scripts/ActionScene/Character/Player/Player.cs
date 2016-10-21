@@ -15,6 +15,9 @@ public class Player : CharacterBase
     private AttackButton            srt_attackButton;
     private PlayerStateMachine      player_state;
 
+    private GameObject robbyUI;
+
+
     public enum PLAYER_ANIMATOR
     {
         DONE = -1,
@@ -40,8 +43,16 @@ public class Player : CharacterBase
         player_skills       = PLAYER_SKILLS.DONE;
         srt_input           = GameObject.FindObjectOfType<JoystickControl>() as JoystickControl;
         srt_attackButton    = GameObject.FindObjectOfType<AttackButton>() as AttackButton;
+        robbyUI = GameObject.Find("RobbyUI").gameObject;
+        robbyUI.transform.FindChild("Anchor").gameObject.SetActive(true);
+        robbyUI.transform.FindChild("Anchor").FindChild("Top_Left").gameObject.SetActive(true);
+        robbyUI.transform.FindChild("Anchor").FindChild("Top_right").gameObject.SetActive(false);
+        robbyUI.transform.FindChild("Anchor").FindChild("Bottom_Left").gameObject.SetActive(false);
+        robbyUI.transform.FindChild("Anchor").FindChild("Center").gameObject.SetActive(false);
 
-        hp_bar = GameObject.FindObjectOfType<ControlPlayerHPBar>().transform;
+        hp_bar = robbyUI.transform.FindChild("Anchor").FindChild("Top_Left").FindChild("GameObject").FindChild("HP").GetComponent<ControlPlayerHPBar>().transform;
+        //hp_bar = robbyUI.GetComponentInChildren<ControlPlayerHPBar>().transform;
+        //hp_bar = GameObject.FindObjectOfType<ControlPlayerHPBar>().transform;
         life = hp_bar.GetComponent<ControlPlayerHPBar>();
 
         player_state.Init(this);

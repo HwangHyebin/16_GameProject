@@ -133,5 +133,6 @@ public class SkillParse : MonoBehaviour
         _item.MIN           = float.Parse(_child.Attributes.GetNamedItem("Min").Value);
         _item.MAX           = float.Parse(_child.Attributes.GetNamedItem("Max").Value);
         _item.INFO          = (_child.Attributes.GetNamedItem("info").Value).ToString();
+        _item.ITEMNAME      = _child.Attributes.GetNamedItem("itemname").Value;
     }
 }

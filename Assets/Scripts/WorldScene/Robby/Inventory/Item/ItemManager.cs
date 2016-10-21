@@ -33,6 +33,25 @@ public class ItemManager : MonoBehaviour
             return instance;
         }
     }
+    //public Item_Info GetRandomItem(int Level)
+    //{
+    //    List<Item_Info> m_ListItems = new List<Item_Info>();
+
+    //    foreach (Item_Info Info in Data.m_dicData.Values)
+    //    {
+    //        if (Level == Info.LV)
+    //        {
+    //            m_ListItems.Add(Info);
+    //        }
+    //    }
+
+    //    if(0 == m_ListItems.Count)
+    //        return null;
+
+    //    int RandomValue = Random.Range(0, m_ListItems.Count - 1);
+
+    //    return m_ListItems[RandomValue];
+    //}
 
     public Item_Info GetItem(int _nID) // 하나의 아이템 얻기
     {
