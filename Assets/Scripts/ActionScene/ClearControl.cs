@@ -54,6 +54,6 @@ public class ClearControl : MonoBehaviour
         robbyUI.transform.FindChild("Anchor").FindChild("Top_right").gameObject.SetActive(true);
         robbyUI.transform.FindChild("Anchor").FindChild("Bottom_Left").gameObject.SetActive(true);
         robbyUI.transform.FindChild("Anchor").FindChild("Center").gameObject.SetActive(true);
-        Application.LoadLevel(1);
+        Application.LoadLevel(2);
     }
 }

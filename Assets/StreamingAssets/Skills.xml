@@ -14,8 +14,6 @@
 	<Armor id="8" name="E_3" level="3" Min="24" Max="36" info="배틀 체인 메일 : 단단하게 잘 만들어진 갑옷" itemname="배틀 체인 메일"/>
 	<Armor id="9" name="E_4" level="4" Min="40" Max="60" info="지휘관 갑옷 : 고급진 장군의 갑옷" itemname="지휘관 갑옷"/>
 	<Armor id="10" name="E_5" level="5" Min="56" Max="84" info="날개 옷 : 옷이 날개" itemname="날개 옷"/>
-	<serve id="11" name="equipment_c_ull" level="1" Min="1.1" Max="1.12" info="견습 마법사의 마법서" itemname="견습 마법사의 마법서"/>
-	<serve id="12" name="equipment_c_ull" level="2" Min="1.24" Max="1.36" info="마력이 깃든 마법서" itemname="마력이 깃든 마법서"/>
-	<serve id="13" name="equipment_c_ull" level="3" Min="1.4" Max="1.6" info="마력이 개방된 마법서 : 취급주의" itemname="마력이 개방된 마법서"/>
-	<Food id="14" name="bread" level="1" Min="10" Max="30" info="맛있는빵" itemname="맛있는 빵"/>
+        <Gold id ="11" name="gold" level="1" Min="100" Max="500" info="돈" itemname="돈"/>
+	<Food id="12" name="bread" level="1" Min="10" Max="30" info="맛있는빵" itemname="맛있는 빵"/>
 </Skill>

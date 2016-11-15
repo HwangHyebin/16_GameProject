@@ -93,9 +93,12 @@ public class SkillParse : MonoBehaviour
                             case "Armor":
                                 item.TAG = "Armor";
                                 break;
-                            case "serve":
-                                item.TAG = "Serve";
+                            case "Gold" :
+                                item.TAG = "Gold";
                                 break;
+                            //case "serve":
+                            //    item.TAG = "Serve";
+                            //    break;
                             case "Food":
                                 item.TAG = "Food";
                                 break;

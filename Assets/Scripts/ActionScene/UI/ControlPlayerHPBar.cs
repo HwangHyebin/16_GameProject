@@ -34,6 +34,7 @@ public class ControlPlayerHPBar : HPBarBase
         {
             hpScale.x = 0.0f;
             this.transform.localScale = hpScale;
+            Application.LoadLevel(5);
             //죽음.
         }
         if (m_HP < 60.0f) 

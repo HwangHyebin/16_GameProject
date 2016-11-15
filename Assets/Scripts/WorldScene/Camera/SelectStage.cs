@@ -58,7 +58,7 @@ public class SelectStage : MonoBehaviour
                 {
                     Debug.Log("stage change");
                     //스테이지 이동 
-                    Application.LoadLevel(2);
+                    Application.LoadLevel(3);
                 }
             }
         } 

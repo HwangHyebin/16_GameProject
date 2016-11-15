@@ -151,13 +151,13 @@ public class EventSceneManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
         robbyUI.transform.FindChild("Anchor").gameObject.SetActive(true);
-        Application.LoadLevel(1);
+        Application.LoadLevel(2);
     }
     IEnumerator Go_Attack()
     {
         yield return new WaitForSeconds(3.0f);
         //robbyUI.transform.FindChild("Anchor").gameObject.SetActive(true);
-        Application.LoadLevel(3);
+        Application.LoadLevel(4);
     }
     private void Init_Question()
     {
@@ -182,6 +182,7 @@ public class EventSceneManager : MonoBehaviour
         item_back.gameObject.SetActive(false);
         item_sp.gameObject.SetActive(false);
         m_DicQAType.Add(33, a3);
+
 
         //====================================================================================================================
 

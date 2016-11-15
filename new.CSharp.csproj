@@ -260,6 +260,7 @@
     <Compile Include="Assets\Scripts\LoadingScene\LoadSprite.cs" />
     <Compile Include="Assets\Scripts\LoadingScene\Parse\EnemyParse.cs" />
     <Compile Include="Assets\Scripts\LoadingScene\Parse\SkillParse.cs" />
+    <Compile Include="Assets\Scripts\Main\SceneButtonControl.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Camera\CameraControl.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Camera\SelectStage.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Camera\ZoomEffect.cs" />

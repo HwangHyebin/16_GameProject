@@ -13,7 +13,7 @@ public class LoadSprite : MonoBehaviour
         {
             if (Data.characters.Count != 0 && Data.characters.Count != 0) //로딩 끝
             {
-                Application.LoadLevel(1);
+                Application.LoadLevel(2);
             }
         }
     }
