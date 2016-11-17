@@ -83,6 +83,10 @@
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\BasicBeamShot\sh\AddColor_sh.shader" />
+    <None Include="Assets\BasicBeamShot\sh\Add_UVScroll_sh.shader" />
+    <None Include="Assets\BasicBeamShot\sh\BeamLine_sh.shader" />
+    <None Include="Assets\BasicBeamShot\sh\Sprite_Add_sh.shader" />
     <None Include="Assets\CactusPack\Shaders\Basic_Rimlight.shader" />
     <None Include="Assets\CactusPack\Shaders\VertexBlend.shader" />
     <None Include="Assets\Grapics\SD_Project\README.txt" />

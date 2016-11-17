@@ -44,11 +44,11 @@ public class StatusView : MonoBehaviour
             ShowInfo();
         }
     }
-    private void ShowInfo()
+    public void ShowInfo()
     {
         power.text      = srt_data.player.Power.ToString();
         defence.text    = srt_data.player.Defence.ToString();
         hp.text         = srt_data.player.HP.ToString();
-        gold.text       = m_gold.ToString();
+        gold.text       = srt_data.player.Gold.ToString();
     }
 }

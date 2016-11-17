@@ -30,30 +30,35 @@ public class ClearControl : MonoBehaviour
 	}
     public void ButtonPress()
     {
-        Debug.Log(select_nums);
-        Debug.Log(sprites[select_nums]);
         ++open_count;
         _text.gameObject.SetActive(true);
         button.image.sprite = sprites[select_nums-1];
         _text.text = ItemManager.Instance.GetItem(select_nums).INFO;
-        srt_inven.AddItem(select_nums);
-        
-        Debug.Log("clear select = "+select_nums);
+        if (ItemManager.Instance.GetItem(select_nums).NAME == "gold")
+        {
+            int rand = Random.Range((int)ItemManager.Instance.GetItem(select_nums).MIN, (int)ItemManager.Instance.GetItem(select_nums).MAX);
+            Data.characters[3].Gold += rand;
+        }
+        else
+        {
+            srt_inven.AddItem(select_nums);
+        }
         StartCoroutine("NextScene");
     }
     IEnumerator DelayOpen()
     {
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(5.0f);
         //Open();
         StartCoroutine("NextScene");
     }
     IEnumerator NextScene()
     {
-        yield return new WaitForSeconds(7.0f);
+        yield return new WaitForSeconds(3.0f);
         robbyUI.transform.FindChild("Anchor").gameObject.SetActive(true);
         robbyUI.transform.FindChild("Anchor").FindChild("Top_right").gameObject.SetActive(true);
         robbyUI.transform.FindChild("Anchor").FindChild("Bottom_Left").gameObject.SetActive(true);
         robbyUI.transform.FindChild("Anchor").FindChild("Center").gameObject.SetActive(true);
+        robbyUI.GetComponentInChildren<AudioSource>().Play();
         Application.LoadLevel(2);
     }
 }

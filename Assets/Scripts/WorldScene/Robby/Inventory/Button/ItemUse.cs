@@ -12,36 +12,36 @@ public class ItemUse : MonoBehaviour
     //private Set_PlayerInfo  srt_player;
     private StatusView      srt_stateView;
     private Inventory srt_inven;
+    private SetData srt_data;
     
     //public bool[] destroy_check;
 
     private void Start()
     {
-  
         srt_stateView = GameObject.FindObjectOfType<StatusView>();
-        srt_inven = GameObject.FindObjectOfType<Inventory>();
+        srt_inven = GameObject.FindObjectOfType<Inventory>(); 
+        srt_data = GameObject.FindObjectOfType<SetData>();
         //srt_player  = GameObject.FindObjectOfType<Set_PlayerInfo>();
         
         //destroy_check = new bool[12];
     }
     public void Use()
     {
-        int result = 0;
-        int max = srt_stateView.GetCurrentHP + (int)srt_inven.m_currentItem.GetInfo().STATUS_RAND;
-        if (srt_stateView.GetCurrentHP < srt_stateView.GetStartHP) // 사용
+        int max = srt_data.player.HP +(int)srt_inven.m_currentItem.GetInfo().STATUS_RAND;
+        if (srt_data.player.HP < srt_stateView.GetStartHP) // 사용
         {
-            result = max;
-            if (result > srt_stateView.GetStartHP)
+            if (max > srt_stateView.GetStartHP)
             {
-                result = srt_stateView.GetStartHP;
+                max = srt_stateView.GetStartHP;
             }
-            srt_stateView.GetCurrentHP = result;
+            srt_data.player.HP = max;
+            srt_stateView.hp.text = srt_data.player.HP.ToString();
             ClearOne(srt_inven.m_currentItem);
         }
-        else
-        {
-            Debug.Log("max = " + srt_stateView.GetCurrentHP + "를 초과해서 사용할수 없습니다.");
-        }
+        //else
+        //{
+        //    Debug.Log("max = " + srt_stateView.GetCurrentHP + "를 초과해서 사용할수 없습니다.");
+        //}
     }
     private void ClearOne(ItemScript _itemScript)
     {

@@ -26,12 +26,10 @@ public class CameraControl : MonoBehaviour
         if (srt_button.Result(open) == true)
         {
             currentCamera = uiCamera;
-            Debug.Log("okok");
         }
         else if (srt_button.Result(open) == false)
         {
             currentCamera = worldCamera;
-            Debug.Log("nono");
         }
 	}
 }

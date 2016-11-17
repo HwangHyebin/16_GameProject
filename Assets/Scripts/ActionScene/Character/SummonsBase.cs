@@ -34,7 +34,6 @@ public class SummonsBase : Actor
     protected void Destroy()
     {
         destroy = true;
-        Debug.Log("Destroy");
     }
     protected void OnTriggerStay(Collider col)
     {

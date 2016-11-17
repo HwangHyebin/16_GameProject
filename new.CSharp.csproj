@@ -72,6 +72,35 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BasicBeamShot\Character Controllers\Sources\Scripts\MouseLook.cs" />
+    <Compile Include="Assets\BasicBeamShot\SampleStage\GetUI.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\AutoDestroy.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\BM_WaveEffect.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\BasicBullet.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\BeamCollision.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\BeamLine.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\BeamParam.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\BeamWave.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\BillBoard.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\Create_MyLineMesh.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\Flash.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\GeroBeam.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\GeroBeamHit.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\GetColor_BeamLine.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\GetColor_Flash.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\GetColor_Particle.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\JumpScene.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\MouseTgt.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\MultiShooter.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\RandomRotate.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\ScaleWiggle.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\SceneMaster.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\ShooterRotate.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\ShotBase.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\ShotParticleEmitter.cs" />
+    <Compile Include="Assets\BasicBeamShot\Script\ShotParticle_Scale.cs" />
+    <Compile Include="Assets\Grapics\52SpecialEffectPack\Legacy Effect Editor\csLegacyEffectChanger.cs" />
+    <Compile Include="Assets\Grapics\52SpecialEffectPack\Legacy Effect Editor\csLegacyEffectEditor.cs" />
     <Compile Include="Assets\Grapics\SD_Project\Scripts\MecanimButton.cs" />
     <Compile Include="Assets\Grapics\SD_Project\Scripts\ThirdPersonCamera.cs" />
     <Compile Include="Assets\Grapics\SD_Project\Scripts\controller.cs" />
@@ -289,6 +318,10 @@
     <Compile Include="Assets\click.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\BasicBeamShot\sh\AddColor_sh.shader" />
+    <None Include="Assets\BasicBeamShot\sh\Add_UVScroll_sh.shader" />
+    <None Include="Assets\BasicBeamShot\sh\BeamLine_sh.shader" />
+    <None Include="Assets\BasicBeamShot\sh\Sprite_Add_sh.shader" />
     <None Include="Assets\CactusPack\Shaders\Basic_Rimlight.shader" />
     <None Include="Assets\CactusPack\Shaders\VertexBlend.shader" />
     <None Include="Assets\Grapics\SD_Project\README.txt" />

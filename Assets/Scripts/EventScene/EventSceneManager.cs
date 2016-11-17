@@ -61,8 +61,7 @@ public class EventSceneManager : MonoBehaviour
 
         for (int i = 0; i < select_nums.Length; ++i)
         {
-            select_nums[0] = Random.Range(1, 11);// ItemManager.Instance.GetItemsCount() + 1
-            select_nums[1] = 14;
+            select_nums[i] = 12;//Random.Range(1,ItemManager.Instance.GetItemsCount());
             select_itemName[i] = "";
         }
         question_rend = Random.Range(0, 2);//0
@@ -88,10 +87,14 @@ public class EventSceneManager : MonoBehaviour
         int nextQANum = m_DicQAType[current_QANumber].GetNextNumber(selectAnswerNum); // 다음 Q넘버 가져옴 
         if (current_QANumber == 0)
         {
-            m_state = STATE.shop;
+            
             if (selectAnswerNum == 2)
             {
                 m_state = STATE.not;
+            }
+            else
+            {
+                m_state = STATE.shop;
             }
         }
         else
@@ -119,7 +122,15 @@ public class EventSceneManager : MonoBehaviour
                     item_sp.gameObject.SetActive(true);
                     item_sp.spriteName = select_itemName[selectAnswerNum];
                     item_label.text = ItemManager.Instance.GetItem(select_nums[selectAnswerNum]).INFO;
-                    srt_inven.AddItem(select_nums[selectAnswerNum]);
+                    if (ItemManager.Instance.GetItem(select_nums[selectAnswerNum]).NAME == "gold")
+                    {
+                        int rand = Random.Range((int)ItemManager.Instance.GetItem(select_nums[selectAnswerNum]).MIN, (int)ItemManager.Instance.GetItem(select_nums[selectAnswerNum]).MAX);
+                        Data.characters[3].Gold += rand;
+                    }
+                    else
+                    {
+                        srt_inven.AddItem(select_nums[selectAnswerNum]);
+                    }
                     StartCoroutine("Go_Stage");
                 }
                 else if (m_state == STATE.attack)
@@ -136,7 +147,6 @@ public class EventSceneManager : MonoBehaviour
                 }
                 for (int i = 0; i < select_nums.Length; ++i)
                 {
-                    Debug.Log("select_num = "+select_nums[i]);
                     select_nums[i] = 0;
                 }
 
@@ -157,6 +167,7 @@ public class EventSceneManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
         //robbyUI.transform.FindChild("Anchor").gameObject.SetActive(true);
+        robbyUI.GetComponent<AudioSource>().Stop();
         Application.LoadLevel(4);
     }
     private void Init_Question()
@@ -165,15 +176,16 @@ public class EventSceneManager : MonoBehaviour
         // -1 : 전투, -2 : 협상, -3 : 이벤트?
 
         QAType a = new QAType(0, "아~아~ 어서오슈! 오늘 좋은 상품이 많아요~"); // 질문의고유값 및 질문
-        a.SetAnser(0, 31, "저렴한 RandomBox (1000G) "); //답변 번호, 다음 질문 고유값, 답변내용
-        a.SetAnser(1, 32, "다이아몬드가 박힌 비싼 RandomBox (5000G) ");
+        a.SetAnser(0, 31, "저렴한 RandomBox"); //답변 번호, 다음 질문 고유값, 답변내용
+        a.SetAnser(1, 32, "다이아몬드가 박힌 비싼 RandomBox");
         a.SetAnser(2, 33, "오늘은 살 게 별로 없네요.");
         m_DicQAType.Add(0, a); //0번째에 등록.
 
+        
         QAType a1 = new QAType(31, ItemManager.Instance.GetItem(select_nums[0]).ITEMNAME + " 을/를 구매했습니다");
         select_itemName[0] = ItemManager.Instance.GetItem(select_nums[0]).NAME;
         m_DicQAType.Add(31, a1);
-      
+        
         QAType a2 = new QAType(32, ItemManager.Instance.GetItem(select_nums[1]).ITEMNAME + " 을/를 구매했습니다");
         select_itemName[1] = ItemManager.Instance.GetItem(select_nums[1]).NAME;
         m_DicQAType.Add(32, a2);

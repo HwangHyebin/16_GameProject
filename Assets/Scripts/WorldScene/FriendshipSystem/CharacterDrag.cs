@@ -27,7 +27,7 @@ public class CharacterDrag : MonoBehaviour
             currentParent = transform.parent;
             if (startParent != currentParent)
             {
-                Debug.Log("장착");
+                //Debug.Log("장착");
             }
         }
 	}

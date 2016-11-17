@@ -64,7 +64,6 @@ public class Inventory : MonoBehaviour
             }
         }
         totalCount = page1_total + page2_total;
-        Debug.Log(totalCount);
     }
     private void SetItem(UIGrid _grid, int _num, int slot_number) //리스트의 랜덤번째 있는걸 그리드에 생성하고 있음.
     {
@@ -85,8 +84,6 @@ public class Inventory : MonoBehaviour
     public void SelectItem(ItemScript itemScript)
     {
         m_currentItem = itemScript;
-        Debug.Log(m_currentItem.gameObject.transform.parent.name);
-        Debug.Log("tag = " + m_currentItem.tag);
 
         //Vector2 pos = srt_touchManager.CurrentTouch.position;
         //Vector3 touchPos = new Vector3(pos.x, pos.y, 0.0f);

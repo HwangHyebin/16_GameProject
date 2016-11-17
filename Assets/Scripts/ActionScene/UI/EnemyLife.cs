@@ -63,6 +63,7 @@ public class EnemyLife : HPBarBase
     }
     public int DeathCount
     {
+        set { death_count = value; }
         get { return death_count; }
     }
 }

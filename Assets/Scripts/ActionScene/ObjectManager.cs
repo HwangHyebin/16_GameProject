@@ -31,6 +31,14 @@ public class ObjectManager : MonoBehaviour
         _enemyArray = new CharacterBase[(_array.Length - 1)]; //현재는 2마리로 정해져 있으나 나중엔 xml파싱을 통해 갯수결정; //enemy만을 담기 위한 배열
         CharacterInit();
         srt_enemyLife = GameObject.FindObjectOfType<EnemyLife>();
+       
+    }
+    //private void Start()
+    //{
+        
+    //}
+    private void OnEnable()
+    {
         clear.gameObject.SetActive(false);
     }
     private void Update()
@@ -45,6 +53,7 @@ public class ObjectManager : MonoBehaviour
         {
             if (_enemyArray.Length == srt_enemyLife.DeathCount)
             {
+                srt_enemyLife.DeathCount = 0;
                 clear.gameObject.SetActive(true);
             }   
         }   

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Magician : SummonsBase
 {
+    public  GameObject      effect_prefab;
     private SphereCollider  attack_col;
     private float           castTime;
    
@@ -25,8 +26,10 @@ public class Magician : SummonsBase
     {
         anim.SetInteger("animation", 1);
         anim.Play("Base Layer.atk3");
+        GameObject effect = Instantiate(effect_prefab, new Vector3(this.transform.position.x, 3.8f, this.transform.position.z), Quaternion.identity) as GameObject;
         attack_col.gameObject.SetActive(true);
         CancelInvoke("Meteo");
+        Destroy(effect, 2.0f);
     }
     private void Set_CastTime(int _num)
     {

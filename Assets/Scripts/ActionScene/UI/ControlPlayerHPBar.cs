@@ -34,7 +34,7 @@ public class ControlPlayerHPBar : HPBarBase
         {
             hpScale.x = 0.0f;
             this.transform.localScale = hpScale;
-            Application.LoadLevel(5);
+            StartCoroutine("Dead");
             //죽음.
         }
         if (m_HP < 60.0f) 
@@ -47,5 +47,12 @@ public class ControlPlayerHPBar : HPBarBase
             }
             img.color = new Color(rgb.r / 255, rgb.g / 255, rgb.b / 255);
         }
+    }
+    IEnumerator Dead()
+    {
+        yield return new WaitForSeconds(1.0f);
+        Destroy(GameObject.Find("RobbyUI").gameObject);
+        Destroy(GameObject.Find("UI Root").gameObject);
+        Application.LoadLevel(5);
     }
 }

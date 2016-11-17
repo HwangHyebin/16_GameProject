@@ -112,7 +112,6 @@ public class SkillParse : MonoBehaviour
                             Data.m_dicData.Add(item.ID, item);
                         }
                         Data.parseCount = 1;
-                        Debug.Log("parse");
                     }
                 }
             }

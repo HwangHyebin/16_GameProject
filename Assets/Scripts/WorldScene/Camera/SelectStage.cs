@@ -52,11 +52,9 @@ public class SelectStage : MonoBehaviour
                     }
                     //**터치된 부분을 카메라의 중심으로 둘것
                     //스테이지 선택
-                    Debug.Log(hit.collider.name);
                 }
                 else if(srt_touchManager.DoubleTouch)
                 {
-                    Debug.Log("stage change");
                     //스테이지 이동 
                     Application.LoadLevel(3);
                 }
