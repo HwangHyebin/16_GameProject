@@ -178,7 +178,7 @@ public class UIInput : MonoBehaviour
 	/// <summary>
 	/// Input field's current text value.
 	/// </summary>
-
+    
 	public string value
 	{
 		get
@@ -192,13 +192,13 @@ public class UIInput : MonoBehaviour
 			{
 				string val = mKeyboard.text;
 #if !UNITY_3_5
-				if (Application.platform == RuntimePlatform.BB10Player)
+				if (Application.platform == RuntimePlatform.BlackBerryPlayer)
 					val = val.Replace("\\b", "\b");
 #endif
 				return val;
 			}
 #endif
-			return mValue;
+            return mValue;
 		}
 		set
 		{
@@ -351,7 +351,7 @@ public class UIInput : MonoBehaviour
 				|| Application.platform == RuntimePlatform.WP8Player
 #endif
 #if UNITY_BLACKBERRY
-				|| Application.platform == RuntimePlatform.BB10Player
+				|| Application.platform == RuntimePlatform.BlackBerryPlayer
 #endif
 			)
 			{
@@ -361,7 +361,7 @@ public class UIInput : MonoBehaviour
 			}
 			else
 #endif
-			{
+            {
 				Input.imeCompositionMode = IMECompositionMode.On;
 				Input.compositionCursorPos = (UICamera.current != null && UICamera.current.cachedCamera != null) ?
 					UICamera.current.cachedCamera.WorldToScreenPoint(label.worldCorners[0]) :
@@ -421,7 +421,7 @@ public class UIInput : MonoBehaviour
 			string val = mKeyboard.text;
 #if !UNITY_3_5
 			// BB10's implementation has a bug in Unity
-			if (Application.platform == RuntimePlatform.BB10Player)
+			if (Application.platform == RuntimePlatform.BlackBerryPlayer)
 				val = val.Replace("\\b", "\b");
 #endif
 			if (mValue != val)
@@ -457,7 +457,7 @@ public class UIInput : MonoBehaviour
 		}
 	}
 #else
-	void Update ()
+    void Update ()
 	{
 #if UNITY_EDITOR
 		if (!Application.isPlaying) return;

@@ -61,7 +61,7 @@ public class EventSceneManager : MonoBehaviour
 
         for (int i = 0; i < select_nums.Length; ++i)
         {
-            select_nums[i] = 12;//Random.Range(1,ItemManager.Instance.GetItemsCount());
+            select_nums[i] = Random.Range(1,ItemManager.Instance.GetItemsCount());
             select_itemName[i] = "";
         }
         question_rend = Random.Range(0, 2);//0

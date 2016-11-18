@@ -290,6 +290,7 @@
     <Compile Include="Assets\Scripts\LoadingScene\Parse\EnemyParse.cs" />
     <Compile Include="Assets\Scripts\LoadingScene\Parse\SkillParse.cs" />
     <Compile Include="Assets\Scripts\Main\SceneButtonControl.cs" />
+    <Compile Include="Assets\Scripts\SizeControl.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Camera\CameraControl.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Camera\SelectStage.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Camera\ZoomEffect.cs" />
@@ -312,6 +313,7 @@
     <Compile Include="Assets\Scripts\WorldScene\Robby\Inventory\Item\ItemScript.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Robby\Inventory\Set_PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\WorldScene\Robby\Inventory\StatusView.cs" />
+    <Compile Include="Assets\Scripts\WorldScene\test.cs" />
     <Compile Include="Assets\SummonsScript.cs" />
     <Compile Include="Assets\SummonsSystem.cs" />
     <Compile Include="Assets\Test\itween_target.cs" />
